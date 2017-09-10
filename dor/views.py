@@ -18,3 +18,6 @@ def show_index(request):
     return render(request,"tsst.html",{'data':str})
     '''
     return render(request,"admin/index.html")
+
+def show_student_index(request):
+    return render(request,"student/index.html")

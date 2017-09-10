@@ -14,11 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from dor.views import show_index
+from dor.views import show_index,show_student_index
 from dor.admin_handle.dormintory_handle import handle_cancel_dor_transcation,handle_change_dor_transcation
-
+from dor.student_handle.dor_applyment import change_dor_applyment,cancel_dor_applyment,live_on_vacation_applyment
 urlpatterns = [
     url(r'^show_index',show_index),
+    url(r'^show_student_index',show_student_index),
+    url(r'^dor/student_handle/dor_applyment/change_dor_applyment',change_dor_applyment),
+    url(r'^dor/student_handle/dor_applyment/cancel_dor_applyment',cancel_dor_applyment),
+    url(r'^dor/student_handle/dor_applyment/live_on_vacation_applyment',live_on_vacation_applyment),
     url(r'^dor/admin_handle/dormintory_handle/handle_change_dor_transcation',handle_change_dor_transcation),
     url(r'^dor/admin_handle/dormintory_handle/handle_cancel_dor_transcation',handle_cancel_dor_transcation)
 ]
