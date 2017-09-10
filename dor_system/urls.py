@@ -14,9 +14,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from dor.views import show_index,show_main
+from dor.views import show_index
+from dor.admin_handle.dormintory_handle import handle_cancel_dor_transcation,handle_change_dor_transcation
 
 urlpatterns = [
-    url(r'^show_index/',show_index),
-    url(r'^show_main/',show_main)
+    url(r'^show_index',show_index),
+    url(r'^dor/admin_handle/dormintory_handle/handle_change_dor_transcation',handle_change_dor_transcation),
+    url(r'^dor/admin_handle/dormintory_handle/handle_cancel_dor_transcation',handle_cancel_dor_transcation)
 ]

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import os
 import sys
-#coding=utf-8
+# -*- coding: utf-8 -*-
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "dor_system.settings")
     try:
