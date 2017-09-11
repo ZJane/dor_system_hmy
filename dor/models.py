@@ -104,21 +104,18 @@ class dor(models.Model):
     bed_no=models.CharField(max_length=10)
     class Meta:
         unique_together=("dor_no",'sno','room_no',"bed_no")
-
 class live_on_vacation(models.Model):
     sno=models.CharField(max_length=10,primary_key=True)
     sname=models.CharField(max_length=20,default='')
     dor_no=models.CharField(max_length=10)
     from_time=models.DateField()
     end_time=models.DateField()
-    apply_time=models.DateField()
     is_apply_cancel=models.CharField(max_length=1,choices=bool_value)
     is_apply_success=models.CharField(max_length=1,choices=bool_value)
     reason=models.CharField(max_length=100,default='无')
     ad_no=models.CharField(max_length=10)
     class Meta:
         unique_together=("sno","reason")
-
 class activity_applyment(models.Model):
     sno=models.CharField(max_length=10,primary_key=True)
     activity_no=models.CharField(max_length=10)

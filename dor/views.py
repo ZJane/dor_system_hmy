@@ -10,7 +10,7 @@ def show_main(request):
     if 'bb'in request.GET:
         str=request.GET['bb']
     return render(request,"tsst.html",{'data':str})
-def show_index(request):
+def show_admin_index(request):
     '''
     str="null"
     if request.method=='POST':

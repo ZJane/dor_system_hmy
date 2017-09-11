@@ -2,7 +2,8 @@ from django.http import HttpResponse
 
 from dor.models import dor_change, dor_cancel, live_on_vacation
 
-
+def show_change_dor_applyments(request):
+    pass
 def change_dor_applyment(request):
     if request.method=='POST':
         sno=request.POST['sno']
@@ -17,7 +18,8 @@ def change_dor_applyment(request):
         test=dor_change(sno=sno,sname=sname,old_dor_no=old_dor_info[0],old_room_no=old_dor_info[1],new_dor_no=new_dor_info[0],new_room_no=new_dor_info[1]+new_dor_info[2],apply_time=apply_time,phone=phone,reason=reason)
         test.save()
     return HttpResponse('<p>change success</p>')
-
+def show_cancel_dor_applyments(request):
+    pass
 def cancel_dor_applyment(request):
     if request.method=='POST':
         sno=request.POST['sno']
@@ -30,6 +32,9 @@ def cancel_dor_applyment(request):
         test=dor_cancel(sno=sno,sname=sname,dor_no=dor_info[0],room_no=dor_info[1],apply_time=apply_time,phone=phone,reason=reason)
         test.save()
     return HttpResponse('<p>cancel success</p>')
+
+def show_live_on_vacation_applyments(request):
+    pass
 
 def live_on_vacation_applyment(request):
     if request.method=='POST':

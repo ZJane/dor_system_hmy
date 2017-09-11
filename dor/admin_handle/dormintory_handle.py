@@ -4,6 +4,8 @@ from django.shortcuts import render
 
 from dor.models import dor
 
+def show_change_dor_applyments(request):
+    pass
 
 def handle_change_dor_transcation(request):
     if request.method=="POST":
@@ -16,7 +18,19 @@ def handle_change_dor_transcation(request):
         test.save()
     return HttpResponse("<p>数据添加成功！</p>")
 
+def show_cancel_dor_applyments(request):
+    pass
+
 def handle_cancel_dor_transcation(request):
     pass
+
+def show_live_on_vacation_applyments(request):
+    pass
+
+def handle_live_on_vacation_transcation(request):
+    pass
+
+
+
 
 
