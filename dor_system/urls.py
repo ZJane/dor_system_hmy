@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.conf.urls import url
 from dor.views import show_admin_index,show_student_index
-from dor.student_handle.device_repair_applyment import device_repair_applyment
 from dor.admin_handle.dormintory_handle import handle_cancel_dor_transcation,handle_change_dor_transcation,handle_live_on_vacation_transcation,show_cancel_dor_applyments,show_change_dor_applyments,show_live_on_vacation_applyments
 from dor.admin_handle.repair_handle import  show_repair_device_applyments,handle_repair_device_applyment
 from dor.admin_handle.device_handle import show_device_applyments,show_key_applyments,show_minitor_applyments,commit_return_device
@@ -29,7 +28,7 @@ from dor.student_handle.dor_applyment import change_dor_applyment,cancel_dor_app
 from dor.student_handle.resource_applyment import show_minitor_applyments,show_key_applyments
 from dor.student_handle.pay_bill import show_bill,pay_bill
 from dor.student_handle.activity_applyment import activity_applyment,show_activity_info
-from dor.student_handle.book_applyment import book_applyment,my_borrowed_books,my_shared_books
+from dor.student_handle.book_applyment import book_applyment,my_borrowed_books,my_shared_books,show_book_info,search_book
 from dor.student_handle.meeting_room_applyment import meeting_room_applyment,show_meeting_info
 from dor.student_handle.device_repair_applyment import device_repair_applyment,cancel_device_repair_applyment,show_device_repair_applyments
 urlpatterns = [
@@ -55,7 +54,8 @@ urlpatterns = [
     url(r'^dor/student_handle/book_applyment/my_shared_books', my_shared_books),
     url(r'^dor/student_handle/book_applyment/book_applyment',book_applyment),
     url(r'^dor/student_handle/book_applyment/my_borrowed_books', my_borrowed_books),
-
+    url(r'^dor/student_handle/book_applyment/search_book',search_book),
+    url(r'^dor/student_handle/book_applyment/show_book_info',show_book_info),
 
 
     url(r'^dor/admin_handle/dormintory_handle/show_change_dor_applyments', show_change_dor_applyments),
