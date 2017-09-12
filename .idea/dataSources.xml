@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="dor_manage_system@localhost" uuid="505aa257-21e0-4f48-b389-268ac65246f2">
+    <data-source source="LOCAL" name="dormintory_manage_system@localhost" uuid="5b49f710-76a4-49f7-b24d-02341eafba79">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/dor_manage_system</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/dormintory_manage_system</jdbc-url>
       <driver-properties>
         <property name="autoReconnect" value="true" />
         <property name="zeroDateTimeBehavior" value="convertToNull" />

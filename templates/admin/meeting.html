@@ -8,17 +8,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="bootstrap/image/favicon.ico">
+    <link rel="icon" href="../image/favicon.ico">
 
-    <title>活动申请处理 - 宿舍管理系统</title>
+    <title>资源申请处理 - 宿舍管理系统</title>
 
-    <link rel="icon" href={% static 'bootstrap/image/favicon.ico' %}>
+ <link rel="icon" href={% static 'bootstrap/image/favicon.ico' %}>
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'bootstrap/css/admin.css' %}" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
 
 
+
+    <style>
+        .red {
+            color: red;
+        }
+
+        .table tbody tr td {
+            vertical-align: middle;
+        }
+
+        .table-detail tbody tr td, .table-detail thead tr th  {
+            padding: 4px;
+            font-size: 12px;
+            text-align: center;
+
+        }
+    </style>
 
 </head>
 
@@ -40,7 +57,6 @@
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-
                 <li><a href="info_admin.html"><span class="glyphicon glyphicon-user"></span> 李新老师</a></li>
                 <li><a data-toggle="modal" data-target="#logout">注销</a></li>
             </ul>
@@ -55,8 +71,8 @@
                 <li><a href="index.html">宿舍退调申请处理</a></li>
                 <li><a href="repair.html">宿舍报修申请处理</a></li>
                 <li><a href="resource.html">宿舍资源申请处理</a></li>
-                <li><a href="meeting.html">研讨室申请处理</a></li>
-                <li class="active"><a href="activity.html">社区活动申请处理<span class="sr-only">(current)</span></a></li>
+                <li class="active"><a href="meeting.html">研讨室申请处理<span class="sr-only">(current)</span></a></li>
+                <li><a href="activity.html">社区活动申请处理</a></li>
                 <li><a href="bookManager.html">共享书屋</a></li>
                 <li><a href="searchInfo.html">宿生信息检索</a></li>
                 <li><a href="checkIn.html">入宿处理</a></li>
@@ -65,10 +81,7 @@
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
             <h1 class="page-header">
-                社区活动申请处理
-                <div class="pull-right">
-                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#newAdminActi">新建社区活动</button>
-                </div>
+                研讨室申请处理
             </h1>
             <ul class="nav nav-tabs">
                 <li class="active">
@@ -78,16 +91,15 @@
                 </li>
                 <li>
                     <a href="#log" data-toggle="tab">
-                        申请参与记录
+                        记录
                     </a>
                 </li>
                 <li>
-                    <a href="#activities" data-toggle="tab">
-                        社区活动
+                    <a href="#meetingCheck" data-toggle="tab">
+                        研讨室查看
                     </a>
                 </li>
             </ul>
-
             <div class="tab-content" style="margin-top: 10px">
                 <!--待办事项 panel-->
                 <div class="tab-pane in active" id="needToDealt">
@@ -95,37 +107,40 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>编号</th>
-                                <th>申请时间</th>
-                                <th>活动名称</th>
-                                <th>申请参与者</th>
+                                <th>#</th>
+                                <th>申请人</th>
                                 <th>学号</th>
+                                <th>研讨室</th>
+                                <th>申请时间</th>
+                                <th>预约时间段</th>
                                 <th>操作</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>2017-10-01 08:00:00</td>
-                                <td>舞蹈大赛</td>
-                                <td>刘彩君</td>
+                                <td>何铭宜</td>
                                 <td>2014XXXXXX</td>
+                                <td>研讨室1-02</td>
+                                <td>2017-10-01 08:00:00</td>
+                                <td>2017-10-01 10:00 - 14:00</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#adminDealtActi">
+                                            data-target="#adminDealtMeeting">
                                         查看及处理
                                     </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>2017-10-01 08:00:00</td>
-                                <td>十大歌手</td>
-                                <td>王俊皓</td>
+                                <td>何铭宜</td>
                                 <td>2014XXXXXX</td>
+                                <td>研讨室1-02</td>
+                                <td>2017-10-01 08:00:00</td>
+                                <td>2017-10-01 19:00 - 21:00</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#adminDealtActi">
+                                            data-target="#adminDealtMeeting">
                                         查看及处理
                                     </button>
                                 </td>
@@ -160,44 +175,47 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <td>编号</td>
-                                <td>申请时间</td>
-                                <th>活动名称</th>
-                                <td>申请参与者</td>
+                                <th>#</th>
+                                <th>申请人</th>
                                 <th>学号</th>
-                                <td>状态</td>
+                                <th>研讨室</th>
+                                <th>申请时间</th>
+                                <th>预约时间段</th>
+                                <td>申请状态</td>
                                 <td>详情</td>
                             </tr>
                             </thead>
                             <tbody>
                             <tr>
                                 <td>1</td>
-                                <td>2017-10-01 08:00:00</td>
-                                <td>十大歌手</td>
                                 <td>张敏华</td>
-                                <td>2014YYYYYY</td>
+                                <td>2014XXXXXX</td>
+                                <td>研讨室1-02</td>
+                                <td>2017-10-01 08:00:00</td>
+                                <td>2017-10-01 19:00 - 21:00</td>
                                 <td>
-                                    <label class="label label-success">成功</label>
+                                    <label class="label label-danger">失败</label>
                                 </td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#adminActiLog">
+                                            data-target="#adminRepairLog">
                                         查看
                                     </button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>2</td>
-                                <td>2017-10-01 08:00:00</td>
-                                <td>厨艺-寿司</td>
                                 <td>张敏华</td>
-                                <td>2014YYYYYY</td>
+                                <td>2014XXXXXX</td>
+                                <td>研讨室1-02</td>
+                                <td>2017-10-01 08:00:00</td>
+                                <td>2017-10-01 19:00 - 21:00</td>
                                 <td>
-                                    <label class="label label-danger">失败</label>
+                                    <label class="label label-success">成功</label>
                                 </td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#adminActiLog">
+                                            data-target="#adminRepairLog">
                                         查看
                                     </button>
                                 </td>
@@ -226,87 +244,57 @@
                         </div>
                     </div>
                 </div>
-
-                <!--社区活动 panel-->
-                <div class="tab-pane" id="activities">
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <td>活动编号</td>
-                                <th>活动名称</th>
-                                <td>活动举办方</td>
-                                <th>举办时间</th>
-                                <td>申请截止时间</td>
-                                <td>详情</td>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr>
-                                <td>100001</td>
-                                <td>社区十大歌手</td>
-                                <td>知行书院学生会</td>
-                                <td>2017-10-01 20:00 - 22:00</td>
-                                <td>2017-09-25 23:59</td>
-                                <td>
-                                    <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#adminActi">
-                                        查看
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>100002</td>
-                                <td>厨艺-寿司</td>
-                                <td>G座导生</td>
-                                <td>2017-10-22 20:00 - 22:00 </td>
-                                <td>2017-10-20 23:59</td>
-                                <td>
-                                    <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#adminActi">
-                                        查看
-                                    </button>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-
-                        <div class="pull-right">
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
+                <!--研讨室查看 panel-->
+                <div class="tab-pane" id="meetingCheck">
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                        <label>
+                            研讨室：
+                        </label>
+                        <select class="combobox">
+                            <option></option>
+                            <option value="101">研讨室1-01</option>
+                            <option value="102">研讨室1-02</option>
+                            <option value="103">研讨室1-03</option>
+                            <option value="104">研讨室1-04</option>
+                            <option value="105">研讨室1-05</option>
+                            <option value="106">研讨室1-06</option>
+                            <option value="107">研讨室1-07</option>
+                            <option value="108">研讨室1-08</option>
+                            <option value="109">研讨室1-09</option>
+                            <option value="110">研讨室1-10</option>
+                            <option value="111">研讨室1-11</option>
+                            <option value="201">研讨室2-01</option>
+                            <option value="202">研讨室2-02</option>
+                            <option value="203">研讨室2-03</option>
+                            <option value="204">研讨室2-04</option>
+                            <option value="205">研讨室2-05</option>
+                            <option value="206">研讨室2-06</option>
+                            <option value="207">研讨室2-07</option>
+                            <option value="208">研讨室2-08</option>
+                            <option value="301">研讨室3-01</option>
+                            <option value="302">研讨室3-02</option>
+                            <option value="303">研讨室3-03</option>
+                            <option value="304">研讨室3-04</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#meetingDetail">查看</button>
                     </div>
                 </div>
+
             </div>
         </div>
-
     </div>
-
 </div>
 
 <!--待办事项modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="adminDealtActi" data-backdrop="static">
+<div class="modal fade" tabindex="-1" role="dialog" id="adminDealtMeeting" data-backdrop="static">
     <div class="modal-dialog" style="width:auto; max-width:1000px">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
                         class="sr-only">关闭</span></button>
-                <h4 class="modal-title">活动申请处理</h4>
+                <h4 class="modal-title">研讨室申请处理</h4>
             </div>
             <div class="modal-body">
                 <form>
@@ -314,21 +302,21 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <label class="control-label">2014101027</label>
+                                <label class="control-label">2014101021</label>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">姓名:</label>
-                                <label class="control-label">王俊皓</label>
+                                <label class="control-label">张敏华</label>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">申请时间:</label>
-                                <label class="control-label">2017年21年99日 -1时</label>
+                                <label class="control-label">2017-10-01 08:00:00</label>
                             </div>
                         </div>
 
@@ -349,7 +337,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">宿舍:</label>
-                                <label class="control-label">弘毅 ABC</label>
+                                <label class="control-label">E-412</label>
                             </div>
                         </div>
 
@@ -363,25 +351,13 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">邮箱:</label>
-                                <label class="control-label">14jhwang@stu.edu.cn</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">活动编号:</label>
-                                <label class="control-label">100002</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">活动名称:</label>
-                                <label class="control-label">十大歌手</label>
+                                <label class="control-label">14mhzhang@stu.edu.cn</label>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label class="control-label">备注:</label>
-                                <p class="control-label">这是学生申请活动的备注。</p>
+                                <p class="control-label">学生的申请备注XXXXXXXXXXXXXXX</p>
                             </div>
                         </div>
                     </div>
@@ -389,6 +365,18 @@
                 <hr/>
                 <form>
                     <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">研讨室:</label>
+                                <label class="control-label">研讨室1-02</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">预约时间段:</label>
+                                <label class="control-label">2017-10-01 19:00 - 21:00</label>
+                            </div>
+                        </div>
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">操作:</label>
@@ -399,7 +387,6 @@
                                 </select>
                             </div>
                         </div>
-
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label class="control-label">备注:</label>
@@ -411,14 +398,14 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button class="btn btn-success">确定</button>
+                <button class="btn btn-success">确认</button>
             </div>
         </div>
     </div>
 </div>
 
 <!--记录modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="adminActiLog" data-backdrop="static">
+<div class="modal fade" tabindex="-1" role="dialog" id="adminRepairLog" data-backdrop="static">
     <div class="modal-dialog" style="width:auto; max-width:1000px">
         <div class="modal-content">
             <div class="modal-header">
@@ -432,21 +419,21 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <label class="control-label">2014101027</label>
+                                <label class="control-label">2014101021</label>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">姓名:</label>
-                                <label class="control-label">王俊皓</label>
+                                <label class="control-label">张敏华</label>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">申请时间:</label>
-                                <label class="control-label">2017年21年99日 -1时</label>
+                                <label class="control-label">2017-10-01 08:00:00</label>
                             </div>
                         </div>
 
@@ -467,7 +454,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">宿舍:</label>
-                                <label class="control-label">弘毅 ABC</label>
+                                <label class="control-label">E-412</label>
                             </div>
                         </div>
 
@@ -481,188 +468,50 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">邮箱:</label>
-                                <label class="control-label">14jhwang@stu.edu.cn</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">活动名称:</label>
-                                <input type="text" class="form-control" readonly="readonly" value="社区十大歌手">
+                                <label class="control-label">14mhzhang@stu.edu.cn</label>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label class="control-label">备注:</label>
-                                <p>这是学生申请活动的备注...</p>
+                                <p class="control-label">学生的申请备注XXXXXXXXXXXXXXX</p>
                             </div>
                         </div>
+
                     </div>
                 </form>
                 <hr/>
                 <form>
                     <div class="row">
+                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">研讨室:</label>
+                                <label class="control-label">研讨室1-02</label>
+                            </div>
+                        </div>
+                        <div class="col-lg-9 col-md-9 col-sm-8 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">预约时间段:</label>
+                                <label class="control-label">2017-10-01 19:00 - 21:00</label>
+                            </div>
+                        </div>
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <div class="form-group">
-                                <label class="control-label">状态:</label>
-                                <label class="label label-success">申请成功</label>
-                                <!--申请若失败，则用下面这条-->
-                                <!--<label class="label label-danger">申请失败</label>-->
+                                <label class="control-label">申请状态:</label>
+                                <label class="label label-success">成功</label>
                             </div>
                         </div>
                     </div>
                 </form>
+
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-success">确定</button>
+                <button type="button" class="btn btn-primary">确定</button>
             </div>
         </div>
     </div>
 </div>
-
-<!--活动编号，活动名字，活动举办方，活动描述，活动举办时间，限制人数，申请截止时间-->
-
-<!--新建社区活动modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="newAdminActi" data-backdrop="static">
-    <div class="modal-dialog" style="width:auto; max-width:1000px">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
-                        class="sr-only">关闭</span></button>
-                <h4 class="modal-title">社区活动</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">活动编号:</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">活动名称:</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">活动举办方:</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">活动举办时间:</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">限制人数:</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">申请截止时间:</label>
-                                <input type="text" class="form-control">
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label class="control-label">活动描述:</label>
-                                <textarea class="form-control"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-success">确定</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<!--社区活动modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="adminActi" data-backdrop="static">
-    <div class="modal-dialog" style="width:auto; max-width:1000px">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
-                        class="sr-only">关闭</span></button>
-                <h4 class="modal-title">社区活动</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">活动编号:</label>
-                                <label class="control-label">1000002</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">活动名称:</label>
-                                <label class="control-label">社区十大歌手</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">活动举办方:</label>
-                                <label class="control-label">知行书院学生会</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">活动举办时间:</label>
-                                <label class="control-label">2017-10-01 20:00 - 22:00 </label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">限制人数:</label>
-                                <label class="control-label">100</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">申请截止时间:</label>
-                                <label class="control-label">2017-09-25 23:59</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label class="control-label">活动描述:</label>
-                                <p>这是活动描述...</p>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-success">确定</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!--注销modal-->
 <div class="modal fade" tabindex="-1" role="dialog" id="logout" data-backdrop="static">
@@ -686,13 +535,232 @@
     </div>
 </div>
 
+<div class="modal fade" id="meetingDetail" tabindex="-1" role="dialog" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">研讨室 1- 02</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+
+                    <div class="table-responsive">
+                        <table class="table table-striped table-hover table-detail">
+                            <thead>
+                            <tr>
+                                <th>时间</th>
+                                <th>(周六)09/09</th>
+                                <th>(周日)09/10</th>
+                                <th>(周一)09/11</th>
+                                <th>(周二)09/12</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>08:30 AM</td>
+                                <td class="red">X</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+
+                            <tr>
+                                <td>09:00 AM</td>
+                                <td class="red">X</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>09:30 AM</td>
+                                <td class="red">X</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>10:00 AM</td>
+                                <td class="red">X</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>10:30 AM</td>
+                                <td class="red">X</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>11:00 AM</td>
+                                <td class="red">X</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>11:30 AM</td>
+                                <td class="red">X</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>12:00 PM</td>
+                                <td class="red">X</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>12:30 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>01:00 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>01:30 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>02:00 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>02:30 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>03:00 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>03:30 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>04:00 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>04:30 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>05:00 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>05:30 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>06:00 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>06:30 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>07:00 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>07:30 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>08:00 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>08:30 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            <tr>
+                                <td>09:00 PM</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                                <td>O</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- modal - 查看 -->
+
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
     window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')
-
 </script>
 <script src="../js/bootstrap.min.js"></script>
 <!-- Just to make our placeholder images work. Don't actually copy the next line! -->

@@ -2,6 +2,7 @@
 <html lang="en">
 
 <head>
+    {% load staticfiles %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,8 +13,13 @@
     <title>生活缴费 - 宿舍管理系统</title>
 
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/student.css" rel="stylesheet">
+ <link rel="icon" href={% static 'bootstrap/image/favicon.ico' %}>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'bootstrap/css/admin.css' %}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+
+
 
 
     <style>
@@ -61,6 +67,9 @@
                     </li>
                     <li>
                         <a href="resource.html">宿舍资源申请</a>
+                    </li>
+                    <li>
+                        <a href="meeting.html">研讨室申请</a>
                     </li>
                     <li>
                         <a href="activity.html">社区活动申请</a>

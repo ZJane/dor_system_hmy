@@ -21,3 +21,4 @@ def show_admin_index(request):
 
 def show_student_index(request):
     return render(request,"student/index.html")
+
