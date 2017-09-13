@@ -17,6 +17,7 @@ def change_dor_applyment(request):
         new_dor_info=new_dor_info.split('-')
         test=dor_change(sno=sno,sname=sname,old_dor_no=old_dor_info[0],old_room_no=old_dor_info[1],new_dor_no=new_dor_info[0],new_room_no=new_dor_info[1]+new_dor_info[2],apply_time=apply_time,phone=phone,reason=reason)
         test.save()
+
     return HttpResponse('<p>change success</p>')
 def show_cancel_dor_applyments(request):
     pass

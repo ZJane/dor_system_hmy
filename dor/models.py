@@ -476,3 +476,8 @@ class vacation_time_quantum(models.Model):
     class Meta:
         managed =  True
         db_table = 'dor_vacation_time_quantum'
+
+
+
+
+

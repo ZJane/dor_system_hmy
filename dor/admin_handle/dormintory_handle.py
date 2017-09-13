@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from django.http import HttpResponse
 from django.shortcuts import render
-from dor.models import dor
+from dor.models import dor,student
 
 def show_change_dor_applyments(request):
     pass
@@ -13,8 +13,9 @@ def handle_change_dor_transcation(request):
         dorm_floor=request.POST['dorm_floor']
         dorm_number = request.POST['dorm_number']
         bed_number=request.POST['bed_number']
-        test=dor(dor_no=dorm_floor_number,sno=sno,room_no=dorm_floor+dorm_number,bed_no=bed_number)
-        test.save()
+        #test=dor(dor_no=dorm_floor_number,sno=sno,room_no=dorm_floor+dorm_number,bed_no=bed_number)
+        dor.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor+dorm_number,bed_no=bed_number)
+        student.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor+dorm_number)
     return HttpResponse("<p>数据添加成功！</p>")
 
 def show_cancel_dor_applyments(request):

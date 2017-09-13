@@ -14,7 +14,9 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.contrib import admin
 from dor.views import show_admin_index,show_student_index
+from dor.admin_handle.select_info import select_dor_change
 from dor.admin_handle.dormintory_handle import handle_cancel_dor_transcation,handle_change_dor_transcation,handle_live_on_vacation_transcation,show_cancel_dor_applyments,show_change_dor_applyments,show_live_on_vacation_applyments
 from dor.admin_handle.repair_handle import  show_repair_device_applyments,handle_repair_device_applyment
 from dor.admin_handle.device_handle import show_device_applyments,show_key_applyments,show_minitor_applyments,commit_return_device
@@ -32,7 +34,9 @@ from dor.student_handle.book_applyment import book_applyment,my_borrowed_books,m
 from dor.student_handle.meeting_room_applyment import meeting_room_applyment,show_meeting_info
 from dor.student_handle.device_repair_applyment import device_repair_applyment,cancel_device_repair_applyment,show_device_repair_applyments
 urlpatterns = [
+    url(r'^admin/',admin.site.urls),
     url(r'^show_admin_index',show_admin_index),
+    url(r'^admin/select_dor_change',select_dor_change),
     url(r'^show_student_index',show_student_index),
     url(r'^dor/student_handle/dor_applyment/show_change_dor_applyments',show_change_dor_applyments),
     url(r'^dor/student_handle/dor_applyment/change_dor_applyment',change_dor_applyment),

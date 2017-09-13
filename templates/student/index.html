@@ -12,11 +12,11 @@
 
 	<title>宿舍退调申请 - 宿舍管理系统</title>
 
- <link rel="icon" href={% static 'bootstrap/image/favicon.ico' %}>
+    <link rel="icon" href={% static 'bootstrap/image/favicon.ico' %}>
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'bootstrap/css/admin.css' %}" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+    <link href="{% static 'bootstrap/css/student.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'bootstrap/css/student.css' %}" rel="stylesheet" type="text/css">
+
 
 
 
@@ -93,11 +93,15 @@
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active">
-						<a href="#change_record" aria-controls="change_record" role="tab" data-toggle="tab">调宿申请记录</a>
-					</li>
+                         <form action="/admin/select_dor_change/" id="change_dor_log" method="get">
+						<a href="#change_record" aria-controls="change_record" role="tab" data-toggle="tab" onclick="show_change_dor_log()">调宿申请记录</a>
+					 </form>
+                    </li>
 					<li role="presentation">
+
 						<a href="#stay_record" aria-controls="stay_record" role="tab" data-toggle="tab">留校申请记录</a>
-					</li>
+
+                    </li>
 					<li role="presentation">
 						<a href="#exit_record" aria-controls="exit_record" role="tab" data-toggle="tab">退宿申请记录</a>
 					</li>
@@ -322,7 +326,7 @@
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<label class="control-label">弘毅 ABC</label>
+									<input type="text" name="old_dor_info"class="form-control" readonly="readonly" value="弘毅-ABC">
 								</div>
 							</div>
 
@@ -350,7 +354,7 @@
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">拟申请宿舍:</label>
-									<input type="text" name="old_dor_info" class="form-control" readonly="readonly" value="弘毅-110-3">
+									<input type="text" name="new_dor_info" class="form-control" readonly="readonly" value="弘毅-110-3">
 								</div>
 							</div>
 
@@ -362,7 +366,7 @@
 							</div>
 						</div>
 
-					</>
+                    </form>
 				</div>
 
 				<div class="modal-footer">
@@ -518,7 +522,7 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">申请时间:</label>
-									<input type="text" name="sname" class="form-control" readonly="readonly" value="王俊皓">
+									<input type="text" name="apply_time" class="form-control" readonly="readonly" value="2017-09-09 14:00">
 								</div>
 							</div>
 
@@ -571,7 +575,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group">
 									<label class="control-label">备注:</label>
-									<textarea class="form-control"></textarea>
+									<textarea name="detail" class="form-control"></textarea>
 								</div>
 							</div>
 						</div>
@@ -914,6 +918,9 @@
 	<script src="../js/bootstrap.min.js"></script>
 	<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
 	<script src="../js/holder.min.js"></script>
+  <script type="text/javascript" src="{% static 'bootstrap/js/jquery-2.2.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'bootstrap/js/holder.min.js' %}"></script>
 </body>
 <script>
     function submit_change_applyment(){
@@ -925,6 +932,9 @@
     }
     function submit_live_on_vacation() {
         document.getElementById("apply_live_on_vacation").submit();
+    }
+    function show_change_dor_log(){
+        document.getElementById("change_dor_log").submit();
     }
 </script>
 </html>
