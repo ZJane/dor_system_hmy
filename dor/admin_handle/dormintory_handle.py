@@ -1,7 +1,6 @@
 # -*- coding:utf-8 -*-
 from django.http import HttpResponse
 from django.shortcuts import render
-
 from dor.models import dor
 
 def show_change_dor_applyments(request):

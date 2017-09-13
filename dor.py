@@ -9,13 +9,6 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-#Createyourmodelshere.
-class Test(models.Model):
-    name=models.CharField(max_length=20)
-
-bool_value=(('T','true'),('F','false'))
-class Stu(models.Model):
-    student=models.CharField(max_length=20)
 
 class AuthGroup(models.Model):
     name = models.CharField(unique=True, max_length=80)
@@ -127,7 +120,7 @@ class DjangoSession(models.Model):
         db_table = 'django_session'
 
 
-class activity(models.Model):
+class DorActivity(models.Model):
     activity_no = models.CharField(primary_key=True, max_length=10)
     activity_name = models.CharField(max_length=20)
     organization_no = models.CharField(max_length=10)
@@ -137,11 +130,11 @@ class activity(models.Model):
     last_apply_time = models.DateTimeField()
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'dor_activity'
 
 
-class activity_applyment(models.Model):
+class DorActivityApplyment(models.Model):
     sno = models.CharField(primary_key=True, max_length=10)
     activity_no = models.CharField(max_length=10)
     is_apply_cancel = models.CharField(max_length=1)
@@ -150,32 +143,32 @@ class activity_applyment(models.Model):
     ad_no = models.CharField(max_length=10)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'dor_activity_applyment'
 
 
-class admin_account(models.Model):
-    ad_no = models.CharField(primary_key=True, max_length=20)
-    username = models.CharField(max_length=20, blank=True, null=True)
-    password = models.CharField(max_length=20, blank=True, null=True)
+class DorAdAccount(models.Model):
+    ad_no = models.CharField(primary_key=True, max_length=10)
+    username = models.CharField(max_length=25)
+    password = models.CharField(max_length=16)
 
     class Meta:
-        managed = True
-        db_table = 'dor_admin_account'
+        managed = False
+        db_table = 'dor_ad_account'
 
 
-class adminstrator(models.Model):
+class DorAdminstrator(models.Model):
     adminstrator_no = models.CharField(primary_key=True, max_length=10)
     adminstrator_name = models.CharField(max_length=20)
     adminstrator_phone = models.CharField(max_length=11)
     dor_no = models.CharField(max_length=10)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'dor_adminstrator'
 
 
-class bill(models.Model):
+class DorBill(models.Model):
     sno = models.CharField(max_length=10)
     bill_no = models.CharField(primary_key=True, max_length=10)
     item = models.CharField(max_length=20)
@@ -183,11 +176,11 @@ class bill(models.Model):
     time = models.CharField(max_length=50)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'dor_bill'
 
 
-class book(models.Model):
+class DorBook(models.Model):
     book_no = models.CharField(primary_key=True, max_length=10)
     from_student = models.CharField(max_length=10)
     book_description = models.CharField(max_length=10)
@@ -195,11 +188,11 @@ class book(models.Model):
     is_borrowed = models.CharField(max_length=1)
 
     class Meta:
-        managed =True
+        managed = False
         db_table = 'dor_book'
 
 
-class book_applyment(models.Model):
+class DorBookApplyment(models.Model):
     book_no = models.CharField(max_length=10)
     sno = models.CharField(max_length=10)
     is_apply_cancel = models.CharField(max_length=1)
@@ -208,12 +201,12 @@ class book_applyment(models.Model):
     ad_no = models.CharField(max_length=10)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'dor_book_applyment'
         unique_together = (('book_no', 'sno', 'apply_time'),)
 
 
-class device(models.Model):
+class DorDevice(models.Model):
     device_no = models.CharField(primary_key=True, max_length=10)
     device_name = models.CharField(max_length=10)
     device_description = models.CharField(max_length=100)
@@ -221,11 +214,11 @@ class device(models.Model):
     device_applied_amount = models.IntegerField()
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'dor_device'
 
 
-class device_applyment(models.Model):
+class DorDeviceApplyment(models.Model):
     sno = models.CharField(primary_key=True, max_length=10)
     device_no = models.CharField(max_length=10)
     from_time = models.DateTimeField()
@@ -236,23 +229,23 @@ class device_applyment(models.Model):
     ad_no = models.CharField(max_length=10)
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_device_applyment'
 
 
-class dor(models.Model):
+class DorDor(models.Model):
     dor_no = models.CharField(max_length=10)
     sno = models.CharField(max_length=10)
     room_no = models.CharField(max_length=10)
     bed_no = models.CharField(max_length=10)
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_dor'
         unique_together = (('dor_no', 'sno', 'room_no', 'bed_no'),)
 
 
-class dor_applyment(models.Model):
+class DorDorApplyment(models.Model):
     sno = models.CharField(max_length=10)
     sname = models.CharField(max_length=20)
     dor_no = models.CharField(max_length=10)
@@ -260,12 +253,12 @@ class dor_applyment(models.Model):
     apply_time = models.DateTimeField()
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'dor_dor_applyment'
         unique_together = (('sno', 'dor_no', 'room_no'),)
 
 
-class dor_cancel(models.Model):
+class DorDorCancel(models.Model):
     sno = models.CharField(max_length=10)
     sname = models.CharField(max_length=20)
     dor_no = models.CharField(max_length=10)
@@ -275,12 +268,12 @@ class dor_cancel(models.Model):
     reason = models.CharField(max_length=100)
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_dor_cancel'
         unique_together = (('sno', 'dor_no', 'room_no'),)
 
 
-class dor_change(models.Model):
+class DorDorChange(models.Model):
     sno = models.CharField(max_length=10)
     sname = models.CharField(max_length=20)
     old_dor_no = models.CharField(max_length=10)
@@ -292,36 +285,22 @@ class dor_change(models.Model):
     reason = models.CharField(max_length=100)
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_dor_change'
         unique_together = (('sno', 'old_dor_no', 'old_room_no'),)
 
 
-class dormintory(models.Model):
+class DorDormintory(models.Model):
     dor_no = models.CharField(primary_key=True, max_length=10)
     dor_name = models.CharField(max_length=20)
     dor_description = models.CharField(max_length=100)
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'dor_dormintory'
 
 
-class live_on_vacation(models.Model):
-    sno = models.CharField(primary_key=True, max_length=10)
-    sname = models.CharField(max_length=20, blank=True, null=True)
-    dor_no = models.CharField(max_length=10, blank=True, null=True)
-    from_time = models.DateTimeField(blank=True, null=True)
-    end_time = models.DateTimeField(blank=True, null=True)
-    reason = models.CharField(max_length=100, blank=True, null=True)
-    phone = models.CharField(max_length=11, blank=True, null=True)
-
-    class Meta:
-        managed =  True
-        db_table = 'dor_live_on_vacation'
-
-
-class live_on_vacation_applyment(models.Model):
+class DorLiveOnVacation(models.Model):
     sno = models.CharField(primary_key=True, max_length=10)
     dor_no = models.CharField(max_length=10)
     from_time = models.DateTimeField()
@@ -331,14 +310,13 @@ class live_on_vacation_applyment(models.Model):
     ad_no = models.CharField(max_length=10)
     reason = models.CharField(max_length=100)
     sname = models.CharField(max_length=20)
-    apply_time = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
-        managed =  True
-        db_table = 'dor_live_on_vacation_applyment'
+        managed = False
+        db_table = 'dor_live_on_vacation'
 
 
-class meeting_room(models.Model):
+class DorMeetingRoom(models.Model):
     meeting_room_no = models.CharField(primary_key=True, max_length=10)
     meeting_room_size = models.CharField(max_length=10)
     medium = models.CharField(max_length=1)
@@ -346,11 +324,11 @@ class meeting_room(models.Model):
     is_occupied = models.CharField(max_length=1)
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_meeting_room'
 
 
-class meeting_room_applyment(models.Model):
+class DorMeetingRoomApplyment(models.Model):
     meeting_room_no = models.CharField(max_length=10)
     sno = models.CharField(max_length=10)
     is_apply_cancel = models.CharField(max_length=1)
@@ -359,32 +337,32 @@ class meeting_room_applyment(models.Model):
     ad_no = models.CharField(max_length=10)
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_meeting_room_applyment'
         unique_together = (('meeting_room_no', 'sno', 'apply_time'),)
 
 
-class meeting_room_time_quantunum(models.Model):
+class DorMeetingRoomTimeQuantunum(models.Model):
     meeting_room_time_quantunum = models.CharField(primary_key=True, max_length=10)
     from_time = models.DateTimeField()
     end_time = models.DateTimeField()
 
     class Meta:
-        managed = True
+        managed = False
         db_table = 'dor_meeting_room_time_quantunum'
 
 
-class organization(models.Model):
+class DorOrganization(models.Model):
     organization_no = models.CharField(primary_key=True, max_length=10)
     organization_name = models.CharField(max_length=20)
     organization_description = models.CharField(max_length=100)
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_organization'
 
 
-class pay_bill(models.Model):
+class DorPayBill(models.Model):
     sno = models.CharField(max_length=10)
     bill_no = models.CharField(max_length=10)
     is_paied = models.CharField(max_length=1)
@@ -392,12 +370,12 @@ class pay_bill(models.Model):
     dor_no = models.CharField(max_length=10)
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_pay_bill'
         unique_together = (('sno', 'bill_no', 'is_paied'),)
 
 
-class repair_device(models.Model):
+class DorRepairDevice(models.Model):
     sno = models.CharField(max_length=10)
     dor_no = models.CharField(max_length=10)
     room_no = models.CharField(max_length=10)
@@ -407,12 +385,12 @@ class repair_device(models.Model):
     ad_no = models.CharField(max_length=10)
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_repair_device'
         unique_together = (('sno', 'apply_time'),)
 
 
-class room(models.Model):
+class DorRoom(models.Model):
     room_no = models.CharField(primary_key=True, max_length=10)
     dor_no = models.CharField(max_length=10)
     bed_counts = models.IntegerField()
@@ -420,11 +398,11 @@ class room(models.Model):
     empty_beds = models.IntegerField()
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_room'
 
 
-class routine_applyments(models.Model):
+class DorRoutineApplyments(models.Model):
     apply_time = models.DateTimeField()
     sno = models.CharField(max_length=10)
     dor_no = models.CharField(max_length=10)
@@ -436,22 +414,30 @@ class routine_applyments(models.Model):
     detail = models.CharField(max_length=200)
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_routine_applyments'
         unique_together = (('sno', 'apply_time'),)
 
 
-class stu_account(models.Model):
-    sno = models.CharField(primary_key=True, max_length=11)
-    username = models.CharField(max_length=20, blank=True, null=True)
-    password = models.CharField(max_length=20, blank=True, null=True)
+class DorStu(models.Model):
+    student = models.CharField(max_length=20)
 
     class Meta:
-        managed =  True
+        managed = False
+        db_table = 'dor_stu'
+
+
+class DorStuAccount(models.Model):
+    sno = models.CharField(primary_key=True, max_length=10)
+    username = models.CharField(max_length=25)
+    password = models.CharField(max_length=16)
+
+    class Meta:
+        managed = False
         db_table = 'dor_stu_account'
 
 
-class student(models.Model):
+class DorStudent(models.Model):
     sno = models.CharField(primary_key=True, max_length=10)
     sname = models.CharField(max_length=20)
     college_no = models.CharField(max_length=20)
@@ -464,15 +450,15 @@ class student(models.Model):
     email = models.CharField(max_length=40)
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_student'
 
 
-class vacation_time_quantum(models.Model):
+class DorVacationTimeQuantum(models.Model):
     vacation_time_quantunum = models.CharField(primary_key=True, max_length=10)
     from_time = models.DateTimeField()
     end_time = models.DateTimeField()
 
     class Meta:
-        managed =  True
+        managed = False
         db_table = 'dor_vacation_time_quantum'
