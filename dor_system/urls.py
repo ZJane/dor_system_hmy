@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from dor.views import show_admin_index,show_student_index
+from dor.views import show_admin_index,show_student_index,show_index
 from dor.admin_handle.select_info import select_dor_change
 from dor.admin_handle.dormintory_handle import handle_cancel_dor_transcation,handle_change_dor_transcation,handle_live_on_vacation_transcation,show_cancel_dor_applyments,show_change_dor_applyments,show_live_on_vacation_applyments
 from dor.admin_handle.repair_handle import  show_repair_device_applyments,handle_repair_device_applyment
@@ -34,6 +34,7 @@ from dor.student_handle.book_applyment import book_applyment,my_borrowed_books,m
 from dor.student_handle.meeting_room_applyment import meeting_room_applyment,show_meeting_info
 from dor.student_handle.device_repair_applyment import device_repair_applyment,cancel_device_repair_applyment,show_device_repair_applyments
 urlpatterns = [
+    url(r'^index/',show_index),
     url(r'^admin/',admin.site.urls),
     url(r'^show_admin_index',show_admin_index),
     url(r'^admin/select_dor_change',select_dor_change),

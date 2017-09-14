@@ -93,9 +93,7 @@
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active">
-                         <form action="/admin/select_dor_change/" id="change_dor_log" method="get">
 						<a href="#change_record" aria-controls="change_record" role="tab" data-toggle="tab" onclick="show_change_dor_log()">调宿申请记录</a>
-					 </form>
                     </li>
 					<li role="presentation">
 
@@ -106,6 +104,9 @@
 						<a href="#exit_record" aria-controls="exit_record" role="tab" data-toggle="tab">退宿申请记录</a>
 					</li>
 				</ul>
+                 <form action="/admin/select_dor_change/" id="change_dor_log" method="get">
+
+                 </form>
 
 				<div class="tab-content" style="margin-top: 10px">
 					<!--调宿申请记录-->
@@ -934,6 +935,7 @@
         document.getElementById("apply_live_on_vacation").submit();
     }
     function show_change_dor_log(){
+        execFlag=
         document.getElementById("change_dor_log").submit();
     }
 </script>

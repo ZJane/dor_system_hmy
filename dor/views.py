@@ -4,6 +4,8 @@ from django.http import HttpResponse
 from django.shortcuts import render, render_to_response
 from dor.models import Test
 # Create your views here.
+def show_index(request):
+    return render(request,'index.html')
 
 def show_main(request):
     str="null"

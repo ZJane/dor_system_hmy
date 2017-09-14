@@ -1,10 +1,10 @@
 # -*- coding:utf-8 -*-
 from django.http import HttpResponse
 from django.shortcuts import render
-from dor.models import dor,student
+from dor.models import dor,student,dor_change
 
 def show_change_dor_applyments(request):
-    pass
+    list=dor_change.objects.all();
 
 def handle_change_dor_transcation(request):
     if request.method=="POST":

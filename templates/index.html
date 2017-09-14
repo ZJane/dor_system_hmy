@@ -9,16 +9,13 @@
 
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="image/favicon.ico">
-
     <title>宿舍管理系统-登录</title>
 
-<link rel="icon" href={% static 'bootstrap/image/favicon.ico' %}>
+    <link rel="icon" href={% static 'bootstrap/image/favicon.ico' %}>
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'bootstrap/css/admin.css' %}" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
-
+    <link href="{% static 'bootstrap/css/login.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap/css/carousel.css' %}"rel="stylesheet">
 </head>
 
 <body>
@@ -60,7 +57,7 @@
     </ol>
     <div class="carousel-inner" role="listbox">
         <div class="item">
-            <img class="first-slide" src="image/home/home_1.jpg" alt="First slide">
+            <img class="first-slide" src="/static/bootstrap/image/home/home_1.jpg" alt="First slide">
             <div class="container">
                 <div class="carousel-caption">
                     <p>
@@ -71,7 +68,7 @@
             </div>
         </div>
         <div class="item active">
-            <img class="second-slide" src="image/home/home_2.png" alt="Second slide">
+            <img class="second-slide" src="/static/bootstrap/image/home/home_2.png" alt="Second slide">
             <div class="container">
                 <div class="carousel-caption">
                     <p>
@@ -82,7 +79,7 @@
             </div>
         </div>
         <div class="item">
-            <img class="third-slide" src="image/home/home_3.jpg" alt="Third slide">
+            <img class="third-slide" src="/static/bootstrap/image/home/home_3.jpg" alt="Third slide">
             <div class="container">
                 <div class="carousel-caption">
                     <p>
@@ -111,7 +108,7 @@
 
         <div class="col-lg-8 col-sm-8">
 
-            <img src="image/home/bg.png" width=90%>
+            <img src="/static/bootstrap/image/home/bg.png" width=90%>
 
         </div>
 
@@ -203,14 +200,8 @@
     </footer>
 
 </div>
-
-
-<script src="./js/jquery.min.js"></script>
-<script src="./js/bootstrap.min.js"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="./js/holder.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
 
 </body>
 

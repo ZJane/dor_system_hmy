@@ -477,7 +477,20 @@ class vacation_time_quantum(models.Model):
         managed =  True
         db_table = 'dor_vacation_time_quantum'
 
-
-
-
+class admin_show_change_dor_log(models.Model):
+    sno = models.CharField(max_length=10)
+    sname = models.CharField(max_length=20)
+    old_dor_no = models.CharField(max_length=10)
+    old_room_no = models.CharField(max_length=10)
+    new_dor_no = models.CharField(max_length=10)
+    new_room_no = models.CharField(max_length=10)
+    apply_time = models.DateTimeField()
+    phone = models.CharField(max_length=11)
+    reason = models.CharField(max_length=100)
+    college_no = models.CharField(max_length=20)
+    major_no = models.CharField(max_length=20)
+    mobilephone = models.CharField(max_length=11)
+    email = models.CharField(max_length=40)
+    class Meta:
+        unique_together=("sno","apply_time")
 
