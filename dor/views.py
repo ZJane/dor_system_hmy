@@ -28,10 +28,10 @@ def show_admin_index(request):
     return render(request,"admin/index.html")
 
 def show_student_index(request):
-    change_log_data=DorChange.objects.filter(sno=201401003)
-    stu_data=Student.objects.filter(sno=2014101003)
-    dor_change_list = [[]]
+    change_log_data=DorChange.objects.filter(sno=2014101003)
+    dor_change_list = []
     for i in range(0,len(change_log_data)):
+        stu_data = Student.objects.get(sno=2014101003)
         test=StuDorLogModel()
         test.sno=change_log_data[i].sno
         test.sname = change_log_data[i].sname
@@ -41,7 +41,7 @@ def show_student_index(request):
         test.reason = change_log_data[i].reason
         test.apply_status = change_log_data[i].app_status
         test.email = stu_data.email
-        test.stu_phone = stu_data.phone
+        test.stu_phone = stu_data.stu_phone
         test.college = stu_data.college
         test.major = stu_data.major
         dor_change_list.append(test)
