@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bd112b26-201a-4ead-a468-aeed3c743747" name="Default" comment="渲染页面成功了一半，正在解决过滤的问题">
+    <list default="true" id="bd112b26-201a-4ead-a468-aeed3c743747" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dor/DTO/StuDorLog.py" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/dataSources/5b49f710-76a4-49f7-b24d-02341eafba79.xml" afterPath="" />
       <change type="DELETED" beforePath="$PROJECT_DIR$/dor/admin_handle/select_info.py" afterPath="" />
@@ -836,7 +836,14 @@
       <option name="project" value="LOCAL" />
       <updated>1505446542920</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="2017-09-15 数据库更新">
+      <created>1505487377033</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1505487377033</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TodoView">
@@ -854,7 +861,7 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744783" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34349918" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34349918" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744783" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3258427" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.29373997" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" x="0" y="20" width="1366" height="718" />
@@ -889,7 +896,8 @@
     <MESSAGE value="第一个模块的更新" />
     <MESSAGE value="index页面资源路径" />
     <MESSAGE value="渲染页面成功了一半，正在解决过滤的问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="渲染页面成功了一半，正在解决过滤的问题" />
+    <MESSAGE value="2017-09-15 数据库更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="2017-09-15 数据库更新" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
