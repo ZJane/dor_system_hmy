@@ -1,7 +1,7 @@
 # -*- coding:utf-8 -*-
 from django.http import HttpResponse
 from django.shortcuts import render
-from dor.models import dor,student,dor_change
+from dor.models import Student,DormitorySchedule
 import pymysql
 
 def show_change_dor_applyments(request):
@@ -14,8 +14,8 @@ def handle_change_dor_transcation(request):
         dorm_floor=request.POST.get('dorm_floor',None)
         dorm_number = request.POST.get('dorm_number',None)
         bed_number=request.POST.get('bed_number',None)
-        dor.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor+dorm_number,bed_no=bed_number)
-        student.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor+dorm_number)
+        DormitorySchedule.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor+dorm_number,bed_no=bed_number)
+        Student.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor+dorm_number)
     return HttpResponse("<p>数据添加成功！</p>")
 
 def show_cancel_dor_applyments(request):

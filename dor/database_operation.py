@@ -1,6 +1,6 @@
 import pymysql
 def database_opr(str):
-    db = pymysql.connect(host='localhost', port=3306, user='root', db='dormintory_manage_system', password='1234')
+    db = pymysql.connect(host='39.108.185.66', port=3306, user='root', db='dormitory_manage_system_database', password='1234')
     cursor = db.cursor()
     cursor.execute(str)
     data = cursor.fetchall()

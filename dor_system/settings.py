@@ -86,10 +86,10 @@ DATABASES = {
 DATABASES={
     'default':{
         'ENGINE':'django.db.backends.mysql',
-        'NAME':'dormintory_manage_system',
+        'NAME':'dormitory_manage_system_database',
         'USER':'root',
         'PASSWORD':'1234',
-        'HOST':'localhost',
+        'HOST':'39.108.185.66',
         'PORT':'3306',
     }
 }

@@ -104,10 +104,13 @@
 					<!--调宿申请记录-->
 					<div role="tabpanel" class="tab-pane in active" id="change_record">
 						<div class="table-responsive">
+                        <form action="/dor/student_handle/dor_applyment/change_dor_applyment/" id="apply_change" method="post" >
+						{% csrf_token %}
 							<table class="table table-striped">
 								<thead>
 									<tr>
 										<th>申请时间</th>
+                                        <th>学号</th>
 										<th>申请人</th>
 										<th>现住宿舍</th>
 										<th>经办人</th>
@@ -119,18 +122,20 @@
                                 {%  for i in DorChange %}
                                  <tr>
 									<td>{{i.apply_time}}</td>
+                                     <td >{{ i.sno }}</td>
 									<td>{{i.sname}}</td>
 									<td>{{i.old_dor_no}}{{i.old_room_no}}</td>
 									<td>刘宿管</td>
 									<td><span class="label label-danger">{{ i.status }}</span></td>
 									<td>
-										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_exit">查看</button>
+										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_change" >查看</button>
 										<button type="button" class="btn btn-danger btn-xs">取消</button>
 									</td>
 								</tr>
                                 {%endfor%}
 								</tbody>
 							</table>
+                        </form>
 						</div>
 					</div>
 
@@ -214,8 +219,6 @@
 					<h4 class="modal-title">申请调整</h4>
 				</div>
 				<div class="modal-body">
-					<form action="/dor/student_handle/dor_applyment/change_dor_applyment/" id="apply_change" method="post" >
-						{% csrf_token %}
                         <div class="row">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
@@ -287,8 +290,6 @@
 								</div>
 							</div>
 						</div>
-
-                    </form>
 				</div>
 
 				<div class="modal-footer">
@@ -523,19 +524,19 @@
 					<h4 class="modal-title">申请调整</h4>
 				</div>
 				<div class="modal-body">
-					<form>
+                        {% for i in DorChange %}
 						<div class="row">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<label class="control-label">2014101027</label>
+									<label class="control-label">{{ i.sno }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-									<label class="control-label">王俊皓</label>
+									<label class="control-label">{{ i.sname }}</label>
 								</div>
 							</div>
 
@@ -556,55 +557,55 @@
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<label class="control-label">弘毅 ABC</label>
+									<label class="control-label">{{ i.old_dor_no }}{{ i.old_room_no }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">申请时间:</label>
-									<label class="control-label">2017-05-02 17:33:34</label>
+									<label class="control-label">{{ i.apply_time }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<label class="control-label">12312345678</label>
+									<label class="control-label">{{ i.phone }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<label class="control-label">14jhwang@stu.edu.cn</label>
+									<label class="control-label">{{ i.email }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">拟申请宿舍:</label>
-									<label class="control-label">弘毅 EFG</label>
+									<label class="control-label">{{ i.new_dor_no }}{{ i.new_room_no }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group">
 									<label class="control-label">备注:</label>
-									<p>学生的申请理由学生的申请理由学生的申请理由学生的申请理由学生的申请理由学生的申请理由</p>
+									<p>{{ i.reason }}</p>
 								</div>
 							</div>
 
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group">
 									<label class="control-label">状态：</label>
-									<label class="label label-success">申请成功</label>
+									<label class="label label-success">{{ i.status }}</label>
 								</div>
 							</div>
 
 						</div>
+{% endfor %}
 
-					</form>
 				</div>
 
 				<div class="modal-footer">
@@ -625,19 +626,19 @@
 				</div>
 				<div class="modal-body">
 					<form>
-
+                        {%  for i in DorCancel %}
 						<div class="row">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<label class="control-label">2014101027</label>
+									<label class="control-label">{{ i.sno }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-									<label class="control-label">王俊皓</label>
+									<label class="control-label">{{ i.sname }}</label>
 								</div>
 							</div>
 
@@ -658,35 +659,35 @@
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<label class="control-label">弘毅 ABC</label>
+									<label class="control-label">{{ i.dor_no }}{{ i.room_no }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">申请时间:</label>
-									<label class="control-label">2017-05-02 17:33:34</label>
+									<label class="control-label">{{ i.apply_time}}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<label class="control-label">12312345678</label>
+									<label class="control-label">13411989237</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<label class="control-label">14jhwang@stu.edu.cn</label>
+									<label class="control-label">14myhe@stu.edu.cn</label>
 								</div>
 							</div>
 
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">退宿原因:</label>
-									<p>这是学生退宿原因这是学生退宿原因这是学生退宿原因这是学生退宿原因这是学生退宿原因这是学生退宿原因</p>
+									<p>{{ i.reason }}</p>
 								</div>
 							</div>
 
@@ -700,11 +701,11 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group">
 									<label class="control-label">状态：</label>
-									<label class="label label-success">申请成功</label>
+									<label class="label label-success">{{ i.apply_status }}</label>
 								</div>
 							</div>
 						</div>
-
+                    {% endfor %}
 					</form>
 				</div>
 
@@ -726,19 +727,20 @@
 				</div>
 				<div class="modal-body">
 					<form>
+                        {% for i in LiveOnVacation %}
 						<div class="row">
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<label class="control-label">2014101027</label>
+									<label class="control-label">{{ i.sno }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-									<label class="control-label">王俊皓</label>
+									<label class="control-label">{{ i.sname }}</label>
 								</div>
 							</div>
 
@@ -759,14 +761,14 @@
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<label class="control-label">弘毅 ABC</label>
+									<label class="control-label">{{ i.dor_no }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">申请时间:</label>
-									<label class="control-label">2017-05-02 17:33:34</label>
+									<label class="control-label">{{ i.apply_time }}</label>
 								</div>
 							</div>
 
@@ -814,11 +816,11 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group">
 									<label class="control-label">状态：</label>
-									<label class="label label-success">申请成功</label>
+									<label class="label label-success">{{ i.apply_status }}</label>
 								</div>
 							</div>
 						</div>
-
+{% endfor %}
 					</form>
 				</div>
 
@@ -857,6 +859,11 @@
     }
     function show_change_dor_log(){
         document.getElementById("change_dor_log").submit();
+    }
+    function show_dor_change_detail()
+    {
+
+        document.getElementById("change_dor_detail").submit();
     }
 </script>
 </html>

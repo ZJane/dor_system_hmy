@@ -2,11 +2,12 @@
 from __future__ import unicode_literals
 from django.http import HttpResponse
 from django.shortcuts import render, render_to_response
-from dor.models import dor_change,dor_cancel,live_on_vacation
+from dor.models import DorChange,DorCheckOut,StudentStayingRecord,Student
 from dor.database_operation import database_opr
 import pymysql
 # Create your views here.
-from dor.models import admin_show_dor_change_applyment_log
+
+from dor.DTO.StuDorLog import StuDorLogModel
 
 
 def show_index(request):
@@ -27,16 +28,66 @@ def show_admin_index(request):
     return render(request,"admin/index.html")
 
 def show_student_index(request):
-    str="select * from dor_student,dor_dor_change where dor_student.sno=dor_dor_change.sno limit 5"
-    data=database_opr(str)
-    for i in range(0, len(data)):
-        test = admin_show_dor_change_applyment_log(sno=data[i][0], sname=data[i][1], college_no=data[i][2],
-                                                   major_no=data[i][3], old_dor_no=data[i][6], old_room_no=data[i][7],
-                                                   new_dor_no=data[i][15], new_room_no=data[i][16], email=data[i][9],
-                                                   phone=data[i][18], apply_time=data[i][17], reason=data[i][19],status=data[i][20])
-        test.save()
-    dor_change_list=admin_show_dor_change_applyment_log.objects.all()
-    live_on_vacation_list=live_on_vacation.objects.all()
-    dor_cancel_list=dor_cancel.objects.all()
-    return render(request, "student/index.html",{'DorChange':dor_change_list,'LiveOnVacation':live_on_vacation_list,'DorCancel':dor_cancel_list})
+    change_log_data=DorChange.objects.filter(sno=201401003)
+    stu_data=Student.objects.filter(sno=2014101003)
+    dor_change_list = [[]]
+    for i in range(0,len(change_log_data)):
+        test=StuDorLogModel()
+        test.sno=change_log_data[i].sno
+        test.sname = change_log_data[i].sname
+        test.old_room_no =change_log_data[i].old_room_no
+        test.new_room_no = change_log_data[i].new_room_no
+        test.apply_time = change_log_data[i].apply_time
+        test.reason = change_log_data[i].reason
+        test.apply_status = change_log_data[i].app_status
+        test.email = stu_data.email
+        test.stu_phone = stu_data.phone
+        test.college = stu_data.college
+        test.major = stu_data.major
+        dor_change_list.append(test)
 
+    live_on_vacation_list = StudentStayingRecord.objects.all()
+    dor_cancel_list = DorCheckOut.objects.all()
+
+    '''
+    dor_change_str="select * from student,dor_change where student.sno=dor_change.sno limit 5"
+    data=database_opr(dor_change_str)
+    dor_change_list=[]
+    for i in range(0,len(data)):
+        test =StuDorLogModel()
+        test.sno=data[i][10]
+        test.sname=data[i][11]
+        test.college=data[i][2]
+        test.major=data[i][3]
+        test.old_room_no=data[i][13]
+        test.new_room_no=data[i][15]
+        test.email=data[i][9]
+        test.stu_phone=data[i][18]
+        test.apply_time=data[i][16]
+        test.reason=data[i][19]
+        test.apply_status=data[i][17]
+        dor_change_list.append(test)
+
+    live_on_vacation_str="select * from student,staying_on_vacation_applyment where student.sno=staying_on_vacation_applyment.sno limit 5"
+    data = database_opr(live_on_vacation_str)
+    live_on_vacation_list=[]
+    for i in range(0,len(data)):
+        test=StuDorLogModel()
+        test.sno=data[i][10]
+        test.sname=str(data[i][11])
+        test.college=data[i][2]
+        test.major=data[i][3]
+        test.new_dor_no=data[i][12]
+        test.stu_phone=data[i][8]
+        test.email=data[i][9]
+        test.start_time=str(data[i][13])
+        test.end_time=str(data[i][14])
+        test.apply_time=str(data[i][12])
+        test.reason=data[i][19]
+        live_on_vacation_list.append(test)
+
+    #live_on_vacation_list=StudentStayingRecord.objects.filter(sno='2014101021')
+    #live_on_vacation_list=StudentStayingRecord.objects.all()
+    dor_cancel_list=DorCheckOut.objects.all()
+    '''
+    return render(request, "student/index.html",{'DorChange':dor_change_list,'LiveOnVacation':live_on_vacation_list,'DorCancel':dor_cancel_list})

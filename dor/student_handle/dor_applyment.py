@@ -1,12 +1,12 @@
 import pymysql
 from django.http import HttpResponse
 from django.shortcuts import render
-
-from dor.database_operation import database_opr
-from dor.models import dor_change, dor_cancel, live_on_vacation_applyment,live_on_vacation
+from dor.models import DorChange,DorCheckOut,StudentStayingRecord
 
 def show_change_dor_applyments(request):
- pass
+    if request.method=='POST':
+        key=request.POST.get('apply_sno',None)
+    return HttpResponse("<p>"+str(key)+"</p>")
 
 def change_dor_applyment(request):
     if request.method=='POST':
@@ -19,7 +19,7 @@ def change_dor_applyment(request):
         phone=request.POST.get('phone',None)
         reason=request.POST.get('reason',None)
         new_dor_info=new_dor_info.split('-')
-        test=dor_change(sno=sno,sname=sname,old_dor_no=old_dor_info[0],old_room_no=old_dor_info[1],new_dor_no=new_dor_info[0],new_room_no=new_dor_info[1]+new_dor_info[2],apply_time=apply_time,phone=phone,reason=reason)
+        test=DorChange(sno=sno,sname=sname,old_dor_no=old_dor_info[0],old_room_no=old_dor_info[1],new_dor_no=new_dor_info[0],new_room_no=new_dor_info[1]+new_dor_info[2],apply_time=apply_time,phone=phone,reason=reason)
         test.save()
 
     return HttpResponse('<p>change success</p>')
@@ -34,13 +34,13 @@ def cancel_dor_applyment(request):
         apply_time=request.POST.get('apply_time',None)
         phone=request.POST.get('phone',None)
         reason=request.POST.get('reason',None)
-        test=dor_cancel(sno=sno,sname=sname,dor_no=dor_info[0],room_no=dor_info[1],apply_time=apply_time,phone=phone,reason=reason)
+        test=DorCheckOut(sno=sno,sname=sname,dor_no=dor_info[0],room_no=dor_info[1],apply_time=apply_time,phone=phone,reason=reason)
         test.save()
     return HttpResponse('<p>cancel success</p>')
 
 def show_live_on_vacation_applyments(request):
     if request.method=='POST':
-        list=live_on_vacation.objects.filter(sno='2014101023')
+        list=StudentStayingRecord.objects.filter(sno='2014101023')
     return render(request, "student/index.html", {'valist': list})
 
 def live_on_vacation_applyment(request):

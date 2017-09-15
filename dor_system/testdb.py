@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 from django.http import HttpResponse
-from dor.models import Test,Stu
+from dor.modelsTest import Test,Stu
 
 def testdb(request):
     test1=Test(name='runoob')
