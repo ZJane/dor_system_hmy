@@ -6,7 +6,7 @@
 #   * Remove `managed = False` lines if you wish to allow Django to create, modify, and delete the table
 # Feel free to rename the models, but don't rename db_table values or field names.
 from __future__ import unicode_literals
-
+# -*- coding: utf-8 -*-
 from django.db import models
 
 #Createyourmodelshere.
@@ -137,7 +137,6 @@ class activity(models.Model):
     last_apply_time = models.DateTimeField()
 
     class Meta:
-        managed = True
         db_table = 'dor_activity'
 
 
@@ -148,9 +147,9 @@ class activity_applyment(models.Model):
     is_apply_success = models.CharField(max_length=1)
     apply_time = models.DateTimeField()
     ad_no = models.CharField(max_length=10)
+    apply_status=models.CharField(max_length=10,default='')
 
     class Meta:
-        managed = True
         db_table = 'dor_activity_applyment'
 
 
@@ -160,7 +159,6 @@ class admin_account(models.Model):
     password = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
-        managed = True
         db_table = 'dor_admin_account'
 
 
@@ -171,7 +169,6 @@ class adminstrator(models.Model):
     dor_no = models.CharField(max_length=10)
 
     class Meta:
-        managed = True
         db_table = 'dor_adminstrator'
 
 
@@ -183,7 +180,6 @@ class bill(models.Model):
     time = models.CharField(max_length=50)
 
     class Meta:
-        managed = True
         db_table = 'dor_bill'
 
 
@@ -195,7 +191,6 @@ class book(models.Model):
     is_borrowed = models.CharField(max_length=1)
 
     class Meta:
-        managed =True
         db_table = 'dor_book'
 
 
@@ -208,7 +203,6 @@ class book_applyment(models.Model):
     ad_no = models.CharField(max_length=10)
 
     class Meta:
-        managed = True
         db_table = 'dor_book_applyment'
         unique_together = (('book_no', 'sno', 'apply_time'),)
 
@@ -221,7 +215,6 @@ class device(models.Model):
     device_applied_amount = models.IntegerField()
 
     class Meta:
-        managed = True
         db_table = 'dor_device'
 
 
@@ -236,7 +229,6 @@ class device_applyment(models.Model):
     ad_no = models.CharField(max_length=10)
 
     class Meta:
-        managed =  True
         db_table = 'dor_device_applyment'
 
 
@@ -247,7 +239,6 @@ class dor(models.Model):
     bed_no = models.CharField(max_length=10)
 
     class Meta:
-        managed =  True
         db_table = 'dor_dor'
         unique_together = (('dor_no', 'sno', 'room_no', 'bed_no'),)
 
@@ -258,9 +249,9 @@ class dor_applyment(models.Model):
     dor_no = models.CharField(max_length=10)
     room_no = models.CharField(max_length=10)
     apply_time = models.DateTimeField()
+    apply_status=models.CharField(max_length=10,default='')
 
     class Meta:
-        managed = True
         db_table = 'dor_dor_applyment'
         unique_together = (('sno', 'dor_no', 'room_no'),)
 
@@ -273,9 +264,9 @@ class dor_cancel(models.Model):
     apply_time = models.DateTimeField()
     phone = models.CharField(max_length=11)
     reason = models.CharField(max_length=100)
+    apply_status=models.CharField(max_length=10,default='')
 
     class Meta:
-        managed =  True
         db_table = 'dor_dor_cancel'
         unique_together = (('sno', 'dor_no', 'room_no'),)
 
@@ -290,9 +281,9 @@ class dor_change(models.Model):
     apply_time = models.DateTimeField()
     phone = models.CharField(max_length=11)
     reason = models.CharField(max_length=100)
+    apply_status=models.CharField(max_length=10,default='')
 
     class Meta:
-        managed =  True
         db_table = 'dor_dor_change'
         unique_together = (('sno', 'old_dor_no', 'old_room_no'),)
 
@@ -303,7 +294,6 @@ class dormintory(models.Model):
     dor_description = models.CharField(max_length=100)
 
     class Meta:
-        managed = True
         db_table = 'dor_dormintory'
 
 
@@ -315,9 +305,10 @@ class live_on_vacation(models.Model):
     end_time = models.DateTimeField(blank=True, null=True)
     reason = models.CharField(max_length=100, blank=True, null=True)
     phone = models.CharField(max_length=11, blank=True, null=True)
+    apply_status=models.CharField(max_length=10,default='')
+    apply_time = models.DateTimeField(blank=True, null=True)
 
     class Meta:
-        managed =  True
         db_table = 'dor_live_on_vacation'
 
 
@@ -334,7 +325,6 @@ class live_on_vacation_applyment(models.Model):
     apply_time = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
-        managed =  True
         db_table = 'dor_live_on_vacation_applyment'
 
 
@@ -343,10 +333,8 @@ class meeting_room(models.Model):
     meeting_room_size = models.CharField(max_length=10)
     medium = models.CharField(max_length=1)
     meeting_room_description = models.CharField(max_length=20)
-    is_occupied = models.CharField(max_length=1)
 
     class Meta:
-        managed =  True
         db_table = 'dor_meeting_room'
 
 
@@ -359,7 +347,6 @@ class meeting_room_applyment(models.Model):
     ad_no = models.CharField(max_length=10)
 
     class Meta:
-        managed =  True
         db_table = 'dor_meeting_room_applyment'
         unique_together = (('meeting_room_no', 'sno', 'apply_time'),)
 
@@ -370,7 +357,6 @@ class meeting_room_time_quantunum(models.Model):
     end_time = models.DateTimeField()
 
     class Meta:
-        managed = True
         db_table = 'dor_meeting_room_time_quantunum'
 
 
@@ -380,7 +366,6 @@ class organization(models.Model):
     organization_description = models.CharField(max_length=100)
 
     class Meta:
-        managed =  True
         db_table = 'dor_organization'
 
 
@@ -392,7 +377,6 @@ class pay_bill(models.Model):
     dor_no = models.CharField(max_length=10)
 
     class Meta:
-        managed =  True
         db_table = 'dor_pay_bill'
         unique_together = (('sno', 'bill_no', 'is_paied'),)
 
@@ -407,7 +391,6 @@ class repair_device(models.Model):
     ad_no = models.CharField(max_length=10)
 
     class Meta:
-        managed =  True
         db_table = 'dor_repair_device'
         unique_together = (('sno', 'apply_time'),)
 
@@ -420,7 +403,6 @@ class room(models.Model):
     empty_beds = models.IntegerField()
 
     class Meta:
-        managed =  True
         db_table = 'dor_room'
 
 
@@ -436,7 +418,6 @@ class routine_applyments(models.Model):
     detail = models.CharField(max_length=200)
 
     class Meta:
-        managed =  True
         db_table = 'dor_routine_applyments'
         unique_together = (('sno', 'apply_time'),)
 
@@ -447,7 +428,6 @@ class stu_account(models.Model):
     password = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
-        managed =  True
         db_table = 'dor_stu_account'
 
 
@@ -464,7 +444,6 @@ class student(models.Model):
     email = models.CharField(max_length=40)
 
     class Meta:
-        managed =  True
         db_table = 'dor_student'
 
 
@@ -474,23 +453,22 @@ class vacation_time_quantum(models.Model):
     end_time = models.DateTimeField()
 
     class Meta:
-        managed =  True
         db_table = 'dor_vacation_time_quantum'
 
-class admin_show_change_dor_log(models.Model):
-    sno = models.CharField(max_length=10)
+class admin_show_dor_change_applyment_log(models.Model):
+    sno = models.CharField(primary_key=True, max_length=10)
     sname = models.CharField(max_length=20)
+    college_no = models.CharField(max_length=20)
+    major_no = models.CharField(max_length=20)
     old_dor_no = models.CharField(max_length=10)
     old_room_no = models.CharField(max_length=10)
+    email = models.CharField(max_length=40)
     new_dor_no = models.CharField(max_length=10)
     new_room_no = models.CharField(max_length=10)
     apply_time = models.DateTimeField()
     phone = models.CharField(max_length=11)
     reason = models.CharField(max_length=100)
-    college_no = models.CharField(max_length=20)
-    major_no = models.CharField(max_length=20)
-    mobilephone = models.CharField(max_length=11)
-    email = models.CharField(max_length=40)
-    class Meta:
-        unique_together=("sno","apply_time")
+    status=models.CharField(max_length=10,default='')
 
+    class Meta:
+        db_table = 'admin_show_dor_change_applyment_log'

@@ -17,9 +17,6 @@
     <link href="{% static 'bootstrap/css/student.css' %}" rel="stylesheet" type="text/css">
     <link href="{% static 'bootstrap/css/student.css' %}" rel="stylesheet" type="text/css">
 
-
-
-
 	<style>
 		.table tbody tr td {
 			vertical-align: middle;
@@ -88,12 +85,10 @@
 						<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#func_stay">留校申请</button>
 					</div>
 				</h1>
-
-
 				<!-- Nav tabs -->
 				<ul class="nav nav-tabs" role="tablist">
 					<li role="presentation" class="active">
-						<a href="#change_record" aria-controls="change_record" role="tab" data-toggle="tab" onclick="show_change_dor_log()">调宿申请记录</a>
+						<a href="#change_record" aria-controls="change_record" role="tab" data-toggle="tab" >调宿申请记录</a>
                     </li>
 					<li role="presentation">
 
@@ -104,9 +99,6 @@
 						<a href="#exit_record" aria-controls="exit_record" role="tab" data-toggle="tab">退宿申请记录</a>
 					</li>
 				</ul>
-                 <form action="/admin/select_dor_change/" id="change_dor_log" method="get">
-
-                 </form>
 
 				<div class="tab-content" style="margin-top: 10px">
 					<!--调宿申请记录-->
@@ -115,7 +107,6 @@
 							<table class="table table-striped">
 								<thead>
 									<tr>
-										<th>#</th>
 										<th>申请时间</th>
 										<th>申请人</th>
 										<th>现住宿舍</th>
@@ -125,42 +116,19 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr>
-										<td>10000</td>
-										<td>2017-05-02 17:33:34</td>
-										<td>何铭宜</td>
-										<td>弘毅 G613-2</td>
-										<td>刘宿管</td>
-										<td><span class="label label-danger">申请失败</span></td>
-										<td>
-											<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_change">查看</button>
-											<button type="button" class="btn btn-danger btn-xs">取消</button>
-										</td>
-									</tr>
-									<tr>
-										<td>10000</td>
-										<td>2017-05-02 17:33:34</td>
-										<td>何铭宜</td>
-										<td>弘毅 G613-2</td>
-										<td>刘宿管</td>
-										<td><span class="label label-warning">申请中</span></td>
-										<td>
-											<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_change">查看</button>
-											<button type="button" class="btn btn-danger btn-xs">取消</button>
-										</td>
-									</tr>
-									<tr>
-										<td>10000</td>
-										<td>2017-05-02 17:33:34</td>
-										<td>何铭宜</td>
-										<td>弘毅 G613-2</td>
-										<td>刘宿管</td>
-										<td><span class="label label-success">申请成功</span></td>
-										<td>
-											<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_change">查看</button>
-											<button type="button" class="btn btn-danger btn-xs">取消</button>
-										</td>
-									</tr>
+                                {%  for i in DorChange %}
+                                 <tr>
+									<td>{{i.apply_time}}</td>
+									<td>{{i.sname}}</td>
+									<td>{{i.old_dor_no}}{{i.old_room_no}}</td>
+									<td>刘宿管</td>
+									<td><span class="label label-danger">{{ i.status }}</span></td>
+									<td>
+										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_exit">查看</button>
+										<button type="button" class="btn btn-danger btn-xs">取消</button>
+									</td>
+								</tr>
+                                {%endfor%}
 								</tbody>
 							</table>
 						</div>
@@ -172,7 +140,6 @@
 							<table class="table table-striped">
 								<thead>
 								<tr>
-									<th>#</th>
 									<th>申请时间</th>
 									<th>申请人</th>
 									<th>现住宿舍</th>
@@ -182,54 +149,30 @@
 								</tr>
 								</thead>
 								<tbody>
+                                {% for m in LiveOnVacation %}
 								<tr>
-									<td>10000</td>
-									<td>2017-05-02 17:33:34</td>
-									<td>卢程</td>
-									<td>弘毅 G613-2</td>
+									<td>{{m.apply_time}}</td>
+									<td>{{m.sname}}</td>
+									<td>{{m.dor_no}}</td>
 									<td>刘宿管</td>
-									<td><span class="label label-danger">申请失败</span></td>
+									<td><span class="label label-danger">{{ m.apply_status }}</span></td>
 									<td>
 										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_stay">查看</button>
 										<button type="button" class="btn btn-danger btn-xs">取消</button>
 									</td>
 								</tr>
-								<tr>
-									<td>10000</td>
-									<td>2017-05-02 17:33:34</td>
-									<td>卢程</td>
-									<td>弘毅 G613-2</td>
-									<td>刘宿管</td>
-									<td><span class="label label-warning">申请中</span></td>
-									<td>
-										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_stay">查看</button>
-										<button type="button" class="btn btn-danger btn-xs">取消</button>
-									</td>
-								</tr>
-								<tr>
-									<td>10000</td>
-									<td>2017-05-02 17:33:34</td>
-									<td>卢程</td>
-									<td>弘毅 G613-2</td>
-									<td>刘宿管</td>
-									<td><span class="label label-success">申请成功</span></td>
-									<td>
-										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_stay">查看</button>
-										<button type="button" class="btn btn-danger btn-xs">取消</button>
-									</td>
-								</tr>
+                                {% endfor %}
+
 								</tbody>
 							</table>
 						</div>
 					</div>
-
 					<!--退宿申请记录-->
 					<div role="tabpanel" class="tab-pane" id="exit_record">
 						<div class="table-responsive">
 							<table class="table table-striped">
 								<thead>
 								<tr>
-									<th>#</th>
 									<th>申请时间</th>
 									<th>申请人</th>
 									<th>现住宿舍</th>
@@ -239,11 +182,11 @@
 								</tr>
 								</thead>
 								<tbody>
-								<tr>
-									<td>10000</td>
-									<td>2017-05-02 17:33:34</td>
-									<td>张敏华</td>
-									<td>弘毅 G613-2</td>
+                                {%  for i in DorCancel %}
+                                 <tr>
+									<td>{{i.apply_time}}</td>
+									<td>{{i.sname}}</td>
+									<td>{{i.dor_no}}{{i.room_no}}</td>
 									<td>刘宿管</td>
 									<td><span class="label label-danger">申请失败</span></td>
 									<td>
@@ -251,36 +194,14 @@
 										<button type="button" class="btn btn-danger btn-xs">取消</button>
 									</td>
 								</tr>
-								<tr>
-									<td>10000</td>
-									<td>2017-05-02 17:33:34</td>
-									<td>张敏华</td>
-									<td>弘毅 G613-2</td>
-									<td>刘宿管</td>
-									<td><span class="label label-warning">申请中</span></td>
-									<td>
-										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_exit">查看</button>
-										<button type="button" class="btn btn-danger btn-xs">取消</button>
-									</td>
-								</tr>
-								<tr>
-									<td>10000</td>
-									<td>2017-05-02 17:33:34</td>
-									<td>张敏华</td>
-									<td>弘毅 G613-2</td>
-									<td>刘宿管</td>
-									<td><span class="label label-success">申请成功</span></td>
-									<td>
-										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_exit">查看</button>
-										<button type="button" class="btn btn-danger btn-xs">取消</button>
-									</td>
-								</tr>
+                                {%endfor%}
 								</tbody>
 							</table>
 						</div>
 					</div>
 
 				</div>
+
 			</div>
 		</div>
 	</div>
@@ -935,7 +856,6 @@
         document.getElementById("apply_live_on_vacation").submit();
     }
     function show_change_dor_log(){
-        execFlag=
         document.getElementById("change_dor_log").submit();
     }
 </script>

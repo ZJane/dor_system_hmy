@@ -117,7 +117,7 @@
 
             <ul id="myTab" class="nav nav-tabs">
                 <li class="active">
-                    <a href="#student_login" data-toggle="tab">
+                    <a href="/show_student_index/" data-toggle="tab">
                         学生登录
                     </a>
                 </li>
@@ -132,7 +132,8 @@
                 <div class="tab-pane fade in active" id="student_login">
 
                     <div class="form-signin">
-                        <form class="form-signin">
+                        <form action="/show_student_index/ "class="form-signin" id="stu_acc" method="post">
+                            {% csrf_token %}
                             <h3 class="form-signin-heading">学生宿舍系统</h3>
                                 <input type="text" class="form-control" placeholder="校园网账号" required
                                        autofocus style="margin-top: 20px">
@@ -148,7 +149,7 @@
                                 <!--这里未使用js判断，仅假设账号密码正确，能够点击进入界面-->
                                 <!--到时候删去下行的 href-->
                                 <br>
-                                <button class="btn btn-lg btn-primary btn-block" type="submit" href="student/index.html">
+                                <button class="btn btn-lg btn-primary btn-block" onclick="show_stu_index()">
                                     登录
                                 </button>
 
@@ -202,7 +203,14 @@
 </div>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+<script type="text/javascript" src="{% static 'bootstrap/js/jquery-2.2.1.min.js.js' %}"></script>
+<script type="text/javascript" src="{% static 'bootstrap/js/jquery.min.js.js' %}"></script>
 
 </body>
-
+<script>
+    function show_stu_index()
+    {
+        document.getElementById("stu_acc").submit();
+    }
+</script>
 </html>
