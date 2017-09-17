@@ -246,7 +246,7 @@ class DorActivity(models.Model):
 class DorAdminAccount(models.Model):
     ad_no = models.CharField(primary_key=True, max_length=20)
     username = models.CharField(max_length=20, blank=True, null=True)
-    password = models.CharField(max_length=20, blank=True, null=True)
+    password = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -354,28 +354,11 @@ class DorRoom(models.Model):
 class DorStuAccount(models.Model):
     sno = models.CharField(primary_key=True, max_length=11)
     username = models.CharField(max_length=20, blank=True, null=True)
-    password = models.CharField(max_length=20, blank=True, null=True)
+    password = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'dor_stu_account'
-
-
-class DorStudent(models.Model):
-    sno = models.CharField(primary_key=True, max_length=10)
-    sname = models.CharField(max_length=20)
-    college_no = models.CharField(max_length=20)
-    major_no = models.CharField(max_length=20)
-    grade = models.CharField(max_length=10)
-    gender = models.CharField(max_length=1)
-    dor_no = models.CharField(max_length=10)
-    room_no = models.CharField(max_length=10)
-    mobilephone = models.CharField(max_length=11)
-    email = models.CharField(max_length=40)
-
-    class Meta:
-        managed = False
-        db_table = 'dor_student'
 
 
 class Dormitory(models.Model):
@@ -485,8 +468,8 @@ class StayingOnVacationApplyment(models.Model):
     sno = models.IntegerField(blank=True, null=True)
     sname = models.CharField(max_length=20, blank=True, null=True)
     dor_no = models.CharField(max_length=10, blank=True, null=True)
-    start_time = models.DateTimeField(blank=True, null=True)
-    end_time = models.DateTimeField(blank=True, null=True)
+    start_time = models.DateField(blank=True, null=True)
+    end_time = models.DateField(blank=True, null=True)
     check_cancel_apply = models.IntegerField(blank=True, null=True)
     check_apply_success = models.IntegerField(blank=True, null=True)
     ad_no = models.CharField(max_length=10, blank=True, null=True)
@@ -499,7 +482,7 @@ class StayingOnVacationApplyment(models.Model):
 
 
 class StuPayRecord(models.Model):
-    sno = models.IntegerField(blank=True, null=True)
+    sno = models.IntegerField(primary_key=True)
     bill_no = models.IntegerField(blank=True, null=True)
     check_paied = models.IntegerField(blank=True, null=True)
     pay_time = models.DateTimeField(blank=True, null=True)
@@ -519,7 +502,7 @@ class Student(models.Model):
     gender = models.CharField(max_length=10, blank=True, null=True)
     dor_no = models.CharField(max_length=10, blank=True, null=True)
     room_no = models.CharField(max_length=10, blank=True, null=True)
-    stu_phone = models.CharField(max_length=11, blank=True, null=True)
+    stu_phone = models.CharField(max_length=12, blank=True, null=True)
     email = models.CharField(max_length=40, blank=True, null=True)
 
     class Meta:

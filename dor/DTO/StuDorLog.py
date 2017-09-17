@@ -6,4 +6,5 @@ class StuDorLogModel():
           self.new_dor_no=self.new_room_no=''
           self.stu_phone=self.reason=''
           self.email=self.apply_status=''
+          self.ad_name=''
           self.apply_time=self.start_time=self.end_time='1990-01-01 00:00'

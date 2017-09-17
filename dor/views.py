@@ -28,6 +28,16 @@ def show_admin_index(request):
     return render(request,"admin/index.html")
 
 def show_student_index(request):
+    stu_data = Student.objects.get(sno=2014101003)
+    sno=stu_data.sno
+    sname=stu_data.sname
+    college=stu_data.college
+    major=stu_data.major
+    room_no=stu_data.room_no
+    email=stu_data.email
+    stu_phone=stu_data.stu_phone
+
+#调宿记录
     change_log_data=DorChange.objects.filter(sno=2014101003)
     dor_change_list = []
     for i in range(0,len(change_log_data)):
@@ -41,53 +51,52 @@ def show_student_index(request):
         test.reason = change_log_data[i].reason
         test.apply_status = change_log_data[i].app_status
         test.email = stu_data.email
+        test.ad_name = '张敏华'
         test.stu_phone = stu_data.stu_phone
         test.college = stu_data.college
         test.major = stu_data.major
         dor_change_list.append(test)
-
-    live_on_vacation_list = StudentStayingRecord.objects.all()
-    dor_cancel_list = DorCheckOut.objects.all()
-
-    '''
-    dor_change_str="select * from student,dor_change where student.sno=dor_change.sno limit 5"
-    data=database_opr(dor_change_str)
-    dor_change_list=[]
-    for i in range(0,len(data)):
-        test =StuDorLogModel()
-        test.sno=data[i][10]
-        test.sname=data[i][11]
-        test.college=data[i][2]
-        test.major=data[i][3]
-        test.old_room_no=data[i][13]
-        test.new_room_no=data[i][15]
-        test.email=data[i][9]
-        test.stu_phone=data[i][18]
-        test.apply_time=data[i][16]
-        test.reason=data[i][19]
-        test.apply_status=data[i][17]
-        dor_change_list.append(test)
-
-    live_on_vacation_str="select * from student,staying_on_vacation_applyment where student.sno=staying_on_vacation_applyment.sno limit 5"
-    data = database_opr(live_on_vacation_str)
+#留校记录
+    stayingOnVacation_data=StudentStayingRecord.objects.filter(sno=2014101003)
     live_on_vacation_list=[]
-    for i in range(0,len(data)):
+    for i in range(0,len(stayingOnVacation_data)):
+        stu_data=Student.objects.get(sno=2014101003)
         test=StuDorLogModel()
-        test.sno=data[i][10]
-        test.sname=str(data[i][11])
-        test.college=data[i][2]
-        test.major=data[i][3]
-        test.new_dor_no=data[i][12]
-        test.stu_phone=data[i][8]
-        test.email=data[i][9]
-        test.start_time=str(data[i][13])
-        test.end_time=str(data[i][14])
-        test.apply_time=str(data[i][12])
-        test.reason=data[i][19]
+        test.sno=stayingOnVacation_data[i].sno
+        test.sname = stayingOnVacation_data[i].sname
+        test.new_room_no = stayingOnVacation_data[i].room_no
+        test.apply_time = stayingOnVacation_data[i].apply_time
+        test.reason = stayingOnVacation_data[i].reason
+        test.apply_status = stayingOnVacation_data[i].apply_status
+        test.email = stu_data.email
+        test.ad_name='张敏华'
+        test.stu_phone = stayingOnVacation_data[i].stu_phone
+        test.college = stu_data.college
+        test.major = stu_data.major
         live_on_vacation_list.append(test)
 
-    #live_on_vacation_list=StudentStayingRecord.objects.filter(sno='2014101021')
-    #live_on_vacation_list=StudentStayingRecord.objects.all()
-    dor_cancel_list=DorCheckOut.objects.all()
-    '''
-    return render(request, "student/index.html",{'DorChange':dor_change_list,'LiveOnVacation':live_on_vacation_list,'DorCancel':dor_cancel_list})
+
+    #live_on_vacation_list = StudentStayingRecord.objects.all()
+#退宿记录
+    dor_checkout_data=DorCheckOut.objects.filter(sno=2014101003)
+    dor_cancel_list =[]
+    for i in range(0,len(dor_checkout_data)):
+        stu_data=Student.objects.get(sno=2014101003)
+        test=StuDorLogModel()
+        test.sno = dor_checkout_data[i].sno
+        test.sname = dor_checkout_data[i].sname
+        test.new_room_no = dor_checkout_data[i].room_no
+        test.apply_time = dor_checkout_data[i].apply_time
+        test.reason = dor_checkout_data[i].reason
+        test.apply_status = dor_checkout_data[i].apply_status
+        test.email = stu_data.email
+        test.ad_name = '张敏华'
+        test.stu_phone = dor_checkout_data[i].stu_phone
+        test.college = stu_data.college
+        test.major = stu_data.major
+        dor_cancel_list.append(test)
+
+    return render(request, "student/index.html",{'DorChange':dor_change_list,'LiveOnVacation':live_on_vacation_list,'DorCancel':dor_cancel_list,
+                                                 'sno':sno,'sname':sname,'college':college,'major':major,'room_no':room_no,'stu_phone':stu_phone,'email':email})
+
+

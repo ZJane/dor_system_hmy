@@ -104,8 +104,6 @@
 					<!--调宿申请记录-->
 					<div role="tabpanel" class="tab-pane in active" id="change_record">
 						<div class="table-responsive">
-                        <form action="/dor/student_handle/dor_applyment/change_dor_applyment/" id="apply_change" method="post" >
-						{% csrf_token %}
 							<table class="table table-striped">
 								<thead>
 									<tr>
@@ -124,18 +122,17 @@
 									<td>{{i.apply_time}}</td>
                                      <td >{{ i.sno }}</td>
 									<td>{{i.sname}}</td>
-									<td>{{i.old_dor_no}}{{i.old_room_no}}</td>
-									<td>刘宿管</td>
-									<td><span class="label label-danger">{{ i.status }}</span></td>
+									<td>{{i.old_room_no}}</td>
+									<td>{{ i.ad_name }}</td>
+									<td><span class="label label-danger">{{ i.apply_status }}</span></td>
 									<td>
 										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_change" >查看</button>
-										<button type="button" class="btn btn-danger btn-xs">取消</button>
+{#										<button type="button" class="btn btn-danger btn-xs" >取消</button>#}
 									</td>
 								</tr>
                                 {%endfor%}
 								</tbody>
 							</table>
-                        </form>
 						</div>
 					</div>
 
@@ -158,12 +155,12 @@
 								<tr>
 									<td>{{m.apply_time}}</td>
 									<td>{{m.sname}}</td>
-									<td>{{m.dor_no}}</td>
-									<td>刘宿管</td>
+									<td>{{m.new_room_no}}</td>
+									<td>{{m.ad_name }}</td>
 									<td><span class="label label-danger">{{ m.apply_status }}</span></td>
 									<td>
 										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_stay">查看</button>
-										<button type="button" class="btn btn-danger btn-xs">取消</button>
+{#										<button type="button" class="btn btn-danger btn-xs">取消</button>#}
 									</td>
 								</tr>
                                 {% endfor %}
@@ -191,12 +188,12 @@
                                  <tr>
 									<td>{{i.apply_time}}</td>
 									<td>{{i.sname}}</td>
-									<td>{{i.dor_no}}{{i.room_no}}</td>
-									<td>刘宿管</td>
-									<td><span class="label label-danger">申请失败</span></td>
+									<td>{{i.new_room_no}}</td>
+									<td>{{ i.ad_name }}</td>
+									<td><span class="label label-danger">{{ i.apply_status }}</span></td>
 									<td>
 										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_exit">查看</button>
-										<button type="button" class="btn btn-danger btn-xs">取消</button>
+{#										<button type="button" class="btn btn-danger btn-xs">取消</button>#}
 									</td>
 								</tr>
                                 {%endfor%}
@@ -219,67 +216,69 @@
 					<h4 class="modal-title">申请调整</h4>
 				</div>
 				<div class="modal-body">
+                     <form action="/dor/student_handle/dor_applyment/change_dor_applyment/" id="apply_change" method="post" >
+						{% csrf_token %}
                         <div class="row">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<input type="text" class="form-control" name="sno" readonly="readonly" value="2014101027">
+									<input type="text" class="form-control" name="sno" readonly="readonly" value={{ sno }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-									<input type="text" name="sname" class="form-control" readonly="readonly" value="王俊皓">
+									<input type="text" name="sname" class="form-control" readonly="readonly" value={{ sname }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-									<label class="control-label">工学院</label>
+							        <input type="text" name="college" class="form-control" readonly="readonly" value={{ college }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-									<label class="control-label">计算机科学与技术</label>
+							        <input type="text" name="major" class="form-control" readonly="readonly" value={{ major }}>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<input type="text" name="old_dor_info"class="form-control" readonly="readonly" value="弘毅-ABC">
+									<input type="text" name="old_dor_info"class="form-control" readonly="readonly" value={{ room_no }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">申请时间:</label>
-									<input type="text" name="apply_time" class="form-control" readonly="readonly" value="2017-09-09 13:30"/>
+									<input type="text" name="apply_time" class="form-control"  value=""/>
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<input type="text" name="phone" class="form-control">
+									<input type="text" name="phone" class="form-control" value={{ stu_phone }}>
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<input type="text" class="form-control" value="14jhwang@stu.edu.cn">
+									<input type="text" class="form-control" value={{ email }}>
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">拟申请宿舍:</label>
-									<input type="text" name="new_dor_info" class="form-control" readonly="readonly" value="弘毅-110-3">
+									<input type="text" name="new_dor_info" class="form-control"  placeholder="书院号-宿舍号-床位号">
 								</div>
 							</div>
 
@@ -290,6 +289,7 @@
 								</div>
 							</div>
 						</div>
+                     </form>
 				</div>
 
 				<div class="modal-footer">
@@ -315,56 +315,56 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<input type="text" name="sno" class="form-control" readonly="readonly" value="2014101027">
+									<input type="text" name="sno" class="form-control" readonly="readonly" value={{ sno }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-                                    <input type="text" name="sname" class="form-control" readonly="readonly" value="王俊皓">
+                                    <input type="text" name="sname" class="form-control" readonly="readonly" value={{ sname }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-									<label class="control-label">工学院</label>
+									<input type="text" name="college" class="form-control" readonly="readonly" value={{ college }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-									<label class="control-label">计算机科学与技术</label>
+							        <input type="text" name="major" class="form-control" readonly="readonly" value={{ major }}>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-                                    <input type="text" name="dor_info"class="form-control" readonly="readonly" value="弘毅-ABC">
+                                    <input type="text" name="dor_info"class="form-control" readonly="readonly" value={{ room_no }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">申请时间:</label>
-									<input type="text" name="apply_time" class="form-control" readonly="readonly" value="2017-09-09 13:40">
+									<input type="text" name="apply_time" class="form-control"  value="">
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<input type="text" name="phone" class="form-control">
+									<input type="text" name="phone" class="form-control" value={{ stu_phone }}>
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<input type="text" class="form-control" value="14jhwang@stu.edu.cn">
+									<input type="text" class="form-control" value={{ email }}>
 								</div>
 							</div>
 
@@ -410,75 +410,69 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<input type="text" name="sno" class="form-control" readonly="readonly" value="2014101027">
+									<input type="text" name="sno" class="form-control" readonly="readonly" value={{ sno }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-									<input type="text" name="sname" class="form-control" readonly="readonly" value="王俊皓">
+									<input type="text" name="sname" class="form-control" readonly="readonly" value={{ sname }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-									<label class="control-label">工学院</label>
+									<input type="text" name="college" class="form-control" readonly="readonly" value={{ college }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-									<label class="control-label">计算机科学与技术</label>
+							        <input type="text" name="major" class="form-control" readonly="readonly" value={{ major }}>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-                                    <input type="text" name="dor_info" class="form-control" readonly="readonly" value="弘毅 ABC">
+                                    <input type="text" name="dor_info" class="form-control" readonly="readonly" value={{ room_no }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">申请时间:</label>
-									<input type="text" name="apply_time" class="form-control" readonly="readonly" value="2017-09-09 14:00">
+									<input type="text" name="apply_time" class="form-control"  value="2017-09-16 12:00">
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<input type="text" class="form-control">
+									<input type="text" class="form-control" name="phone" value={{ stu_phone }}>
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<input type="text" class="form-control" value="14jhwang@stu.edu.cn">
+									<input type="text" class="form-control" value={{ email }}>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">留校原因:</label>
-									<div class="dropdown">
-										<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true"
-										 aria-expanded="true">
-																	  -- 选择留校类别 --
-																	  <span class="caret"></span>
-															</button>
-										<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-											<li><a href="#">学术研究和实验</a></li>
-											<li><a href="#">公益项目和专项活动</a></li>
-											<li><a href="#">考研和出国考试复习</a></li>
-											<li><a href="#">其他</a></li>
-										</ul>
-									</div>
+                                        <select class="combobox">
+                                            <option id="r0">-- 选择留校类别 --</option>
+                                            <option id="r1" value="学术研究和实验">学术研究和实验</option>
+                                            <option id="r2" value="公益项目和专项活动">公益项目和专项活动</option>
+                                            <option id="r3" value="考研和出国考试复习">考研和出国考试复习</option>
+                                            <option id="r4" value="其他">其他</option>
+                                        </select>
 								</div>
 							</div>
 
@@ -488,17 +482,19 @@
 								<div class="form-group">
 									<label class="control-label">留校时间:</label>
 									<div class="checkbox">
-										<label><input type="checkbox" value="">2017-07-04 至 2017-07-28 (暑假)</label>
+										<label><input id='time1' type="checkbox" value="">2017-07-04-2017-07-28</label>
 										<br>
-										<label><input type="checkbox" value="">2017-07-29 至 2017-08-23 (暑假)</label>
+                                        <label><input id='time2' type="checkbox" value="">2017-07-29-2017-08-23</label>
 									</div>
 								</div>
 							</div>
+                            <input type="hidden" id="start_time" name="start_time" value=""/>
+                            <input type="hidden" id="end_time" name="end_time" value=""/>
 
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group">
 									<label class="control-label">备注:</label>
-									<textarea name="detail" class="form-control"></textarea>
+									<textarea id="staying_reason" name="staying_reason" class="form-control"></textarea>
 								</div>
 							</div>
 						</div>
@@ -543,21 +539,21 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-									<label class="control-label">工学院</label>
+									<label class="control-label">{{ i.college }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-									<label class="control-label">计算机科学与技术</label>
+									<label class="control-label">{{ i.major }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<label class="control-label">{{ i.old_dor_no }}{{ i.old_room_no }}</label>
+									<label class="control-label">{{ i.old_room_no }}</label>
 								</div>
 							</div>
 
@@ -571,7 +567,7 @@
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<label class="control-label">{{ i.phone }}</label>
+									<label class="control-label">{{ i.stu_phone }}</label>
 								</div>
 							</div>
 
@@ -585,7 +581,7 @@
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">拟申请宿舍:</label>
-									<label class="control-label">{{ i.new_dor_no }}{{ i.new_room_no }}</label>
+									<label class="control-label">{{ i.new_room_no }}</label>
 								</div>
 							</div>
 
@@ -599,7 +595,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group">
 									<label class="control-label">状态：</label>
-									<label class="label label-success">{{ i.status }}</label>
+									<label class="label label-success">{{ i.apply_status }}</label>
 								</div>
 							</div>
 
@@ -645,21 +641,21 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-									<label class="control-label">工学院</label>
+									<label class="control-label">{{ i.college }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-									<label class="control-label">计算机科学与技术</label>
+									<label class="control-label">{{ i.major }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<label class="control-label">{{ i.dor_no }}{{ i.room_no }}</label>
+									<label class="control-label">{{ i.new_room_no }}</label>
 								</div>
 							</div>
 
@@ -673,14 +669,14 @@
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<label class="control-label">13411989237</label>
+									<label class="control-label">{{ i.stu_phone }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<label class="control-label">14myhe@stu.edu.cn</label>
+									<label class="control-label">{{ i.email }}</label>
 								</div>
 							</div>
 
@@ -747,21 +743,21 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-									<label class="control-label">工学院</label>
+									<label class="control-label">{{ i.college }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-									<label class="control-label">计算机科学与技术</label>
+									<label class="control-label">{{ i.major }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<label class="control-label">{{ i.dor_no }}</label>
+									<label class="control-label">{{ i.new_room_no }}</label>
 								</div>
 							</div>
 
@@ -775,21 +771,21 @@
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<label class="control-label">12312345678</label>
+									<label class="control-label">{{ i.stu_phone }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<label class="control-label">14jhwang@stu.edu.cn</label>
+									<label class="control-label">{{ i.email }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">留校原因:</label>
-									<label class="control-label">学术研究和实验</label>
+									<label class="control-label">{{ i.reason }}</label>
 								</div>
 							</div>
 
@@ -799,9 +795,9 @@
 								<div class="form-group">
 									<label class="control-label">留校时间:</label>
 									<div class="checkbox">
-										<label>2017-07-04 至 2017-07-28 (暑假)</label>
+										<label>{{ i.start_time }}</label>
 										<br>
-										<label>2017-07-29 至 2017-08-23 (暑假)</label>
+										<label>{{ i.end_time }}</label>
 									</div>
 								</div>
 							</div>
@@ -826,7 +822,6 @@
 
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary">确认</button>
 					<button type="button" class="btn btn-primary">确认</button>
 				</div>
 			</div>
@@ -855,8 +850,50 @@
         document.getElementById("apply_cancel").submit();
     }
     function submit_live_on_vacation() {
+
+        var option1=document.getElementById('time1');
+        var option2=document.getElementById('time2');
+        var str;
+        var rr0=document.getElementById('r0')
+        var rr1=document.getElementById('r1');
+        var rr2=document.getElementById('r2');
+        var rr3=document.getElementById('r3');
+        var rr4=document.getElementById('r4');
+        if(rr0.selected)
+        {
+            alert("必须选择留校原因！");
+        }
+        else if(rr1.selected)
+        {
+            document.getElementById('staying_reason').value=rr1.value;
+        }
+        else if(rr2.selected)
+        {
+            document.getElementById('staying_reason').value=rr2.value;
+        }
+        else if(rr3.selected)
+        {
+            document.getElementById('staying_reason').value=rr3.value;
+        }
+
+        if(option1.checked==true&&option2.checked==true)
+        {
+            document.getElementById('start_time').value='2017-07-04';
+            document.getElementById('end_time').value='2017-08-23';
+
+        }else if(option1.checked&&!option2.checked)
+        {
+            document.getElementById('start_time').value='2017-07-04';
+            document.getElementById('end_time').value='2017-07-28';
+        }else if(!option1.checked&&option2.checked)
+        {
+            document.getElementById('start_time').value='2017-07-29';
+            document.getElementById('end_time').value='2017-08-23';
+        }
+
         document.getElementById("apply_live_on_vacation").submit();
     }
+
     function show_change_dor_log(){
         document.getElementById("change_dor_log").submit();
     }
