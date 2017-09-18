@@ -1,6 +1,6 @@
-def activity_applyment(request):
+def stu_activity_applyment(request):
     pass
 
 
-def show_activity_info(request):
+def stu_show_activity_info(request):
     pass

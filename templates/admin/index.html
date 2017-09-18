@@ -99,7 +99,6 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>#</th>
                                 <th>申请人</th>
                                 <th>学号</th>
                                 <th>现住宿舍</th>
@@ -108,19 +107,20 @@
                             </tr>
                             </thead>
                             <tbody>
+                                {% for i in dor_change %}
                             <tr>
-                                <td>1</td>
-                                <td>何铭宜</td>
-                                <td>2014XXXXXX</td>
-                                <td>E666-6</td>
-                                <td>2017-10-01 08:00:00</td>
+                                <td>{{ i.sname }}</td>
+                                <td><input type="text" readonly="true" name="ssssno" style="border:0" value={{ i.sno }}></input></td>
+                                <td>{{ i.old_room_no }}</td>
+                                <td>{{ i.apply_time }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#changeDorm">
+                                            data-target="#changeDorm" onclick="show_change_detail()">
                                         查看及处理
                                     </button>
                                 </td>
                             </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
 
@@ -153,7 +153,6 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>#</th>
                                 <th>申请人</th>
                                 <th>学号</th>
                                 <th>现住宿舍</th>
@@ -162,12 +161,12 @@
                             </tr>
                             </thead>
                             <tbody>
+                            {% for i in stayonvacation %}
                             <tr>
-                                <td>1</td>
-                                <td>方栋</td>
-                                <td>2014XXXXXX</td>
-                                <td>D666-6</td>
-                                <td>2017-10-01 08:00:00</td>
+                                <td>{{ i.sname }}</td>
+                                <td>{{ i.sno }}</td>
+                                <td>{{ i.dor_no }}</td>
+                                <td>{{ i.apply_time }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal"
                                             data-target="#stay">
@@ -175,6 +174,7 @@
                                     </button>
                                 </td>
                             </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
 
@@ -206,7 +206,6 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>#</th>
                                 <th>申请人</th>
                                 <th>学号</th>
                                 <th>现住宿舍</th>
@@ -215,19 +214,19 @@
                             </tr>
                             </thead>
                             <tbody>
-
+                            {% for i in dor_checkout %}
                             <tr>
-                                <td>1</td>
-                                <td>何铭宜</td>
-                                <td>2014XXXXXX</td>
-                                <td>E666-6</td>
-                                <td>2017-10-01 08:00:00</td>
+                                <td>{{ i.sname }}</td>
+                                <td>{{ i.sno }}</td>
+                                <td>{{ i.room_no }}</td>
+                                <td>{{ i.apply_time }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#checkOut">
                                         查看及处理
                                     </button>
                                 </td>
                             </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
 
@@ -261,7 +260,6 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <td>#</td>
                                 <td>申请人</td>
                                 <td>学号</td>
                                 <td>现住宿舍</td>
@@ -271,14 +269,14 @@
                             </tr>
                             </thead>
                             <tbody>
+                            {% for i in change_log %}
                             <tr>
-                                <td>1</td>
-                                <td>张敏华</td>
-                                <td>2014XXXXXX</td>
-                                <td>E214-3</td>
-                                <td>2017-10-01 08:00:00</td>
+                                <td>{{ i.sname }}</td>
+                                <td>{{ i.sno }}</td>
+                                <td>{{ i.old_room_no }}</td>
+                                <td>{{ i.apply_time }}</td>
                                 <td>
-                                    <label class="label label-success">成功</label>
+                                    <label class="label label-success">{{ i.app_status }}</label>
                                 </td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#changeLog">
@@ -286,6 +284,7 @@
                                     </button>
                                 </td>
                             </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
 
@@ -317,7 +316,6 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <td>#</td>
                                 <td>申请人</td>
                                 <th>学号</th>
                                 <th>现住宿舍</th>
@@ -327,14 +325,14 @@
                             </tr>
                             </thead>
                             <tbody>
+                            {% for i in stayonvacation_log %}
                             <tr>
-                                <td>1</td>
-                                <td>王俊皓</td>
-                                <td>2014XXXXXX</td>
-                                <td>D666-6</td>
-                                <td>2017-10-01 08:00:00</td>
+                                <td>{{ i.sname  }}</td>
+                                <td>{{ i.sno }}</td>
+                                <td>{{ i.dor_no }}</td>
+                                <td>{{ i.apply_time }}</td>
                                 <td>
-                                    <label class="label label-success">成功</label>
+                                    <label class="label label-success">{{ i.apply_status }}</label>
                                 </td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#stayLog">
@@ -342,6 +340,7 @@
                                     </button>
                                 </td>
                             </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
 
@@ -373,7 +372,6 @@
                         <table class="table table-striped">
                             <thead>
                             <tr>
-                                <td>#</td>
                                 <td>申请人</td>
                                 <td>学号</td>
                                 <td>现住宿舍</td>
@@ -383,15 +381,14 @@
                             </tr>
                             </thead>
                             <tbody>
-
+                            {% for i in checkout_log %}
                             <tr>
-                                <td>1</td>
-                                <td>张敏华</td>
-                                <td>2014XXXXXX</td>
-                                <td>E214-3</td>
-                                <td>2017-10-01 08:00:00</td>
+                                <td>{{ i.sname }}</td>
+                                <td>{{ i.sno }}</td>
+                                <td>{{ i.room_no }}</td>
+                                <td>{{ i.apply_time }}</td>
                                 <td>
-                                    <label class="label label-danger">失败</label>
+                                    <label class="label label-danger">{{ i.apply_status }}</label>
                                 </td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal"
@@ -400,6 +397,7 @@
                                     </button>
                                 </td>
                             </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
 
@@ -448,42 +446,42 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <label class="control-label">2014101027</label>
+                                <input type="text" name="sno" class="form-control" readonly="readonly" value={{sno}}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">姓名:</label>
-                                <label class="control-label">王俊皓</label>
+                                <input type="text" name="sname" class="form-control" readonly="readonly" value={{ sname }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">申请时间:</label>
-                                <label class="control-label">2017年21年99日 -1时</label>
+                                <input type="text" name="apply_time" class="form-control" readonly="readonly" value={{apply_time }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学院:</label>
-                                <label class="control-label">工学院</label>
+                                <input type="text" name="college" class="form-control" readonly="readonly" value={{ college }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">专业:</label>
-                                <label class="control-label">计算机科学与技术</label>
+                                <input type="text" name="major" class="form-control" readonly="readonly" value={{ major }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">宿舍:</label>
-                                <label class="control-label">弘毅 ABC</label>
+                                <input type="text" name="room_no" class="form-control" readonly="readonly" value={{ room_no }}>
                             </div>
                         </div>
 
@@ -491,21 +489,21 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">联系电话:</label>
-                                <label class="control-label">12312345678</label>
+                                <input type="text" name="stu_phone" class="form-control" readonly="readonly" value={{ stu_phone }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">邮箱:</label>
-                                <label class="control-label">14jhwang@stu.edu.cn</label>
+                                <input type="text" name="email" class="form-control" readonly="readonly" value={{ email}}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">拟申请宿舍:</label>
-                                <label class="control-label">弘毅 XYZ</label>
+                               <input type="text" name="new_dor" class="form-control" readonly="readonly" value={{new_dor }}>
                             </div>
                         </div>
 
@@ -513,7 +511,7 @@
                             <div class="form-group">
                                 <label class="control-label">备注:</label>
                                 <p>
-                                    balabalabalabalabalabalabalabalabalabalabalabala
+                                    <input type="text" name="reason" class="form-control" readonly="readonly" value={{ reason }}>
                                 </p>
                             </div>
                         </div>
@@ -597,12 +595,13 @@
                 <h4 class="modal-title">处理退宿申请</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/dor/admin_handle/dormintory_handle/handle_cancel_dor_transcation/" method="post" id="checkout_dor">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <label class="control-label">2014101027</label>
+                                <input type="text" name="sno" value="">
                             </div>
                         </div>
 
@@ -673,9 +672,10 @@
                                 <label class="control-label">操作:</label>
                                 <select class="combobox">
                                     <option></option>
-                                    <option value="101">同意申请</option>
+                                    <option value="101" id="agree_checkout">同意申请</option>
                                     <option value="102">不同意申请</option>
                                 </select>
+                                <input type="hidden" id="selection" name="agree_or_not">
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -690,7 +690,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button class="btn btn-success">确定</button>
+                <button class="btn btn-success" onclick="agree_checkout_dor()">确定</button>
             </div>
         </div>
     </div>
@@ -706,13 +706,14 @@
                 <h4 class="modal-title">留校申请</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/dor/admin_handle/dormintory_handle/handle_live_on_vacation_transcation/" method="post" id="staying_on_vacation">
+                    {% csrf_token %}
                     <div class="row">
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <label class="control-label">2014101027</label>
+                                <input type="text" name="sno" value="">
                             </div>
                         </div>
 
@@ -799,9 +800,10 @@
                                 <label class="control-label">操作:</label>
                                 <select class="combobox">
                                     <option></option>
-                                    <option value="101">同意申请</option>
+                                    <option value="101" id="agree">同意申请</option>
                                     <option value="102">不同意申请</option>
                                 </select>
+                                <input type="hidden" id="selection" name="agree_or_not">
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -818,8 +820,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary">确认</button>
-                <button type="button" class="btn btn-primary">确认</button>
+                <button type="button" class="btn btn-primary" onclick="agree_staying()">确认</button>
             </div>
         </div>
     </div>
@@ -1215,12 +1216,41 @@
 <script>
     function agree_change_dor()
     {
-        alert("hello");
         var option=document.getElementById("agree_applyment");
         if(option.selected)
         {
             document.getElementById("change_dor").submit();
+
         }
+    }
+    function show_change_detail()
+    {
+        document.getElementById("handle_dor_change").submit();
+    }
+    function agree_checkout_dor()
+    {
+        var option=document.getElementById("agree_checkout");
+        if(option.selected) {
+
+            document.getElementById("selection").value = "同意申请";
+        }
+        else
+        {
+            document.getElementById("selection").value="不同意申请";
+        }
+        document.getElementById("checkout_dor").submit();
+    }
+    function agree_staying(){
+        var option=document.getElementById("agree");
+        if(option.selected) {
+
+            document.getElementById("selection").value = "同意申请";
+        }
+        else
+        {
+            document.getElementById("selection").value="不同意申请";
+        }
+        document.getElementById("staying_on_vacation").submit();
     }
 </script>
 

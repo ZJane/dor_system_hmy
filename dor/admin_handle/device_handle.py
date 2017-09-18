@@ -1,11 +1,11 @@
-def show_device_applyments(request):
+def ad_show_device_applyments(request):
     pass
 
-def commit_return_device(request):
+def ad_commit_return_device(request):
     pass
 
-def show_key_applyments(request):
+def ad_show_key_applyments(request):
     pass
 
-def show_minitor_applyments(request):
+def ad_show_minitor_applyments(request):
     pass

@@ -1,5 +1,5 @@
-def show_key_applyments(request):
+def stu_show_key_applyments(request):
     pass
 
-def show_minitor_applyments(request):
+def stu_show_minitor_applyments(request):
     pass

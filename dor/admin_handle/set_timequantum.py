@@ -1,2 +1,2 @@
-def set_timeable(request):
+def ad_set_timeable(request):
     pass

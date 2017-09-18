@@ -470,11 +470,10 @@ class StayingOnVacationApplyment(models.Model):
     dor_no = models.CharField(max_length=10, blank=True, null=True)
     start_time = models.DateField(blank=True, null=True)
     end_time = models.DateField(blank=True, null=True)
-    check_cancel_apply = models.IntegerField(blank=True, null=True)
-    check_apply_success = models.IntegerField(blank=True, null=True)
     ad_no = models.CharField(max_length=10, blank=True, null=True)
     reason = models.CharField(max_length=100, blank=True, null=True)
     apply_time = models.DateTimeField(blank=True, null=True)
+    apply_status = models.CharField(max_length=25, blank=True, null=True)
 
     class Meta:
         managed = False

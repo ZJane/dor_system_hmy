@@ -1,5 +1,5 @@
-def new_book(request):
+def ad_new_book(request):
     pass
 
-def show_books_info(request):
+def ad_show_books_info(request):
     pass

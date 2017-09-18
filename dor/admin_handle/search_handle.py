@@ -1,6 +1,6 @@
-def search_stu(request):
+def ad_search_stu(request):
     pass
-def sort_stu_info(request):
+def ad_sort_stu_info(request):
     pass
-def show_room_info(request):
+def ad_show_room_info(request):
     pass

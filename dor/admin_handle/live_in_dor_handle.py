@@ -1,4 +1,4 @@
-def add_stu_dor_info(request):
+def ad_add_stu_dor_info(request):
     pass
-def distribute_dor(request):
+def ad_distribute_dor(request):
     pass

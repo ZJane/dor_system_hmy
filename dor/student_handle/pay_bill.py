@@ -1,4 +1,4 @@
-def show_bill(request):
+def stu_show_bill(request):
     pass
-def pay_bill(request):
+def stu_pay_bill(request):
     pass

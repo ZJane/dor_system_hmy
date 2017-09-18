@@ -1,15 +1,15 @@
 from django.shortcuts import render
 
-def show_activity_applyments(request):
+def ad_show_activity_applyments(request):
     pass
 
-def handle_activity_applyments(request):
+def ad_handle_activity_applyments(request):
     pass
 
-def show_activity_info(request):
+def ad_show_activity_info(request):
     pass
 
-def new_activity(request):
+def ad_new_activity(request):
     pass
 
 def handle(request):

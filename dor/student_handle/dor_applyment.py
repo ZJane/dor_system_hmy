@@ -3,10 +3,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from dor.models import DorChange,DorCheckOut,StudentStayingRecord,StayingOnVacationApplyment
 
-def show_change_dor_applyments(request):
+def stu_show_change_dor_applyments(request):
     pass
 
-def change_dor_applyment(request):
+def stu_change_dor_applyment(request):
     if request.method=='POST':
         sno=request.POST.get('sno',None)
         sname=request.POST.get('sname',None)
@@ -20,10 +20,10 @@ def change_dor_applyment(request):
         test.save()
 
     return HttpResponse('<p>change success</p>')
-def show_cancel_dor_applyments(request):
+def stu_show_cancel_dor_applyments(request):
     pass
 
-def cancel_dor_applyment(request):
+def stu_cancel_dor_applyment(request):
     if request.method=='POST':
         sno=request.POST.get('sno',None)
         sname=request.POST.get('sname',None)
@@ -35,10 +35,10 @@ def cancel_dor_applyment(request):
         test.save()
     return HttpResponse('<p>cancel success</p>')
 
-def show_live_on_vacation_applyments(request):
+def stu_show_live_on_vacation_applyments(request):
     pass
 
-def live_on_vacation_applyment(request):
+def stu_live_on_vacation_applyment(request):
     if request.method=='POST':
         sno=request.POST.get('sno',None)
         sname=request.POST.get('sname',None)

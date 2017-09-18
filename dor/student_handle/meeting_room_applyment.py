@@ -1,5 +1,5 @@
-def meeting_room_applyment(request):
+def stu_meeting_room_applyment(request):
     pass
 
-def show_meeting_info(request):
+def stu_show_meeting_info(request):
     pass

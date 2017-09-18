@@ -1,8 +1,8 @@
-def device_repair_applyment(request):
+def stu_device_repair_applyment(request):
     pass
 
-def show_device_repair_applyments(request):
+def stu_show_device_repair_applyments(request):
     pass
 
-def cancel_device_repair_applyment(request):
+def stu_cancel_device_repair_applyment(request):
     pass
