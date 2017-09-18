@@ -104,6 +104,7 @@
 
                 <div class="tab-content" style="margin-top: 10px">
                     <!--现在进行中 panel-->
+
                     <div class="tab-pane in active" id="activities">
                         <div class="table-responsive">
                             <table class="table table-striped">
@@ -118,32 +119,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {% for i in activity %}
                                 <tr>
-                                    <td>100001</td>
-                                    <td>社区十大歌手</td>
-                                    <td>知行书院学生会</td>
-                                    <td>2017-10-01 20:00 - 22:00</td>
-                                    <td>2017-09-25 23:59</td>
+                                    <td>{{ i.activity_no }}</td>
+                                    <td>{{ i.activity_name }}</td>
+                                    <td>{{ i.host_no }}</td>
+                                    <td>{{ i.activity_time }}</td>
+                                    <td>{{ i.last_apply_time }}</td>
                                     <td>
-                                        <button class="btn btn-success btn-xs" data-toggle="modal"
+                                        <button  class="btn btn-success btn-xs" data-toggle="modal"
                                                 data-target="#func_activity">
                                             申请
                                         </button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>100002</td>
-                                    <td>厨艺-寿司</td>
-                                    <td>G座导生</td>
-                                    <td>2017-10-22 20:00 - 22:00 </td>
-                                    <td>2017-10-20 23:59</td>
-                                    <td>
-                                        <button class="btn btn-success btn-xs" data-toggle="modal"
-                                                data-target="#func_activity">
-                                            申请
-                                        </button>
-                                    </td>
-                                </tr>
+                                {% endfor %}
+
                                 </tbody>
                             </table>
 
@@ -168,6 +159,7 @@
                             </div>
                         </div>
                     </div>
+
                     <!--申请记录 panel-->
                     <div class="tab-pane" id="activityLog">
                         <div class="table-responsive">
@@ -299,14 +291,14 @@
                     <h4 class="modal-title">申请活动</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
-
+                         <form action="/dor/student_handle/activity_applyment/activity_applyment/" id="apply_activity" method="post">
+                {% csrf_token %}
                         <div class="row">
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">学号:</label>
-                                    <label class="control-label">2014101027</label>
+                                    <input type="text" name="sno" value="">
                                 </div>
                             </div>
 
@@ -341,14 +333,14 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">申请时间:</label>
-                                    <input type="text" class="form-control" readonly="readonly" value="2017年21年99日 -1时">
+                                    <input type="text" name="apply_time" class="form-control" readonly="readonly" value="2017-2-12 12:00">
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">联系电话:</label>
-                                    <input type="text" class="form-control">
+                                    <input type="text" name="phone" class="form-control">
                                 </div>
                             </div>
 
@@ -363,9 +355,6 @@
                     <hr/>
                     <form>
                         <div class="row">
-
-
-
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">活动名称:</label>
@@ -419,7 +408,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">确认申请</button>
+                    <button type="button" class="btn btn-primary" onclick="apply_activity()">确认申请</button>
                 </div>
             </div>
         </div>
@@ -475,5 +464,11 @@
 <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'bootstrap/js/holder.min.js' %}"></script>
 </body>
+<script>
+    function apply_activity() {
+
+        document.getElementById("apply_activity").submit();
+    }
+</script>
 
 </html>

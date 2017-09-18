@@ -305,12 +305,13 @@
                 <h4 class="modal-title">活动申请处理</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="dor/admin_handle/activity_handle/handle_activity_applyments" method="post" id="activity_handle">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <label class="control-label">2014101027</label>
+                                <input type="text" name="sno" value="">
                             </div>
                         </div>
 
@@ -381,18 +382,19 @@
                             </div>
                         </div>
                     </div>
-                </form>
+
                 <hr/>
-                <form>
+
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">操作:</label>
                                 <select class="combobox">
                                     <option></option>
-                                    <option value="0">同意申请</option>
+                                    <option value="0" id="agree_or_not">同意申请</option>
                                     <option value="1">不同意申请</option>
                                 </select>
+                                <input type="hidden" id="agree" name="agree" value="">
                             </div>
                         </div>
 
@@ -407,7 +409,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button class="btn btn-success">确定</button>
+                <button class="btn btn-success" onclick="handle_apply()">确定</button>
             </div>
         </div>
     </div>
@@ -528,53 +530,54 @@
                 <h4 class="modal-title">社区活动</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/dor/admin_handle/activity_handle/new_activity/" id="new_activity" method="post">
+                    {% csrf_token %}
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">活动编号:</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="activity_no" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">活动名称:</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="activity_name" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">活动举办方:</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="host_no" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">活动举办时间:</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="activity_time" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">限制人数:</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="activity_max_participate" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">申请截止时间:</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="last_apply_time" class="form-control">
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label class="control-label">活动描述:</label>
-                                <textarea class="form-control"></textarea>
+                                <textarea class="form-control" name="activity_description"></textarea>
                             </div>
                         </div>
                     </div>
@@ -582,7 +585,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-success">确定</button>
+                <button type="button" class="btn btn-success" onclick="new_activity()">确定</button>
             </div>
         </div>
     </div>
@@ -599,19 +602,19 @@
                 <h4 class="modal-title">社区活动</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/dor/admin_handle/activity_handle/new_activity/" id="new_activity" method="post">
                     <div class="row">
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">活动编号:</label>
-                                <label class="control-label">1000002</label>
+                                <input type="text" name="activity_no">
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">活动名称:</label>
-                                <label class="control-label">社区十大歌手</label>
+                                <input type="text" name="activity_no">
                             </div>
                         </div>
 
@@ -653,7 +656,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-success">确定</button>
+                <button type="button" class="btn btn-success" onclick="">确定</button>
             </div>
         </div>
     </div>
@@ -682,24 +685,26 @@
     </div>
 </div>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-<script>
-    window.jQuery || document.write('<script src="../js/vendor/jquery.min.js"><\/script>')
+<script type="text/javascript" src="{% static 'bootstrap/js/jquery-2.2.1.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'bootstrap/js/holder.min.js' %}"></script>
 
-</script>
-<script src="../js/bootstrap.min.js"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="../js/holder.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../js/ie10-viewport-bug-workaround.js"></script>
-<script src="../js/ie10-viewport-bug-workaround.js"></script>
-     <script type="text/javascript" src="{% static 'bootstrap/js/jquery-2.2.1.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
 
 </body>
-
+<script>
+    function new_activity(){
+        document.getElementById("new_activity").submit();
+    }
+    function handle_apply(){
+        var option=document.getElementById("agree_or_not");
+        if(option.selected)
+        {
+            document.getElementById("agree").value="同意申请";
+        }
+        else{
+            document.getElementById("agree").value="不同意申请";
+        }
+        document.getElementById("activity_handle").submit();
+    }
+</script>
 </html>

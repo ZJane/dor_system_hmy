@@ -8,3 +8,13 @@ class StuDorLogModel():
           self.email=self.apply_status=''
           self.ad_name=''
           self.apply_time=self.start_time=self.end_time='1990-01-01 00:00'
+
+
+class PayLogModel():
+    def __init__(self):
+        self.cost_no=0
+        self.dor_no=''
+        self.item=''
+        self.fee=0
+        self.time=''
+        self.status=''

@@ -2,29 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd112b26-201a-4ead-a468-aeed3c743747" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dor/student_handle/show_stu_all_index.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8.xml" afterPath="$PROJECT_DIR$/.idea/dataSources/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/DTO/StuDorLog.py" afterPath="$PROJECT_DIR$/dor/DTO/StuDorLog.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/activity_handle.py" afterPath="$PROJECT_DIR$/dor/admin_handle/activity_handle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/book_handle.py" afterPath="$PROJECT_DIR$/dor/admin_handle/book_handle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/device_handle.py" afterPath="$PROJECT_DIR$/dor/admin_handle/device_handle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/dormintory_handle.py" afterPath="$PROJECT_DIR$/dor/admin_handle/dormintory_handle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/live_in_dor_handle.py" afterPath="$PROJECT_DIR$/dor/admin_handle/live_in_dor_handle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/meeting_room_handle.py" afterPath="$PROJECT_DIR$/dor/admin_handle/meeting_room_handle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/repair_handle.py" afterPath="$PROJECT_DIR$/dor/admin_handle/repair_handle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/search_handle.py" afterPath="$PROJECT_DIR$/dor/admin_handle/search_handle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/set_timequantum.py" afterPath="$PROJECT_DIR$/dor/admin_handle/set_timequantum.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/show_index.py" afterPath="$PROJECT_DIR$/dor/admin_handle/show_index.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/models.py" afterPath="$PROJECT_DIR$/dor/models.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/student_handle/activity_applyment.py" afterPath="$PROJECT_DIR$/dor/student_handle/activity_applyment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/student_handle/book_applyment.py" afterPath="$PROJECT_DIR$/dor/student_handle/book_applyment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/student_handle/device_repair_applyment.py" afterPath="$PROJECT_DIR$/dor/student_handle/device_repair_applyment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/student_handle/dor_applyment.py" afterPath="$PROJECT_DIR$/dor/student_handle/dor_applyment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/student_handle/meeting_room_applyment.py" afterPath="$PROJECT_DIR$/dor/student_handle/meeting_room_applyment.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/student_handle/pay_bill.py" afterPath="$PROJECT_DIR$/dor/student_handle/pay_bill.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/student_handle/resource_applyment.py" afterPath="$PROJECT_DIR$/dor/student_handle/resource_applyment.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/test.py" afterPath="$PROJECT_DIR$/dor/test.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/views.py" afterPath="$PROJECT_DIR$/dor/views.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor_system/urls.py" afterPath="$PROJECT_DIR$/dor_system/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/activity.html" afterPath="$PROJECT_DIR$/templates/admin/activity.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/index.html" afterPath="$PROJECT_DIR$/templates/admin/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/repair.html" afterPath="$PROJECT_DIR$/templates/admin/repair.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/student/activity.html" afterPath="$PROJECT_DIR$/templates/student/activity.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/student/index.html" afterPath="$PROJECT_DIR$/templates/student/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/student/payment.html" afterPath="$PROJECT_DIR$/templates/student/payment.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,7 +28,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/dor_system_demo1$test.coverage" NAME="test Coverage Results" MODIFIED="1505658426169" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dor" />
+    <SUITE FILE_PATH="coverage/dor_system_demo1$test.coverage" NAME="test Coverage Results" MODIFIED="1505724335455" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dor" />
     <SUITE FILE_PATH="coverage/dor_system_demo1$database_operation.coverage" NAME="database_operation Coverage Results" MODIFIED="1505373638414" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/dor" />
   </component>
   <component name="DatabaseView">
@@ -68,8 +62,22 @@
         <option name="myItemId" value="dormitory_manage_system_database" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
+    </PATH>
+    <PATH>
       <PATH_ELEMENT>
-        <option name="myItemId" value="student_staying_record" />
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="dormitory_manage_system_database@39.108.185.66" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="dormitory_manage_system_database" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="stu_pay_record" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
@@ -84,6 +92,10 @@
       </PATH_ELEMENT>
       <PATH_ELEMENT>
         <option name="myItemId" value="dormitory_manage_system_database" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="dor_cost_record" />
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
@@ -105,6 +117,24 @@
         <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
       </PATH_ELEMENT>
     </PATH>
+    <PATH>
+      <PATH_ELEMENT>
+        <option name="myItemId" />
+        <option name="myItemType" value="com.intellij.database.view.DatabaseStructure$Root" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="dormitory_manage_system_database@39.108.185.66" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="dormitory_manage_system_database" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+      <PATH_ELEMENT>
+        <option name="myItemId" value="actvity_applyment" />
+        <option name="myItemType" value="com.intellij.database.view.DbNodeDescriptor" />
+      </PATH_ELEMENT>
+    </PATH>
   </component>
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
@@ -115,43 +145,45 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dor_system/urls.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="32" column="56" lean-forward="false" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="dormintory_handle.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/dor/admin_handle/dormintory_handle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="67" column="32" lean-forward="false" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
+            <state relative-caret-position="408">
+              <caret line="92" column="11" lean-forward="false" selection-start-line="92" selection-start-column="11" selection-end-line="92" selection-end-column="70" />
               <folding>
-                <element signature="e#23#59#0" expanded="true" />
+                <element signature="e#644#676#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="console_13.sql" pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_13.sql">
+      <file leaf-file-name="activity_handle.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/dor/admin_handle/activity_handle.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="24">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="37" />
+            <state relative-caret-position="30">
+              <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/admin/activity.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="62">
+              <caret line="696" column="5" lean-forward="true" selection-start-line="696" selection-start-column="5" selection-end-line="696" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/templates/admin/index.html">
+      <file leaf-file-name="console_14.sql" pinned="false" current-in-tab="false">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_14.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="50" column="49" lean-forward="false" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="32" />
               <folding />
             </state>
           </provider>
@@ -168,29 +200,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>申请时间</find>
-      <find>申请调整</find>
-      <find>申请退宿</find>
-      <find>同意</find>
-      <find>201</find>
-      <find>submit_live_on_vacation</find>
-      <find>hidden</find>
-      <find>reason</find>
-      <find>r1</find>
-      <find>staying_reason</find>
-      <find>确认</find>
-      <find>取消</find>
-      <find>记录</find>
-      <find>stayingO</find>
-      <find>调宿处理</find>
-      <find>Sta</find>
-      <find>stayonvacation</find>
-      <find>log</find>
-      <find>调宿申请</find>
-      <find>查看及处理</find>
-      <find>dor_no</find>
-      <find>change_de</find>
-      <find>#changeDorm</find>
       <find>inp</find>
       <find>sno</find>
       <find>changeDorm</find>
@@ -198,6 +207,29 @@
       <find>stay</find>
       <find>selection</find>
       <find>留校申请</find>
+      <find>调宿</find>
+      <find>show</find>
+      <find>缴费</find>
+      <find>pay</find>
+      <find>确定</find>
+      <find>oncl</find>
+      <find>n</find>
+      <find>新建</find>
+      <find>new_Activity</find>
+      <find>活动编号</find>
+      <find>确认申请</find>
+      <find>申请时间</find>
+      <find>app</find>
+      <find>activity</find>
+      <find>action</find>
+      <find>活动申请</find>
+      <find>/dor/student_handle/activity_applyment/activity_applyment/</find>
+      <find>agree_or_not</find>
+      <find>agree</find>
+      <find>handle</find>
+      <find>admin_</find>
+      <find>2014101027</find>
+      <find>activity_handle</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -206,13 +238,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/5b49f710-76a4-49f7-b24d-02341eafba79/console_6.sql" />
-        <option value="$PROJECT_DIR$/dor/migrations/0009_auto_20170914_0815.py" />
-        <option value="$PROJECT_DIR$/dor/index.html" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/5b49f710-76a4-49f7-b24d-02341eafba79/console_7.sql" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/5b49f710-76a4-49f7-b24d-02341eafba79/console_8.sql" />
-        <option value="$PROJECT_DIR$/dor/return_models.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/5b49f710-76a4-49f7-b24d-02341eafba79/console_9.sql" />
         <option value="$PROJECT_DIR$/templates/index.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/5b49f710-76a4-49f7-b24d-02341eafba79/console_12.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/5b49f710-76a4-49f7-b24d-02341eafba79/console_13.sql" />
@@ -221,7 +246,6 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_2.sql" />
         <option value="dbtable:/f875e46d/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/dormitory_manage_system_database.student" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_3.sql" />
-        <option value="$PROJECT_DIR$/dor/DTO/StuDorLog.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_4.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_5.sql" />
         <option value="$PROJECT_DIR$/dor_system/settings.py" />
@@ -231,14 +255,11 @@
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_7.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_8.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_9.sql" />
-        <option value="$PROJECT_DIR$/templates/student/index.html" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_10.sql" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_11.sql" />
-        <option value="$PROJECT_DIR$/dor/test.py" />
         <option value="$PROJECT_DIR$/dor/models.py" />
         <option value="$PROJECT_DIR$/dor/views.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_12.sql" />
-        <option value="$PROJECT_DIR$/dor/admin_handle/activity_handle.py" />
         <option value="$PROJECT_DIR$/dor/admin_handle/book_handle.py" />
         <option value="$PROJECT_DIR$/dor/admin_handle/device_handle.py" />
         <option value="$PROJECT_DIR$/dor/admin_handle/live_in_dor_handle.py" />
@@ -246,17 +267,28 @@
         <option value="$PROJECT_DIR$/dor/admin_handle/repair_handle.py" />
         <option value="$PROJECT_DIR$/dor/admin_handle/search_handle.py" />
         <option value="$PROJECT_DIR$/dor/admin_handle/set_timequantum.py" />
-        <option value="$PROJECT_DIR$/dor/student_handle/activity_applyment.py" />
         <option value="$PROJECT_DIR$/dor/student_handle/book_applyment.py" />
         <option value="$PROJECT_DIR$/dor/student_handle/device_repair_applyment.py" />
         <option value="$PROJECT_DIR$/dor/student_handle/dor_applyment.py" />
         <option value="$PROJECT_DIR$/dor/student_handle/meeting_room_applyment.py" />
-        <option value="$PROJECT_DIR$/dor/student_handle/pay_bill.py" />
         <option value="$PROJECT_DIR$/dor/student_handle/resource_applyment.py" />
         <option value="$PROJECT_DIR$/dor/admin_handle/dormintory_handle.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_13.sql" />
+        <option value="$PROJECT_DIR$/templates/admin/repair.html" />
+        <option value="$PROJECT_DIR$/dor/admin_handle/show_index.py" />
         <option value="$PROJECT_DIR$/templates/admin/index.html" />
+        <option value="$PROJECT_DIR$/dor/DTO/StuDorLog.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_13.sql" />
+        <option value="$PROJECT_DIR$/dor/test.py" />
+        <option value="$PROJECT_DIR$/dor/student_handle/pay_bill.py" />
+        <option value="$PROJECT_DIR$/templates/student/payment.html" />
+        <option value="$PROJECT_DIR$/templates/student/index.html" />
+        <option value="$PROJECT_DIR$/dor/student_handle/show_stu_all_index.py" />
+        <option value="$PROJECT_DIR$/dor/student_handle/activity_applyment.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_14.sql" />
+        <option value="$PROJECT_DIR$/templates/student/activity.html" />
         <option value="$PROJECT_DIR$/dor_system/urls.py" />
+        <option value="$PROJECT_DIR$/templates/admin/activity.html" />
+        <option value="$PROJECT_DIR$/dor/admin_handle/activity_handle.py" />
       </list>
     </option>
   </component>
@@ -287,6 +319,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -386,9 +419,72 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="DTO" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_handle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -749,7 +845,14 @@
       <option name="project" value="LOCAL" />
       <updated>1505489675530</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="2017-09-18 成功第一步两个model转换成list渲染到前端页面">
+      <created>1505702324283</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1505702324283</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TodoView">
@@ -767,23 +870,23 @@
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32744783" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30658105" sideWeight="0.5030257" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2776886" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3611557" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.030497592" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3258427" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.070626006" sideWeight="0.4969743" order="9" side_tool="false" content_ui="tabs" x="0" y="20" width="1366" height="718" />
-      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4398074" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19288956" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.16490166" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41573033" sideWeight="0.4969743" order="9" side_tool="false" content_ui="tabs" x="0" y="20" width="1366" height="718" />
+      <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.5987159" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.19894099" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.18456884" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905295" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.27996966" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39967898" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -826,7 +929,8 @@
     <MESSAGE value="渲染页面成功了一半，正在解决过滤的问题" />
     <MESSAGE value="2017-09-15 数据库更新" />
     <MESSAGE value="2017-09-15 成功第一步两个model转换成list渲染到前端页面" />
-    <option name="LAST_COMMIT_MESSAGE" value="2017-09-15 成功第一步两个model转换成list渲染到前端页面" />
+    <MESSAGE value="2017-09-18 成功第一步两个model转换成list渲染到前端页面" />
+    <option name="LAST_COMMIT_MESSAGE" value="2017-09-18 成功第一步两个model转换成list渲染到前端页面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -835,49 +939,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/mysql_pymysql/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/5b49f710-76a4-49f7-b24d-02341eafba79/console_12.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="93" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/5b49f710-76a4-49f7-b24d-02341eafba79/console_13.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="35" lean-forward="false" selection-start-line="0" selection-start-column="35" selection-end-line="0" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dor/modelsTest.py" />
-    <entry file="file://$USER_HOME$/AppData/Local/Programs/Python/Python35/Lib/site-packages/django/utils/autoreload.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="227" column="0" lean-forward="false" selection-start-line="227" selection-start-column="0" selection-end-line="227" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dor/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_1.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="25" lean-forward="true" selection-start-line="1" selection-start-column="25" selection-end-line="1" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -893,14 +954,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/f875e46d/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/dormitory_manage_system_database.student">
-      <provider editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -908,13 +969,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
           <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dor/DTO/StuDorLog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="9" selection-end-column="74" />
         </state>
       </provider>
     </entry>
@@ -968,14 +1022,14 @@
       </provider>
     </entry>
     <entry file="dbDummy://dbtable:/f875e46d/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/dormitory_manage_system_database.staying_on_vacation_applyment">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
         </state>
       </provider>
     </entry>
@@ -1016,27 +1070,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dor/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="1" selection-end-line="23" selection-end-column="43" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/templates/student/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5544">
-          <caret line="231" column="127" lean-forward="false" selection-start-line="231" selection-start-column="36" selection-end-line="231" selection-end-column="127" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_11.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="135" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1054,15 +1091,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dor/admin_handle/show_index.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1122,14 +1150,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dor/admin_handle/activity_handle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="336">
-          <caret line="14" column="4" lean-forward="false" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dor/student_handle/meeting_room_applyment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -1146,26 +1166,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dor/student_handle/pay_bill.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="2" column="8" lean-forward="false" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/dor/student_handle/dor_applyment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
           <caret line="40" column="8" lean-forward="false" selection-start-line="40" selection-start-column="8" selection-end-line="40" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/dor/student_handle/device_repair_applyment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
           <folding />
         </state>
       </provider>
@@ -1178,53 +1182,172 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dor/student_handle/activity_applyment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="4" column="8" lean-forward="false" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="198">
           <caret line="995" column="0" lean-forward="false" selection-start-line="995" selection-start-column="0" selection-end-line="995" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/extraStayTime.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/repair.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="50" column="49" lean-forward="false" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dor/admin_handle/show_index.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="10" column="47" lean-forward="true" selection-start-line="10" selection-start-column="47" selection-end-line="10" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/student/payment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="114" column="21" lean-forward="false" selection-start-line="114" selection-start-column="21" selection-end-line="114" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dor/DTO/StuDorLog.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="19" column="21" lean-forward="false" selection-start-line="19" selection-start-column="21" selection-end-line="19" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dor/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="22" lean-forward="false" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dor/student_handle/pay_bill.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-120">
+          <caret line="9" column="46" lean-forward="false" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#35#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_13.sql">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="24">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="37" />
+        <state relative-caret-position="96">
+          <caret line="4" column="13" lean-forward="true" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="50" column="49" lean-forward="false" selection-start-line="50" selection-start-column="49" selection-end-line="50" selection-end-column="49" />
+        <state relative-caret-position="-1349">
+          <caret line="1214" column="0" lean-forward="true" selection-start-line="1211" selection-start-column="0" selection-end-line="1214" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dor/student_handle/device_repair_applyment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dor/student_handle/show_stu_all_index.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="66" lean-forward="false" selection-start-line="5" selection-start-column="66" selection-end-line="5" selection-end-column="66" />
+          <folding>
+            <element signature="e#0#35#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/student/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="73" column="34" lean-forward="false" selection-start-line="73" selection-start-column="34" selection-end-line="73" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/student/activity.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="294" column="32" lean-forward="false" selection-start-line="294" selection-start-column="32" selection-end-line="294" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dor/student_handle/activity_applyment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="144">
+          <caret line="6" column="45" lean-forward="true" selection-start-line="6" selection-start-column="45" selection-end-line="6" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#36#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dor/admin_handle/dormintory_handle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="609">
+        <state relative-caret-position="749">
           <caret line="67" column="32" lean-forward="false" selection-start-line="67" selection-start-column="32" selection-end-line="67" selection-end-column="32" />
-          <folding>
-            <element signature="e#23#59#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dor_system/urls.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="32" column="56" lean-forward="false" selection-start-line="32" selection-start-column="56" selection-end-line="32" selection-end-column="56" />
+        <state relative-caret-position="408">
+          <caret line="92" column="11" lean-forward="false" selection-start-line="92" selection-start-column="11" selection-end-line="92" selection-end-column="70" />
+          <folding>
+            <element signature="e#644#676#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_14.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="32" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/activity.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="62">
+          <caret line="696" column="5" lean-forward="true" selection-start-line="696" selection-start-column="5" selection-end-line="696" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dor/admin_handle/activity_handle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="16" column="17" lean-forward="true" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

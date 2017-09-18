@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from templates import admin
+from dor.admin_handle.show_index import show_activity_index,show_book_index,show_checkin_index,show_meeting_room_index,show_repair_index,show_resource_index,show_search_index,show_set_time_index
 from dor.views import show_admin_index,show_student_index,show_index
 from dor.admin_handle.dormintory_handle import ad_handle_cancel_dor_transcation,ad_handle_change_dor_transcation,ad_handle_live_on_vacation_transcation,ad_show_cancel_dor_applyments,ad_show_change_dor_applyments,ad_show_live_on_vacation_applyments
 from dor.admin_handle.repair_handle import  ad_show_repair_device_applyments,ad_handle_repair_device_applyment
@@ -33,10 +33,22 @@ from dor.student_handle.activity_applyment import  stu_activity_applyment, stu_s
 from dor.student_handle.book_applyment import  stu_book_applyment, stu_my_borrowed_books, stu_my_shared_books, stu_show_book_info, stu_search_book
 from dor.student_handle.meeting_room_applyment import  stu_meeting_room_applyment, stu_show_meeting_info
 from dor.student_handle.device_repair_applyment import  stu_device_repair_applyment, stu_cancel_device_repair_applyment, stu_show_device_repair_applyments
+from dor.student_handle.show_stu_all_index import show_stu_activity
 urlpatterns = [
     url(r'^index/',show_index),
     url(r'^admin/',admin.site.urls),
     url(r'^show_admin_index',show_admin_index),
+    url(r'^show_admin_set_time_index',show_set_time_index),
+    url(r'^show_admin_activity_index',show_activity_index),
+    url(r'^show_admin_resource_index',show_resource_index),
+    url(r'^show_admin_repair_index',show_repair_index),
+    url(r'^show_admin_book_index',show_book_index),
+    url(r'^show_admin_meeting_index',show_meeting_room_index),
+    url(r'^show_admin_checkin_index',show_checkin_index),
+    url(r'^show_admin_search_index',show_search_index),
+
+    url(r'^show_stu_search_index',show_stu_activity),
+
     url(r'^show_student_index',show_student_index),
     url(r'^dor/student_handle/dor_applyment/show_change_dor_applyments',stu_show_change_dor_applyments),
     url(r'^dor/student_handle/dor_applyment/change_dor_applyment',stu_change_dor_applyment),

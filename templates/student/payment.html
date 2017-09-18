@@ -92,7 +92,7 @@
                         <a href="#pay_record" aria-controls="pay_record" role="tab" data-toggle="tab">缴费记录</a>
                     </li>
                 </ul>
-
+<form  action="/dor/student_handle/pay_bill/pay_bill/">
                 <div class="tab-content" style="margin-top: 10px">
 
                     <div role="tabpanel" class="tab-pane active" id="record">
@@ -110,28 +110,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                {% for i in paylog %}
                                     <tr>
-                                        <td>#123123123</td>
-                                        <td>东莞 422D</td>
-                                        <td>空调</td>
-                                        <td>三蚊鸡</td>
-                                        <td>2017年4月11日-5月41日3分</td>
-                                        <td><span class="label label-danger">未缴费</span></td>
+                                        <td>{{ i.cost_no }}</td>
+                                        <td>{{ i.dor_no }}</td>
+                                        <td>{{ i.item }}</td>
+                                        <td>{{ i.fee }}</td>
+                                        <td>{{ i.time }}</td>
+                                        <td><span class="label label-danger">{{ i.status }}</span></td>
                                         <td>
-                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#pay">缴费</button>
+                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" onclick="payment()" data-target="#pay">缴费</button>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>#123123123</td>
-                                        <td>弘毅 411C</td>
-                                        <td>空调</td>
-                                        <td>五百万</td>
-                                        <td>2017年4月11日-5月41日3分</td>
-                                        <td><span class="label label-success">已缴费</span></td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#pay">缴费</button>
-                                        </td>
-                                    </tr>
+                                {% endfor %}
+                                </form>
                                 </tbody>
                             </table>
 
@@ -233,5 +226,10 @@
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
 
 </body>
+<script>
+    function payment()
+    {
 
+    }
+</script>
 </html>

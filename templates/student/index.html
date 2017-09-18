@@ -47,6 +47,10 @@
 			</div>
 		</div>
 	</nav>
+    <form action="/dor/student_handle/pay_bill/show_bill/" id="pay">
+    </form>
+    <form action="/show_stu_search_index/" id="activity">
+    </form>
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 col-xs-3 sidebar" id="side">
@@ -57,8 +61,8 @@
 					<li>
 						<a href="repair.html">宿舍设施报修申请</a>
 					</li>
-					<li>
-						<a href="payment.html">生活缴费</a>
+					<li onclick="pay()">
+						<a href="#">生活缴费</a>
 					</li>
 					<li>
 						<a href="resource.html">宿舍资源申请</a>
@@ -66,8 +70,8 @@
 					<li>
 						<a href="meeting.html">研讨室申请</a>
 					</li>
-					<li>
-						<a href="activity.html">社区活动申请</a>
+					<li onclick="apply_activity()">
+						<a href="#">社区活动申请</a>
 					</li>
 					<li>
 						<a href="book.html">共享书屋<span class="sr-only">(current)</span></a>
@@ -901,6 +905,15 @@
     {
 
         document.getElementById("change_dor_detail").submit();
+    }
+    function pay()
+    {
+       document.getElementById("pay").submit();
+    }
+
+     function apply_activity()
+    {
+       document.getElementById("activity").submit();
     }
 </script>
 </html>

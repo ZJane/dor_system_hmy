@@ -37,10 +37,9 @@ class ActivityHost(models.Model):
 class ActvityApplyment(models.Model):
     actvity_no = models.CharField(max_length=10, blank=True, null=True)
     sno = models.IntegerField(blank=True, null=True)
-    check_cancel_apply = models.IntegerField(blank=True, null=True)
-    check_apply_success = models.IntegerField(blank=True, null=True)
     apply_time = models.DateTimeField(blank=True, null=True)
     ad_no = models.CharField(max_length=10, blank=True, null=True)
+    apply_status = models.CharField(max_length=15, blank=True, null=True)
 
     class Meta:
         managed = False
