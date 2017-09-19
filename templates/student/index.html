@@ -130,7 +130,7 @@
 									<td>{{ i.ad_name }}</td>
 									<td><span class="label label-danger">{{ i.apply_status }}</span></td>
 									<td>
-										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_change" >查看</button>
+										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_change{{ i.sno }}{{ i.old_room_no }}" >查看</button>
 {#										<button type="button" class="btn btn-danger btn-xs" >取消</button>#}
 									</td>
 								</tr>
@@ -163,7 +163,7 @@
 									<td>{{m.ad_name }}</td>
 									<td><span class="label label-danger">{{ m.apply_status }}</span></td>
 									<td>
-										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_stay">查看</button>
+										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_stay{{ m.id}}">查看</button>
 {#										<button type="button" class="btn btn-danger btn-xs">取消</button>#}
 									</td>
 								</tr>
@@ -196,7 +196,7 @@
 									<td>{{ i.ad_name }}</td>
 									<td><span class="label label-danger">{{ i.apply_status }}</span></td>
 									<td>
-										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_exit">查看</button>
+										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_exit{{i.sno }}{{ i.new_room_no }}">查看</button>
 {#										<button type="button" class="btn btn-danger btn-xs">取消</button>#}
 									</td>
 								</tr>
@@ -515,8 +515,8 @@
 	</div>
 	<!-- modal - 留校申请 -->
 
-
-	<div class="modal fade" id="check_change" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    {% for i in DorChange %}
+	<div class="modal fade" id="check_change{{ i.sno }}{{ i.old_room_no }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document" style="width:auto; max-width:1000px">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -524,7 +524,6 @@
 					<h4 class="modal-title">申请调整</h4>
 				</div>
 				<div class="modal-body">
-                        {% for i in DorChange %}
 						<div class="row">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
@@ -604,7 +603,6 @@
 							</div>
 
 						</div>
-{% endfor %}
 
 				</div>
 
@@ -615,9 +613,11 @@
 			</div>
 		</div>
 	</div>
-	<!-- modal - 查看调整 -->
+ {% endfor %}
 
-	<div class="modal fade" id="check_exit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+	<!-- modal - 查看调整 -->
+{%  for i in DorCancel %}
+	<div class="modal fade" id="check_exit{{ i.sno }}{{ i.new_room_no }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document" style="width:auto; max-width:1000px">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -626,7 +626,7 @@
 				</div>
 				<div class="modal-body">
 					<form>
-                        {%  for i in DorCancel %}
+
 						<div class="row">
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
@@ -705,7 +705,7 @@
 								</div>
 							</div>
 						</div>
-                    {% endfor %}
+
 					</form>
 				</div>
 
@@ -716,9 +716,10 @@
 			</div>
 		</div>
 	</div>
+    {% endfor %}
 	<!-- modal - 查看退宿 -->
-
-	<div class="modal fade" id="check_stay" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+{% for i in LiveOnVacation %}
+	<div class="modal fade" id="check_stay{{ i.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
 		<div class="modal-dialog" role="document" style="width:auto; max-width:1000px">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -727,7 +728,7 @@
 				</div>
 				<div class="modal-body">
 					<form>
-                        {% for i in LiveOnVacation %}
+
 						<div class="row">
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
@@ -820,7 +821,7 @@
 								</div>
 							</div>
 						</div>
-{% endfor %}
+
 					</form>
 				</div>
 
@@ -831,6 +832,7 @@
 			</div>
 		</div>
 	</div>
+    {% endfor %}
 	<!-- modal - 查看留校 -->
 
 

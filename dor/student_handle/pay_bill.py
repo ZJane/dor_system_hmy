@@ -20,4 +20,6 @@ def stu_show_bill(request):
 
 
 def stu_pay_bill(request):
-    pass
+    if request.method=='POST':
+        status=request.POST.get('cost_no',None)
+    return render(request,"student/payment.html")

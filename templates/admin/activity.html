@@ -108,20 +108,7 @@
                                 <td>2014XXXXXX</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#adminDealtActi">
-                                        查看及处理
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>2017-10-01 08:00:00</td>
-                                <td>十大歌手</td>
-                                <td>王俊皓</td>
-                                <td>2014XXXXXX</td>
-                                <td>
-                                    <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#adminDealtActi">
+                                            data-target="#adminDealtActi{{ i.id }}">
                                         查看及处理
                                     </button>
                                 </td>
@@ -296,7 +283,7 @@
 </div>
 
 <!--待办事项modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="adminDealtActi" data-backdrop="static">
+<div class="modal fade" tabindex="-1" role="dialog" id="adminDealtActi{{ i.id }}" data-backdrop="static">
     <div class="modal-dialog" style="width:auto; max-width:1000px">
         <div class="modal-content">
             <div class="modal-header">

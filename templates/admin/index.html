@@ -132,7 +132,7 @@
                                 <td>{{ i.apply_time }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#changeDorm" onclick="show_change_detail()">
+                                            data-target="#changeDorm{{ i.sno }}{{ i.old_room_no }}" onclick="show_change_detail()">
                                         查看及处理
                                     </button>
                                 </td>
@@ -186,7 +186,7 @@
                                 <td>{{ i.apply_time }}</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#stay">
+                                            data-target="#stay{{ i.id }}">
                                         查看及处理
                                     </button>
                                 </td>
@@ -238,7 +238,7 @@
                                 <td>{{ i.room_no }}</td>
                                 <td>{{ i.apply_time }}</td>
                                 <td>
-                                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#checkOut">
+                                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#checkOut{{ i.sno }}{{ i.room_no }}">
                                         查看及处理
                                     </button>
                                 </td>
@@ -296,7 +296,7 @@
                                     <label class="label label-success">{{ i.app_status }}</label>
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#changeLog">
+                                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#changeLog{{ i.sno }}{{ i.old_room_no }}">
                                         查看
                                     </button>
                                 </td>
@@ -352,7 +352,7 @@
                                     <label class="label label-success">{{ i.apply_status }}</label>
                                 </td>
                                 <td>
-                                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#stayLog">
+                                    <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#stayLog{{ i.id }}">
                                         查看
                                     </button>
                                 </td>
@@ -409,7 +409,7 @@
                                 </td>
                                 <td>
                                     <button class="btn btn-primary btn-xs" data-toggle="modal"
-                                            data-target="#checkOutLog">
+                                            data-target="#checkOutLog{{ i.sno }}{{ i.room_no }}">
                                         查看
                                     </button>
                                 </td>
@@ -447,9 +447,9 @@
     </div>
 
 </div>
-
+{% for i in  dor_change %}
 <!--调宿处理modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="changeDorm" data-backdrop="static">
+<div class="modal fade" tabindex="-1" role="dialog" id="changeDorm{{ i.sno }}{{ i.old_room_no }}" data-backdrop="static">
     <div class="modal-dialog" style="width:auto; max-width:1000px">
         <div class="modal-content">
             <div class="modal-header">
@@ -463,42 +463,42 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <input type="text" name="sno" class="form-control" readonly="readonly" value={{sno}}>
+                                <input type="text" name="sno" class="form-control" readonly="readonly" value={{i.sno}}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">姓名:</label>
-                                <input type="text" name="sname" class="form-control" readonly="readonly" value={{ sname }}>
+                                <input type="text" name="sname" class="form-control" readonly="readonly" value={{ i.sname }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">申请时间:</label>
-                                <input type="text" name="apply_time" class="form-control" readonly="readonly" value={{apply_time }}>
+                                <input type="text" name="apply_time" class="form-control" readonly="readonly" value={{i.apply_time }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学院:</label>
-                                <input type="text" name="college" class="form-control" readonly="readonly" value={{ college }}>
+                                <input type="text" name="college" class="form-control" readonly="readonly" value={{ i.college }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">专业:</label>
-                                <input type="text" name="major" class="form-control" readonly="readonly" value={{ major }}>
+                                <input type="text" name="major" class="form-control" readonly="readonly" value={{ i.major }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">宿舍:</label>
-                                <input type="text" name="room_no" class="form-control" readonly="readonly" value={{ room_no }}>
+                                <input type="text" name="room_no" class="form-control" readonly="readonly" value={{ i.old_room_no }}>
                             </div>
                         </div>
 
@@ -506,21 +506,21 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">联系电话:</label>
-                                <input type="text" name="stu_phone" class="form-control" readonly="readonly" value={{ stu_phone }}>
+                                <input type="text" name="stu_phone" class="form-control" readonly="readonly" value={{ i.stu_phone }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">邮箱:</label>
-                                <input type="text" name="email" class="form-control" readonly="readonly" value={{ email}}>
+                                <input type="text" name="email" class="form-control" readonly="readonly" value={{ i.email }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">拟申请宿舍:</label>
-                               <input type="text" name="new_dor" class="form-control" readonly="readonly" value={{new_dor }}>
+                               <input type="text" name="new_dor" class="form-control" readonly="readonly" value={{ i.new_room_no }}>
                             </div>
                         </div>
 
@@ -528,7 +528,7 @@
                             <div class="form-group">
                                 <label class="control-label">备注:</label>
                                 <p>
-                                    <input type="text" name="reason" class="form-control" readonly="readonly" value={{ reason }}>
+                                    <input type="text" name="reason" class="form-control" readonly="readonly" value={{ i.reason }}>
                                 </p>
                             </div>
                         </div>
@@ -601,9 +601,11 @@
         </div>
     </div>
 </div>
+{% endfor %}
 
 <!--退宿处理modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="checkOut" data-backdrop="static">
+{% for i in dor_checkout%}
+<div class="modal fade" tabindex="-1" role="dialog" id="checkOut{{ i.sno }}{{ i.room_no }}" data-backdrop="static">
     <div class="modal-dialog" style="width:auto; max-width:1000px">
         <div class="modal-content">
             <div class="modal-header">
@@ -618,21 +620,21 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <input type="text" name="sno" value="">
+                                <input type="text" name="sno" value={{ i.sno }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">姓名:</label>
-                                <label class="control-label">王俊皓</label>
+                                <label class="control-label">{{ i.sname }}</label>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">申请时间:</label>
-                                <label class="control-label">2017年21年99日 -1时</label>
+                                <label class="control-label">{{ i.apply_time }}</label>
                             </div>
                         </div>
 
@@ -653,7 +655,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">宿舍:</label>
-                                <label class="control-label">弘毅 ABC</label>
+                                <label class="control-label">{{ i.room_no }}</label>
                             </div>
                         </div>
 
@@ -676,7 +678,7 @@
                             <div class="form-group">
                                 <label class="control-label">备注:</label>
                                 <p>
-                                    balabalabalabalabalabalabalabalabalabalabalabala
+                                    {{ i.reason }}
                                 </p>
                             </div>
                         </div>
@@ -712,9 +714,11 @@
         </div>
     </div>
 </div>
+{% endfor %}
 
 <!--留校处理modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="stay" data-backdrop="static">
+{% for i in stayonvacation %}
+<div class="modal fade" tabindex="-1" role="dialog" id="stay{{ i.id }}" data-backdrop="static">
     <div class="modal-dialog" role="document" style="width:auto; max-width:1000px">
         <div class="modal-content">
             <div class="modal-header">
@@ -730,7 +734,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <input type="text" name="sno" value="">
+                                <input type="text" name="sno" value={{ i.sno }}>
                             </div>
                         </div>
 
@@ -765,7 +769,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">申请时间:</label>
-                                <label class="control-label">2017-05-02 17:33:34</label>
+                                <label class="control-label">{{ i.apply_time }}</label>
                             </div>
                         </div>
 
@@ -795,9 +799,8 @@
                             <div class="form-group">
                                 <label class="control-label">留校时间:</label>
                                 <div class="checkbox">
-                                    <label>2017-07-04 至 2017-07-28 (暑假)</label>
+                                    <label>{{ i.start_time }}-{{ i.end_time }}</label>
                                     <br>
-                                    <label>2017-07-29 至 2017-08-23 (暑假)</label>
                                 </div>
                             </div>
                         </div>
@@ -805,7 +808,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label class="control-label">备注:</label>
-                                <p>这是学生的申请备注这是学生的申请备注这是学生的申请备注这是学生的申请备注这是学生的申请备注这是学生的申请备注</p>
+                                <p>{{ i.reason }}</p>
                             </div>
                         </div>
 
@@ -842,9 +845,11 @@
         </div>
     </div>
 </div>
+{% endfor %}
 
 <!--调宿记录modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="changeLog" data-backdrop="static">
+{% for i in change_log %}
+<div class="modal fade" tabindex="-1" role="dialog" id="changeLog{{ i.sno }}{{ i.old_room_no }}" data-backdrop="static">
     <div class="modal-dialog" style="width:auto; max-width:1000px">
         <div class="modal-content">
             <div class="modal-header">
@@ -858,21 +863,21 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <label class="control-label">2014101027</label>
+                                <label class="control-label">{{ i.sno }}7</label>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">姓名:</label>
-                                <label class="control-label">王俊皓</label>
+                                <label class="control-label">{{ i.sname }}</label>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">申请时间:</label>
-                                <label class="control-label">2017年21年99日 -1时</label>
+                                <label class="control-label">{{ i.apply_time }}</label>
                             </div>
                         </div>
 
@@ -893,7 +898,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">宿舍:</label>
-                                <label class="control-label">弘毅 ABC</label>
+                                <label class="control-label">{{ i.old_room_no }}</label>
                             </div>
                         </div>
 
@@ -901,7 +906,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">联系电话:</label>
-                                <label class="control-label">12312345678</label>
+                                <label class="control-label">{{ i.stu_phone }}</label>
                             </div>
                         </div>
 
@@ -915,7 +920,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">拟申请宿舍:</label>
-                                <label class="control-label">弘毅 XYZ</label>
+                                <label class="control-label">{{ i.new_room_no }}</label>
                             </div>
                         </div>
 
@@ -923,7 +928,7 @@
                             <div class="form-group">
                                 <label class="control-label">备注:</label>
                                 <p>
-                                    balabalabalabalabalabalabalabalabalabalabalabala
+                                    {{ i.reason }}
                                 </p>
                             </div>
                         </div>
@@ -963,9 +968,11 @@
         </div>
     </div>
 </div>
+{% endfor %}
 
 <!--退宿记录modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="checkOutLog" data-backdrop="static">
+{% for i in checkout_log%}
+<div class="modal fade" tabindex="-1" role="dialog" id="checkOutLog{{ i.sno }}{{ i.room_no }}" data-backdrop="static">
     <div class="modal-dialog" style="width:auto; max-width:1000px">
         <div class="modal-content">
             <div class="modal-header">
@@ -979,21 +986,21 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <label class="control-label">2014101027</label>
+                                <label class="control-label">{{ i.sno }}</label>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">姓名:</label>
-                                <label class="control-label">王俊皓</label>
+                                <label class="control-label">{{ i.sname }}</label>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">申请时间:</label>
-                                <label class="control-label">2017年21年99日 -1时</label>
+                                <label class="control-label">{{ i.apply_time }}</label>
                             </div>
                         </div>
 
@@ -1014,7 +1021,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">原住宿舍:</label>
-                                <label class="control-label">弘毅 ABC</label>
+                                <label class="control-label">{{ i.room_no }}</label>
                             </div>
                         </div>
 
@@ -1022,7 +1029,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">联系电话:</label>
-                                <label class="control-label">12312345678</label>
+                                <label class="control-label">{{ i.stu_phone }}</label>
                             </div>
                         </div>
 
@@ -1037,7 +1044,7 @@
                             <div class="form-group">
                                 <label class="control-label">备注:</label>
                                 <p>
-                                    balabalabalabalabalabalabalabalabalabalabalabala
+                                    {{ i.reason }}
                                 </p>
                             </div>
                         </div>
@@ -1056,7 +1063,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label class="control-label">状态:</label>
-                                <label class="label label-danger">失败</label>
+                                <label class="label label-danger">{{ i.apply_status }}</label>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1077,9 +1084,11 @@
         </div>
     </div>
 </div>
+{% endfor %}
 
 <!--留校记录modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="stayLog" data-backdrop="static">
+{% for i in stayonvacation_log %}
+<div class="modal fade" tabindex="-1" role="dialog" id="stayLog{{ i.id }}" data-backdrop="static">
     <div class="modal-dialog" role="document" style="width:auto; max-width:1000px">
         <div class="modal-content">
             <div class="modal-header">
@@ -1094,14 +1103,14 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <label class="control-label">2014101027</label>
+                                <label class="control-label">{{ i.sno }}</label>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">姓名:</label>
-                                <label class="control-label">王俊皓</label>
+                                <label class="control-label">{{ i.sname }}</label>
                             </div>
                         </div>
 
@@ -1122,21 +1131,21 @@
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">现住宿舍:</label>
-                                <label class="control-label">弘毅 ABC</label>
+                                <label class="control-label">{{ i.room_no }}</label>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">申请时间:</label>
-                                <label class="control-label">2017-05-02 17:33:34</label>
+                                <label class="control-label">{{ i.apply_time }}</label>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">联系电话:</label>
-                                <label class="control-label">12312345678</label>
+                                <label class="control-label">123</label>
                             </div>
                         </div>
 
@@ -1150,7 +1159,7 @@
                         <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">留校原因:</label>
-                                <label class="control-label">学术研究和实验</label>
+                                <label class="control-label">{{ i.reason }}</label>
                             </div>
                         </div>
 
@@ -1159,9 +1168,8 @@
                             <div class="form-group">
                                 <label class="control-label">留校时间:</label>
                                 <div class="checkbox">
-                                    <label>2017-07-04 至 2017-07-28 (暑假)</label>
+                                    <label>{{ i.start_time }} 至 {{ i.end_time }}</label>
                                     <br>
-                                    <label>2017-07-29 至 2017-08-23 (暑假)</label>
                                 </div>
                             </div>
                         </div>
@@ -1172,14 +1180,14 @@
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">经办人:</label>
-                                <label class="control-label">李新老师</label>
+                                <label class="control-label">{{ i.ad_no }}</label>
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label class="control-label">状态:</label>
-                                <label class="label label-danger">失败</label>
+                                <label class="label label-danger">{{ i.apply_status }}</label>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
@@ -1198,11 +1206,11 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 <button type="button" class="btn btn-primary">确认</button>
-                <button type="button" class="btn btn-primary">确认</button>
             </div>
         </div>
     </div>
 </div>
+{% endfor %}
 
 <!--注销modal-->
 <div class="modal fade" tabindex="-1" role="dialog" id="logout" data-backdrop="static">

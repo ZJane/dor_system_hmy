@@ -1,5 +1,6 @@
 class StuDorLogModel():
       def __init__(self):
+          self.id=0
           self.sno=0
           self.sname=self.college=self.major=''
           self.old_dor_no=self.old_room_no=''
@@ -12,6 +13,7 @@ class StuDorLogModel():
 
 class PayLogModel():
     def __init__(self):
+        self.id=0
         self.cost_no=0
         self.dor_no=''
         self.item=''

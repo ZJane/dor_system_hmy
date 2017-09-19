@@ -82,6 +82,7 @@ def show_student_index(request):
     for i in range(0,len(stayingOnVacation_data)):
         stu_data=Student.objects.get(sno=2014101003)
         test=StuDorLogModel()
+        test.id=stayingOnVacation_data[i].id
         test.sno=stayingOnVacation_data[i].sno
         test.sname = stayingOnVacation_data[i].sname
         test.new_room_no = stayingOnVacation_data[i].room_no

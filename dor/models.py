@@ -40,6 +40,7 @@ class ActvityApplyment(models.Model):
     apply_time = models.DateTimeField(blank=True, null=True)
     ad_no = models.CharField(max_length=10, blank=True, null=True)
     apply_status = models.CharField(max_length=15, blank=True, null=True)
+    activity_name = models.CharField(max_length=50, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -47,7 +48,7 @@ class ActvityApplyment(models.Model):
 
 
 class AdminShowDorChangeApplymentLog(models.Model):
-    sno = models.CharField(primary_key=True, max_length=10)
+    sno = models.CharField(max_length=10)
     sname = models.CharField(max_length=20)
     college_no = models.CharField(max_length=20)
     major_no = models.CharField(max_length=20)
@@ -510,7 +511,7 @@ class Student(models.Model):
 
 class StudentStayingRecord(models.Model):
     dor_no = models.CharField(max_length=10, blank=True, null=True)
-    sno = models.IntegerField(primary_key=True)
+    sno = models.IntegerField()
     sname = models.CharField(max_length=20, blank=True, null=True)
     room_no = models.CharField(max_length=10, blank=True, null=True)
     stu_phone = models.IntegerField(blank=True, null=True)

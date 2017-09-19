@@ -128,7 +128,7 @@
                                     <td>{{ i.last_apply_time }}</td>
                                     <td>
                                         <button  class="btn btn-success btn-xs" data-toggle="modal"
-                                                data-target="#func_activity">
+                                                data-target="#func_activity{{ i.activity_no }}">
                                             申请
                                         </button>
                                     </td>
@@ -175,83 +175,19 @@
                                 </tr>
                                 </thead>
                                 <tbody>
+                                {% for i in activity_log %}
                                 <tr>
-                                    <td>10000</td>
-                                    <td>吃汉堡</td>
-                                    <td>2017-05-02 17:33:34</td>
-                                    <td>李新</td>
-                                    <td><span class="label label-danger">申请失败</span></td>
+                                    <td>{{ i.actvity_no }}</td>
+                                    <td>{{ i.activity_name}}</td>
+                                    <td>{{ i.apply_time }}</td>
+                                    <td>{{ i.ad_no }}</td>
+                                    <td><span class="label label-danger">{{ i.apply_status }}</span></td>
                                     <td>
                                         <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail_1">查看</button>
                                         <button type="button" class="btn btn-danger btn-xs">取消</button>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>10000</td>
-                                    <td>吃汉堡</td>
-                                    <td>2017-05-02 17:33:34</td>
-                                    <td>李新</td>
-                                    <td><span class="label label-danger">申请失败</span></td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail_1">查看</button>
-                                        <button type="button" class="btn btn-danger btn-xs">取消</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>10000</td>
-                                    <td>吃汉堡</td>
-                                    <td>2017-05-02 17:33:34</td>
-                                    <td>李新</td>
-                                    <td><span class="label label-danger">申请失败</span></td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail_1">查看</button>
-                                        <button type="button" class="btn btn-danger btn-xs">取消</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>10000</td>
-                                    <td>吃汉堡</td>
-                                    <td>2017-05-02 17:33:34</td>
-                                    <td>李新</td>
-                                    <td><span class="label label-danger">申请失败</span></td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail_1">查看</button>
-                                        <button type="button" class="btn btn-danger btn-xs">取消</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>10000</td>
-                                    <td>吃汉堡</td>
-                                    <td>2017-05-02 17:33:34</td>
-                                    <td>李新</td>
-                                    <td><span class="label label-danger">申请失败</span></td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail_1">查看</button>
-                                        <button type="button" class="btn btn-danger btn-xs">取消</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>10000</td>
-                                    <td>吃汉堡</td>
-                                    <td>2017-05-02 17:33:34</td>
-                                    <td>李新</td>
-                                    <td><span class="label label-danger">申请失败</span></td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail_1">查看</button>
-                                        <button type="button" class="btn btn-danger btn-xs">取消</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>10000</td>
-                                    <td>吃汉堡</td>
-                                    <td>2017-05-02 17:33:34</td>
-                                    <td>李新</td>
-                                    <td><span class="label label-danger">申请失败</span></td>
-                                    <td>
-                                        <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail_1">查看</button>
-                                        <button type="button" class="btn btn-danger btn-xs">取消</button>
-                                    </td>
-                                </tr>
+                                {% endfor %}
                                 </tbody>
                             </table>
 
@@ -282,8 +218,8 @@
         </div>
     </div>
 
-
-    <div class="modal fade" id="func_activity" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+{% for i in activity %}
+    <div class="modal fade" id="func_activity{{ i.activity_no }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
         <div class="modal-dialog" role="document" style="width:auto; max-width:1000px">
             <div class="modal-content">
                 <div class="modal-header">
@@ -298,35 +234,35 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">学号:</label>
-                                    <input type="text" name="sno" value="">
+                                    <label class="control-label">{{ sno }}</label>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">姓名:</label>
-                                    <label class="control-label">王俊皓</label>
+                                    <label class="control-label">{{ sname }}</label>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">学院:</label>
-                                    <label class="control-label">工学院</label>
+                                    <label class="control-label">{{ college }}</label>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">专业:</label>
-                                    <label class="control-label">计算机科学与技术</label>
+                                    <label class="control-label">{{ major }}</label>
                                 </div>
                             </div>
 
                             <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">现住宿舍:</label>
-                                    <label class="control-label">弘毅 ABC</label>
+                                    <label class="control-label">{{ room_no }}</label>
                                 </div>
                             </div>
 
@@ -340,14 +276,14 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">联系电话:</label>
-                                    <input type="text" name="phone" class="form-control">
+                                    <input type="text" name="phone" class="form-control" value={{ stu_phone }}>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">邮箱:</label>
-                                    <input type="text" class="form-control" value="14jhwang@stu.edu.cn">
+                                    <input type="text" class="form-control" value={{ email }}>
                                 </div>
                             </div>
                         </div>
@@ -358,14 +294,14 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">活动名称:</label>
-                                    <label class="control-label">社区十大歌手</label>
+                                    <label class="control-label">{{ i.activity_name }}</label>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">活动举办方:</label>
-                                    <label class="control-label">知行书院学生会</label>
+                                    <label class="control-label">{{ i.host_no }}</label>
                                 </div>
                             </div>
 
@@ -373,33 +309,28 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">活动举办时间:</label>
-                                    <label class="control-label">2017-10-10 19:00-22:00</label>
+                                    <label class="control-label">{{ i.activity_time }}</label>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">人数限制:</label>
-                                    <label class="control-label">200</label>
+                                    <label class="control-label">{{ i.activity_max_participate }}</label>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">截止申请时间:</label>
-                                    <label class="control-label">2017-10-05 23:59</label>
+                                    <label class="control-label">{{ i.last_apply_time }}</label>
                                 </div>
                             </div>
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label class="control-label">活动描述:</label>
-                                    <p class="control-label">这是活动描述这是活动描述这是活动描述这是活动描述这是活动描述这是
-                                        活动描述这是活动描述这是活动描述这是活动描述这是活动描述
-                                        这是活动描述这是活动描述这是活动描述这是活动描述
-                                        这是活动描述这是活动描述这是活动描述这是活动描述这是活动描述这是活动描述
-                                        这是活动描述这是活动描述这是活动描述这是活动描述这是活动描述这是活动描述
-                                        这是活动描述这是活动描述这是活动描述这是活动描述这是活动描述这是活动描述</p>
+                                    <p class="control-label">{{ i.activity_description }}</p>
                                 </div>
                             </div>
                         </div>
@@ -413,6 +344,7 @@
             </div>
         </div>
     </div>
+    {% endfor %}
     <!-- modal - 申请活动 -->
 
 
