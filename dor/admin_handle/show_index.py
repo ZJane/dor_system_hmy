@@ -17,7 +17,7 @@ def show_book_index(request):
     return render(request,"admin/bookManager.html")
 
 def show_search_index(request):
-    return render(request,"admin/search_form.html")
+    return render(request,"admin/searchInfo.html")
 
 def show_checkin_index(request):
     return render(request,"admin/checkIn.html")
