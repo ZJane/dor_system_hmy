@@ -2,20 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd112b26-201a-4ead-a468-aeed3c743747" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dor/admin_handle/login.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/dor/student_handle/login.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/live_in_dor_handle.py" afterPath="$PROJECT_DIR$/dor/admin_handle/live_in_dor_handle.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/admin_handle/show_index.py" afterPath="$PROJECT_DIR$/dor/admin_handle/show_index.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/student_handle/activity_applyment.py" afterPath="$PROJECT_DIR$/dor/student_handle/activity_applyment.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/student_handle/show_stu_all_index.py" afterPath="$PROJECT_DIR$/dor/student_handle/show_stu_all_index.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor/views.py" afterPath="$PROJECT_DIR$/dor/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/dor_system/urls.py" afterPath="$PROJECT_DIR$/dor_system/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/activity.html" afterPath="$PROJECT_DIR$/templates/admin/activity.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/index.html" afterPath="$PROJECT_DIR$/templates/admin/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/index.html" afterPath="$PROJECT_DIR$/templates/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/student/activity.html" afterPath="$PROJECT_DIR$/templates/student/activity.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/student/index.html" afterPath="$PROJECT_DIR$/templates/student/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/admin/checkIn.html" afterPath="$PROJECT_DIR$/templates/admin/checkIn.html" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -110,7 +98,7 @@
         <entry file="file://$PROJECT_DIR$/dor/views.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="294">
-              <caret line="123" column="49" lean-forward="true" selection-start-line="123" selection-start-column="49" selection-end-line="123" selection-end-column="69" />
+              <caret line="123" column="49" lean-forward="false" selection-start-line="123" selection-start-column="49" selection-end-line="123" selection-end-column="69" />
               <folding />
             </state>
           </provider>
@@ -130,13 +118,13 @@
         <entry file="file://$PROJECT_DIR$/dor/admin_handle/show_index.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="264">
-              <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="activity.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="activity.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/student/activity.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="144">
@@ -146,11 +134,31 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="live_in_dor_handle.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dor/admin_handle/live_in_dor_handle.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="5" column="70" lean-forward="false" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="checkIn.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/templates/admin/checkIn.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="48" column="49" lean-forward="false" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="show_stu_all_index.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/dor/student_handle/show_stu_all_index.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
-              <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+              <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -192,11 +200,11 @@
       <find>staylOG</find>
       <find>checkoutL</find>
       <find>adminDealtActi</find>
-      <find>李新</find>
       <find>李</find>
       <find>注销</find>
       <find>username</find>
       <find>何铭宜</find>
+      <find>李新</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -231,7 +239,6 @@
         <option value="$PROJECT_DIR$/templates/admin/TimePickerTest.html" />
         <option value="$PROJECT_DIR$/templates/admin/searchInfo.html" />
         <option value="$PROJECT_DIR$/templates/admin/bookManager.html" />
-        <option value="$PROJECT_DIR$/templates/admin/checkIn.html" />
         <option value="$PROJECT_DIR$/templates/admin/extraStayTime.html" />
         <option value="$PROJECT_DIR$/templates/admin/info_admin.html" />
         <option value="$PROJECT_DIR$/templates/admin/meeting.html" />
@@ -245,7 +252,6 @@
         <option value="$PROJECT_DIR$/templates/student/payment.html" />
         <option value="$PROJECT_DIR$/dor/student_handle/pay_bill.py" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/8e4d6dfb-9548-48c5-82bf-38acc6f3b9c8/console_15.sql" />
-        <option value="$PROJECT_DIR$/dor/admin_handle/live_in_dor_handle.py" />
         <option value="$PROJECT_DIR$/dor_system/urls.py" />
         <option value="$PROJECT_DIR$/templates/admin/index.html" />
         <option value="$PROJECT_DIR$/templates/admin/activity.html" />
@@ -256,6 +262,8 @@
         <option value="$PROJECT_DIR$/dor/student_handle/activity_applyment.py" />
         <option value="$PROJECT_DIR$/templates/student/activity.html" />
         <option value="$PROJECT_DIR$/dor/student_handle/show_stu_all_index.py" />
+        <option value="$PROJECT_DIR$/dor/admin_handle/live_in_dor_handle.py" />
+        <option value="$PROJECT_DIR$/templates/admin/checkIn.html" />
       </list>
     </option>
   </component>
@@ -327,6 +335,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="student" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -412,6 +438,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor_system_demo1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dor" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin_handle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -429,6 +473,7 @@
       <recent name="C:\Users\Nicole\PycharmProjects\dor_system_demo1\templates" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Nicole\PycharmProjects\dor_system_demo1\templates\admin" />
       <recent name="C:\Users\Nicole\PycharmProjects\dor_system_demo1\templates" />
       <recent name="C:\Users\Nicole\PycharmProjects\dor_system_demo1\dor\student_handle" />
       <recent name="C:\Users\Nicole\PycharmProjects\dor_system_demo1\dor\admin_handle" />
@@ -991,13 +1036,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/admin/checkIn.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="54" column="49" lean-forward="false" selection-start-line="54" selection-start-column="49" selection-end-line="54" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/templates/admin/extraStayTime.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
@@ -1123,14 +1161,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/dor/admin_handle/live_in_dor_handle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="3" column="31" lean-forward="true" selection-start-line="3" selection-start-column="31" selection-end-line="3" selection-end-column="31" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/彩君的代码/管理员/live_in_dor_handle.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="168">
@@ -1204,7 +1234,7 @@
     <entry file="file://$PROJECT_DIR$/dor/views.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
-          <caret line="123" column="49" lean-forward="true" selection-start-line="123" selection-start-column="49" selection-end-line="123" selection-end-column="69" />
+          <caret line="123" column="49" lean-forward="false" selection-start-line="123" selection-start-column="49" selection-end-line="123" selection-end-column="69" />
           <folding />
         </state>
       </provider>
@@ -1220,7 +1250,7 @@
     <entry file="file://$PROJECT_DIR$/dor/admin_handle/show_index.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="264">
-          <caret line="11" column="0" lean-forward="true" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1236,7 +1266,7 @@
     <entry file="file://$PROJECT_DIR$/dor/student_handle/show_stu_all_index.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
-          <caret line="8" column="35" lean-forward="true" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
+          <caret line="8" column="35" lean-forward="false" selection-start-line="8" selection-start-column="35" selection-end-line="8" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -1245,6 +1275,22 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="48" column="106" lean-forward="false" selection-start-line="48" selection-start-column="106" selection-end-line="48" selection-end-column="106" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dor/admin_handle/live_in_dor_handle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="5" column="70" lean-forward="false" selection-start-line="5" selection-start-column="70" selection-end-line="5" selection-end-column="70" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/admin/checkIn.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="48" column="49" lean-forward="false" selection-start-line="48" selection-start-column="49" selection-end-line="48" selection-end-column="49" />
           <folding />
         </state>
       </provider>
