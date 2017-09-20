@@ -7,7 +7,7 @@ from dor.models import ActvityApplyment, Student
 def stu_activity_applyment(request):
     activity_no=1
     activity_name="十大歌手"
-    sno=request.POST.get('sno',None)
+    sno=request.session['userno']
     apply_time=request.POST.get('apply_time',None)
     ad_no='张敏华'
     apply_status="申请中"

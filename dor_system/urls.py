@@ -34,6 +34,8 @@ from dor.student_handle.book_applyment import  stu_book_applyment, stu_my_borrow
 from dor.student_handle.meeting_room_applyment import  stu_meeting_room_applyment, stu_show_meeting_info
 from dor.student_handle.device_repair_applyment import  stu_device_repair_applyment, stu_cancel_device_repair_applyment, stu_show_device_repair_applyments
 from dor.student_handle.show_stu_all_index import show_stu_activity,show_stu_book,show_stu_meeting_room,show_stu_pay,show_stu_repair,show_stu_resource
+from dor.admin_handle.login import admin_sign_in
+from dor.student_handle.login import stu_sign_in
 urlpatterns = [
     url(r'^index/',show_index),
     url(r'^admin/',admin.site.urls),
@@ -106,4 +108,7 @@ urlpatterns = [
     url(r'^dor/admin_handle/live_in_dor_handle/add_stu_dor_info',ad_add_stu_dor_info),
     url(r'^dor/admin_handle/live_in_dor_handle/distribute_dor',ad_distribute_dor),
     url(r'^dor/admin_handle/set_timequantum/set_timeable',ad_set_timeable),
+    url(r'^dor/student_handle/login/', stu_sign_in),
+    url(r'^dor/admin_handle/login/', admin_sign_in),
+
 ]

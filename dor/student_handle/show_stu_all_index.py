@@ -6,14 +6,13 @@ from dor.models import Activity, ActvityApplyment,DorCostRecord, StuPayRecord, S
 
 def show_stu_activity(request):
     data=Activity.objects.all()
-    sno = 2014101023
+    sno = request.session['userno']
+    sname=request.session['username']
     test = Student.objects.get(sno=sno)
     activity_log=ActvityApplyment.objects.filter(sno=sno)
     return render(request, "student/activity.html",
-                  {'activity':data,'sname': test.sname, 'college': test.college, 'major': test.major, 'room_no': test.room_no,
+                  {'sno':sno,'sname':sname,'activity':data,'sname': test.sname, 'college': test.college, 'major': test.major, 'room_no': test.room_no,
                    'stu_phone': test.stu_phone, 'email': test.email,'activity_log':activity_log})
-
-
 
 
 def show_stu_repair(request):

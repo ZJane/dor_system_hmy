@@ -20,6 +20,8 @@ def show_main(request):
     return render(request,"tsst.html",{'data':str})
 
 def show_admin_index(request):
+    username=request.session['username']
+    userno=request.session['userno']
     unhandle_dor_change_data = []
     unhandle_dor_change = DorChange.objects.filter(app_status="申请中")
     for i in range(0, len(unhandle_dor_change)):
@@ -45,10 +47,12 @@ def show_admin_index(request):
     checkout_log=DorCheckOut.objects.exclude(apply_status="申请中")
     stayonvacation_log=StayingOnVacationApplyment.objects.exclude(apply_status="申请中")
 
-    return render(request,"admin/index.html",{'dor_change':unhandle_dor_change_data,'dor_checkout':unhandle_dor_checkout_data,'stayonvacation':unhandle_dor_stayonvacation_data,'change_log':change_log,'checkout_log':checkout_log,'stayonvacation_log':stayonvacation_log})
+    return render(request,"admin/index.html",{'userno':userno,'username':username,'dor_change':unhandle_dor_change_data,'dor_checkout':unhandle_dor_checkout_data,'stayonvacation':unhandle_dor_stayonvacation_data,'change_log':change_log,'checkout_log':checkout_log,'stayonvacation_log':stayonvacation_log})
 
 def show_student_index(request):
-    stu_data = Student.objects.get(sno=2014101003)
+    username=request.session['username']
+    userno=request.session['userno']
+    stu_data = Student.objects.get(sno=userno)
     sno=stu_data.sno
     sname=stu_data.sname
     college=stu_data.college
@@ -117,7 +121,7 @@ def show_student_index(request):
         test.major = stu_data.major
         dor_cancel_list.append(test)
 
-    return render(request, "student/index.html",{'DorChange':dor_change_list,'LiveOnVacation':live_on_vacation_list,'DorCancel':dor_cancel_list,
+    return render(request, "student/index.html",{'username':username,'DorChange':dor_change_list,'LiveOnVacation':live_on_vacation_list,'DorCancel':dor_cancel_list,
                                                  'sno':sno,'sname':sname,'college':college,'major':major,'room_no':room_no,'stu_phone':stu_phone,'email':email})
 
 
