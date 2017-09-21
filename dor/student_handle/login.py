@@ -3,6 +3,7 @@ from django.http import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render, render_to_response
 from dor.models import DorAdminAccount,DorStuAccount,Student
 from django.contrib.auth.hashers import make_password, check_password
+from dor.views import show_student_index
 
 def stu_sign_in(request):
     if request.method=="POST":
@@ -24,7 +25,8 @@ def stu_sign_in(request):
             # print(obj.sno)
             stu = Student.objects.get(sno=obj.sno)
             request.session['username'] = stu.sname
-            return render(request, "student/index.html", {'username': stu.sname})
+            return show_student_index(request)
+           # return render(request, "student/index.html", {'username': stu.sname})
         except Exception as err:
             print(err)
     return render(request, "student/index.html", {'username': user})

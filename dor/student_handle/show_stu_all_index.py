@@ -5,11 +5,11 @@ from dor.models import Activity, ActvityApplyment,DorCostRecord, StuPayRecord, S
 
 
 def show_stu_activity(request):
-    data=Activity.objects.all()
+    data=Activity.objects.filter(apply_status="申请中")
     sno = request.session['userno']
     sname=request.session['username']
     test = Student.objects.get(sno=sno)
-    activity_log=ActvityApplyment.objects.filter(sno=sno)
+    activity_log=ActvityApplyment.objects.filter(sno=sno,apply_status="申请中")
     return render(request, "student/activity.html",
                   {'sno':sno,'sname':sname,'activity':data,'sname': test.sname, 'college': test.college, 'major': test.major, 'room_no': test.room_no,
                    'stu_phone': test.stu_phone, 'email': test.email,'activity_log':activity_log})

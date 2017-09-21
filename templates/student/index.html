@@ -41,7 +41,7 @@
 
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="info_student.html"><span class="glyphicon glyphicon-user"></span> {{ username }} 同学</a></li>
+					<li><a href="info_student.html"><span class="glyphicon glyphicon-user"></span> {{ username }}同学</a></li>
 					<li><a href="#">注销</a></li>
 				</ul>
 			</div>
@@ -128,7 +128,7 @@
 									<td>{{i.sname}}</td>
 									<td>{{i.old_room_no}}</td>
 									<td>{{ i.ad_name }}</td>
-									<td><span class="label label-danger">{{ i.apply_status }}</span></td>
+									<td><span class="label label-primary">{{ i.apply_status }}</span></td>
 									<td>
 										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_change{{ i.sno }}{{ i.old_room_no }}" >查看</button>
 {#										<button type="button" class="btn btn-danger btn-xs" >取消</button>#}
@@ -161,7 +161,7 @@
 									<td>{{m.sname}}</td>
 									<td>{{m.new_room_no}}</td>
 									<td>{{m.ad_name }}</td>
-									<td><span class="label label-danger">{{ m.apply_status }}</span></td>
+									<td><span class="label label-primary">{{ m.apply_status }}</span></td>
 									<td>
 										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_stay{{ m.id}}">查看</button>
 {#										<button type="button" class="btn btn-danger btn-xs">取消</button>#}
@@ -194,7 +194,7 @@
 									<td>{{i.sname}}</td>
 									<td>{{i.new_room_no}}</td>
 									<td>{{ i.ad_name }}</td>
-									<td><span class="label label-danger">{{ i.apply_status }}</span></td>
+									<td><span class="label label-primary">{{ i.apply_status }}</span></td>
 									<td>
 										<button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_exit{{i.sno }}{{ i.new_room_no }}">查看</button>
 {#										<button type="button" class="btn btn-danger btn-xs">取消</button>#}
@@ -598,7 +598,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group">
 									<label class="control-label">状态：</label>
-									<label class="label label-success">{{ i.apply_status }}</label>
+									<label class="label label-primary">{{ i.apply_status }}</label>
 								</div>
 							</div>
 
@@ -606,10 +606,10 @@
 
 				</div>
 
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary">确认</button>
-				</div>
+{#				<div class="modal-footer">#}
+{#					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>#}
+{#					<button type="button" class="btn btn-primary">确认</button>#}
+{#				</div>#}
 			</div>
 		</div>
 	</div>
@@ -701,7 +701,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group">
 									<label class="control-label">状态：</label>
-									<label class="label label-success">{{ i.apply_status }}</label>
+									<label class="label label-primary">{{ i.apply_status }}</label>
 								</div>
 							</div>
 						</div>
@@ -709,10 +709,10 @@
 					</form>
 				</div>
 
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary">确认</button>
-				</div>
+{#				<div class="modal-footer">#}
+{#					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>#}
+{#					<button type="button" class="btn btn-primary">确认</button>#}
+{#				</div>#}
 			</div>
 		</div>
 	</div>
@@ -817,7 +817,7 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 								<div class="form-group">
 									<label class="control-label">状态：</label>
-									<label class="label label-success">{{ i.apply_status }}</label>
+									<label class="label label-primary">{{ i.apply_status }}</label>
 								</div>
 							</div>
 						</div>
@@ -825,10 +825,10 @@
 					</form>
 				</div>
 
-				<div class="modal-footer">
-					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-					<button type="button" class="btn btn-primary">确认</button>
-				</div>
+{#				<div class="modal-footer">#}
+{#					<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>#}
+{#					<button type="button" class="btn btn-primary">确认</button>#}
+{#				</div>#}
 			</div>
 		</div>
 	</div>

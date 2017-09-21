@@ -13,7 +13,7 @@ def stu_activity_applyment(request):
     apply_status="申请中"
     test1=ActvityApplyment(actvity_no=activity_no,activity_name=activity_name,sno=sno,apply_time=apply_time,ad_no=ad_no,apply_status=apply_status)
     test1.save()
-    return HttpResponse("<p>申请活动成功</p>")
+    return render(request,"student/activity.html")
 
 def stu_show_activity_info(request):
     pass

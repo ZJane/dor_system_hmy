@@ -50,11 +50,9 @@ def show_admin_index(request):
     return render(request,"admin/index.html",{'userno':userno,'username':username,'dor_change':unhandle_dor_change_data,'dor_checkout':unhandle_dor_checkout_data,'stayonvacation':unhandle_dor_stayonvacation_data,'change_log':change_log,'checkout_log':checkout_log,'stayonvacation_log':stayonvacation_log})
 
 def show_student_index(request):
-    username=request.session['username']
-    userno=request.session['userno']
-    stu_data = Student.objects.get(sno=userno)
-    sno=stu_data.sno
-    sname=stu_data.sname
+    sno = request.session['userno']
+    sname=request.session['username']
+    stu_data = Student.objects.get(sno=sno)
     college=stu_data.college
     major=stu_data.major
     room_no=stu_data.room_no
@@ -62,10 +60,10 @@ def show_student_index(request):
     stu_phone=stu_data.stu_phone
 
 #调宿记录
-    change_log_data=DorChange.objects.filter(sno=2014101003)
+    change_log_data=DorChange.objects.filter(sno=sno)
     dor_change_list = []
     for i in range(0,len(change_log_data)):
-        stu_data = Student.objects.get(sno=2014101003)
+        stu_data = Student.objects.get(sno=sno)
         test=StuDorLogModel()
         test.sno=change_log_data[i].sno
         test.sname = change_log_data[i].sname
@@ -81,21 +79,21 @@ def show_student_index(request):
         test.major = stu_data.major
         dor_change_list.append(test)
 #留校记录
-    stayingOnVacation_data=StudentStayingRecord.objects.filter(sno=2014101003)
+    stayingOnVacation_data=StayingOnVacationApplyment.objects.filter(sno=sno)
     live_on_vacation_list=[]
     for i in range(0,len(stayingOnVacation_data)):
-        stu_data=Student.objects.get(sno=2014101003)
+        stu_data=Student.objects.get(sno=sno)
         test=StuDorLogModel()
         test.id=stayingOnVacation_data[i].id
         test.sno=stayingOnVacation_data[i].sno
         test.sname = stayingOnVacation_data[i].sname
-        test.new_room_no = stayingOnVacation_data[i].room_no
+        test.new_room_no = stayingOnVacation_data[i].dor_no
         test.apply_time = stayingOnVacation_data[i].apply_time
         test.reason = stayingOnVacation_data[i].reason
         test.apply_status = stayingOnVacation_data[i].apply_status
         test.email = stu_data.email
         test.ad_name='张敏华'
-        test.stu_phone = stayingOnVacation_data[i].stu_phone
+        test.stu_phone = stu_data.stu_phone
         test.college = stu_data.college
         test.major = stu_data.major
         live_on_vacation_list.append(test)
@@ -103,10 +101,10 @@ def show_student_index(request):
 
     #live_on_vacation_list = StudentStayingRecord.objects.all()
 #退宿记录
-    dor_checkout_data=DorCheckOut.objects.filter(sno=2014101003)
+    dor_checkout_data=DorCheckOut.objects.filter(sno=sno)
     dor_cancel_list =[]
     for i in range(0,len(dor_checkout_data)):
-        stu_data=Student.objects.get(sno=2014101003)
+        stu_data=Student.objects.get(sno=sno)
         test=StuDorLogModel()
         test.sno = dor_checkout_data[i].sno
         test.sname = dor_checkout_data[i].sname
@@ -121,7 +119,7 @@ def show_student_index(request):
         test.major = stu_data.major
         dor_cancel_list.append(test)
 
-    return render(request, "student/index.html",{'username':username,'DorChange':dor_change_list,'LiveOnVacation':live_on_vacation_list,'DorCancel':dor_cancel_list,
+    return render(request, "student/index.html",{'username':sname,'userno':sno,'DorChange':dor_change_list,'LiveOnVacation':live_on_vacation_list,'DorCancel':dor_cancel_list,
                                                  'sno':sno,'sname':sname,'college':college,'major':major,'room_no':room_no,'stu_phone':stu_phone,'email':email})
 
 

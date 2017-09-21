@@ -3,6 +3,7 @@ from django.shortcuts import render, render_to_response
 from dor.models import DorAdminAccount,DormitoryAdmin,Student
 from django.contrib.auth.hashers import make_password, check_password
 from django.contrib.sessions.models import Session
+from dor.views import show_admin_index
 
 def admin_sign_in(request):
     if request.method=="POST":
@@ -22,7 +23,8 @@ def admin_sign_in(request):
         try:
             admin = DormitoryAdmin.objects.get(dorm_admin_no=obj.ad_no)
             request.session['username']=admin.dorm_admin_name
-            return render(request, "admin/index.html", {'username': admin.dorm_admin_name})
+            return show_admin_index(request)
+           # return render(request, "admin/index.html", {'username': admin.dorm_admin_name})
         except Exception as err:
             print(err)
 
