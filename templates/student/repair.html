@@ -10,6 +10,25 @@
     <meta name="author" content="">
     <link rel="icon" href="../image/favicon.ico">
 
+    <script language="javascript" type="text/javascript">
+        function time() {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+
+    document.getElementById("now").value=date.getFullYear()+seperator1+month+seperator1+strDate+" "
+                                                +date.getHours() + seperator2 + date.getMinutes();
+}
+    </script>
+
     <title>宿舍设施报修申请 - 宿舍管理系统</title>
 
 
@@ -26,10 +45,59 @@
             vertical-align: middle;
         }
     </style>
+    <style type="text/css">
+        /* SELECT W/IMAGE */
+            select#selectTime
+            {
+               width                    : 7em;
+               height                   : 2.5em;
+                margin-top              : 4px;
+               padding                  : 0.4em 0.6em 0.4em 0.6em;
+               vertical-align           : middle;
+               border                   : 1px solid #c0c0c0;
+               -moz-border-radius       : 0.2em;
+               -webkit-border-radius    : 0.2em;
+               border-radius            : 0.3em;
+               -webkit-appearance       : none;
+               -moz-appearance          : none;
+               appearance               : none;
+               background               : #ffffff;
+               font-family              : Song;
+               font-size                : 1em;
+               color                    : RGBA(0,0,0,0.7);
+               cursor                   : pointer;
+            }
+
+            /*SELECT W/DOWN-ARROW*/
+            select#selectPointOfInterest
+            {
+               width                    : 185pt;
+               height                   : 40pt;
+               line-height              : 40pt;
+               padding-right            : 20pt;
+               text-indent              : 4pt;
+               text-align               : left;
+               vertical-align           : middle;
+               border                   : 1px solid #c0c0c0;
+               -moz-border-radius       : 6px;
+               -webkit-border-radius    : 6px;
+               border-radius            : 6px;
+               -webkit-appearance       : none;
+               -moz-appearance          : none;
+               appearance               : none;
+               font-family              : SimHei;
+               font-size                : 18pt;
+               font-weight              : 500;
+               color                    : RGBA(0,0,0,0.7);
+               cursor                   : pointer;
+               outline                  : none;
+            }
+
+    </style>
 
 </head>
 
-<body>
+<body onload="time()">
 <nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -46,7 +114,7 @@
 
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="info_student.html"><span class="glyphicon glyphicon-user"></span> 何铭宜 同学</a></li>
+                <li><a href="info_student.html"><span class="glyphicon glyphicon-user"></span> {{ username }} 同学</a></li>
                 <li><a href="#">注销</a></li>
             </ul>
         </div>
@@ -56,28 +124,28 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 col-xs-3 sidebar" id="side">
             <ul class="nav nav-sidebar">
-                <li>
-                    <a href="/show_student_index">宿舍退调申请</a>
-                </li>
-                <li class="active">
-                    <a href="/show_stu_repair_index">宿舍设施报修申请</a>
-                </li>
-                <li>
-                    <a href="/show_stu_pay_index">生活缴费</a>
-                </li>
-                <li>
-                    <a href="/show_stu_resource_index">宿舍资源申请</a>
-                </li>
-                <li>
-                    <a href="/show_stu_meeting_index">研讨室申请</a>
-                </li>
-                <li>
-                    <a href="/show_stu_activity_index">社区活动申请</a>
-                </li>
-                <li>
-                    <a href="/show_stu_book_index">共享书屋<span class="sr-only">(current)</span></a>
-                </li>
-            </ul>
+                    <li>
+                        <a href="/show_student_index">宿舍退调申请</a>
+                    </li>
+                    <li class="active">
+                        <a href="/show_stu_repair_index">宿舍设施报修申请</a>
+                    </li>
+                    <li>
+                        <a href="/show_stu_pay_index">生活缴费</a>
+                    </li>
+                    <li>
+                        <a href="/show_stu_resource_index">宿舍资源申请</a>
+                    </li>
+                    <li>
+                        <a href="/show_stu_meeting_index">研讨室申请</a>
+                    </li>
+                    <li>
+                        <a href="/show_stu_activity_index">社区活动申请</a>
+                    </li>
+                    <li>
+                        <a href="/show_stu_book_index">共享书屋<span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
         </div>
 
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -108,36 +176,30 @@
                     </tr>
                     </thead>
                     <tbody>
+                    {% for item in apply_list %}
                     <tr>
-                        <td>10000</td>
-                        <td>2017-05-02 17:33:34</td>
-                        <td>空调坏了</td>
-                        <td>卢程</td>
-                        <td>弘毅 G613-2</td>
-                        <td>刘宿管</td>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.repair_time_1 }} {{ item.repair_time_2 }}-{{ item.repair_time_3 }}</td>
+                        <td>{{ item.apply_title }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>{{ item.room_no }}</td>
+                        <td>{{ item.ad_no }}</td>
+                        {% if item.status == 0 %}
                         <td><span class="label label-warning">申请中</span></td>
+                        {% elif item.status == 1 %}
+                        <td><span class="label label-success">已受理</span></td>
+                        {% else %}
+                        <td><span class="label label-danger">申请失败</span></td>
+                        {% endif %}
                         <td>
-                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
-                                    data-target="#check_detail">查看
-                            </button>
-                            <button type="button" class="btn btn-danger btn-xs">取消</button>
+                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_detail"
+                                    href="dor/student_handle/device_repair_applyment/show_device_repair_applyments/{{ item.id }}">查看</button>
+
+                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#cancel_reply"
+                                    href="delete_repair_applyment.html/{{item.id }}">取消</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>10000</td>
-                        <td>2017-05-02 17:33:34</td>
-                        <td>人坏了</td>
-                        <td>卢程</td>
-                        <td>弘毅 G613-2</td>
-                        <td>刘宿管</td>
-                        <td><span class="label label-primary">申请失败</span></td>
-                        <td>
-                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
-                                    data-target="#check_detail">查看
-                            </button>
-                            <button type="button" class="btn btn-danger btn-xs">取消</button>
-                        </td>
-                    </tr>
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -176,100 +238,136 @@
                 <h4 class="modal-title">申请报修</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="show_stu_repair_index" method="post">
+                    {% csrf_token %}
                     <div class="row">
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <label class="control-label">2014101027</label>
+                                <input type="text" class="form-control" name="sno" required="required" value={{ stu.sname }} >
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">姓名:</label>
-                                <label class="control-label">王俊皓</label>
+                                <input type="text" class="form-control" name="name" required="required">{{ stu.sname }}
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学院:</label>
-                                <label class="control-label">工学院</label>
+                                <input type="text" class="form-control" name="dor_no" required="required">{{ stu.college }}
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">专业:</label>
-                                <label class="control-label">计算机科学与技术</label>
+                                <input type="text" class="form-control" name="major" required="required">{{ stu.major }}
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">申请时间:</label>
-                                <label class="control-label">2017-05-02 17:33:34</label>
-                            </div>
-                        </div>
+
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">现住宿舍:</label>
-                                <label class="control-label">弘毅 ABC</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">报修时间:</label>
-                                <input type="text" class="form-control" readonly="readonly" value="2017-05-02 17:33:34">
+                                <input type="text" class="form-control" name="room_no" required="required">{{ sto.dor_no }}
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">联系电话:</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="mobilephone" required="required">{{ stu.stu_phone }}
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">邮箱:</label>
-                                <input type="text" class="form-control" value="14jhwang@stu.edu.cn">
+                                <input type="text" class="form-control" name="mail" required="required">{{ stu}}
                             </div>
                         </div>
 
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">申请时间:</label>
+                                <input type="text" class="form-control" id="now" name="now" required="required">
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">可维修时间:</label>
+                                <input type="date" class="form-control" name="repair_time_1"  required="required" >
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <br>
+                                <select name="repair_time_2" id="selectTime">
+                                    <option value="08:00" selected = "selected">08:00</option>
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00">12:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="20:00">20:00</option>
+                                </select>
+                                <label style="display:inline;">-></label>
+                                <select name="repair_time_3" id="selectTime">
+                                    <option value="09:00">09:00</option>
+                                    <option value="10:00">10:00</option>
+                                    <option value="11:00">11:00</option>
+                                    <option value="12:00" selected="selected">12:00</option>
+                                    <option value="14:00">14:00</option>
+                                    <option value="15:00">15:00</option>
+                                    <option value="16:00">16:00</option>
+                                    <option value="17:00">17:00</option>
+                                    <option value="19:00">19:00</option>
+                                    <option value="20:00">20:00</option>
+                                    <option value="21:00">21:00</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">报修标题:</label>
-                                <input type="text" class="form-control">
+                                <input type="text" class="form-control" name="apply_title" required="required">
                             </div>
                         </div>
 
                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
                             <div class="form-group">
                                 <label class="control-label">报修描述:</label>
-                                <input type="text" class="form-control" value="">
+                                <input type="text" class="form-control" name="description">
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label class="control-label">备注:</label>
-                                <textarea class="form-control"></textarea>
+                                <textarea class="form-control" name="remark"></textarea>
                             </div>
                         </div>
                     </div>
-
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary">确认申请</button>
+                    </div>
                 </form>
             </div>
 
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-            </div>
+
         </div>
     </div>
 </div>
@@ -279,121 +377,43 @@
 <div class="modal fade" id="check_detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document" style="width:auto; max-width:1000px">
         <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
-                </button>
-                <h4 class="modal-title">查看</h4>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">学号:</label>
-                                <label class="control-label">2014101027</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">姓名:</label>
-                                <label class="control-label">王俊皓</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">学院:</label>
-                                <label class="control-label">工学院</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">专业:</label>
-                                <label class="control-label">计算机科学与技术</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">申请时间:</label>
-                                <label class="control-label">2017-05-02 17:33:34</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">现住宿舍:</label>
-                                <label class="control-label">弘毅 ABC</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">报修时间:</label>
-                                <label class="control-label">2017-05-02 10:00-12:00</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">联系电话:</label>
-                                <label class="control-label">12312345678</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">邮箱:</label>
-                                <label class="control-label">14jhwang@stu.edu.cn</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">报修标题:</label>
-                                <label class="control-label">水管爆了</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label class="control-label">报修描述:</label>
-                                <p>这是报修描述这是报修描述这是报修描述这是报修描述这是报修描述这是报修描述</p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                            <div class="form-group">
-                                <label class="control-label">备注:</label>
-                                <p>这是报修备注这是报修备注这是报修备注这是报修备注这是报修备注这是报修备注</p>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary">确认申请</button>
-            </div>
         </div>
     </div>
 </div>
 <!-- modal - 查看 -->
 
+<div class="modal fade" id="cancel_reply" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog" role="document" style="width:500px">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<!-- modal - 取消 -->
+
 
 <!-- Bootstrap core JavaScript
   ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script src="../js/jquery-2.2.1.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-<!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-<script src="../js/holder.min.js"></script>
-     <script type="text/javascript" src="{% static 'bootstrap/js/jquery-2.2.1.min.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'bootstrap/js/jquery-2.2.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
-    <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
+
+    <script>
+        $('#check_detail').on('hidden.bs.modal', function () {
+            $(this).removeData("bs.modal");
+        })
+    </script>
+
+    <script>
+        $('#cancel_reply').on('hidden.bs.modal', function () {
+            $(this).removeData("bs.modal");
+        })
+    </script>
+    <script>
+        $('#cancel_reply').on('hidden.bs.modal', function () {
+            window.location.href = "repair";
+        })
+    </script>
 
 </body>
 

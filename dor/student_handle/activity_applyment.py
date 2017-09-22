@@ -20,9 +20,9 @@ def stu_activity_applyment(request):
 def stu_show_activity_info(request):
     activity_no = request.POST.get('act_no')
     thisact = Activity.objects.get(activity_no=activity_no)
-    res=[]
-    res.append(thisact)
-    sno = request.session['userno']
-    stu_data=Student.objects.filter(sno=sno)
-    res.append(stu_data)
-    return render(request,"student/activity.html",{'res':res})
+    # res=[]
+    # res.append(thisact)
+    # sno = request.session['userno']
+    # stu_data=Student.objects.filter(sno=sno)
+    # res.append(stu_data)
+    return render(request,"student/activity.html",{'res':thisact})

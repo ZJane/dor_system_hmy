@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <div class="modal-body">
+        <form action="dor/admin_handle/device_handle/commit_return_device/{{ tobeshow.id }}" method="post">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">学号:</label>
+                        <label class="control-label">{{ tobeshow.sno }}</label>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">姓名:</label>
+                        <label class="control-label">{{ tobeshow.name }}</label>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">宿舍:</label>
+                        <label class="control-label">{{ tobeshow.room_no }}</label>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">联系电话:</label>
+                        <label class="control-label">{{ student.mobilephone }}</label>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                    <div class="form-group">
+                        <label class="control-label">邮箱:</label>
+                        <label class="control-label">{{ student.mail }}</label>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">备注:</label>
+                        <label class="control-label">{{ tobeshow.remark }}</label>
+                    </div>
+                </div>
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">申请时间:</label>
+                        <label class="control-label">{{ tobeshow.now }}</label>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="form-group">
+                        <label class="control-label">资源名称:</label>
+                        <label class="label label-success">{{ tobeshow.item }}</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button  type="submit" class="btn btn-primary">确认归还</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

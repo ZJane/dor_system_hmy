@@ -55,7 +55,7 @@
 
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="info_student.html"><span class="glyphicon glyphicon-user"></span> 何铭宜 同学</a></li>
+                    <li><a href="student/info_student.html"><span class="glyphicon glyphicon-user"></span> {{ username }} 同学</a></li>
                     <li><a href="#">注销</a></li>
                 </ul>
             </div>
@@ -115,8 +115,8 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th>编号</th>
                                         <th>申请人学号</th>
-                                        <th>申请人一卡通号</th>
                                         <th>申请人姓名</th>
                                         <th>借用时间</th>
                                         <th>经办人</th>
@@ -124,52 +124,45 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {% for item in resource_list %}
+                                    {% if item.item == "钥匙" %}
                                     <tr>
-                                        <td>2014101027</td>
-                                        <td>066308</td>
-                                        <td>绿橙</td>
-                                        <td>2014年XX月XX日</td>
-                                        <td>李新</td>
+                                        <td>{{ item.id }}</td>
+                                        <td>{{ item.sno }}</td>
+                                        <td>{{ item.name }}</td>
+                                        <td>{{ item.now }}</td>
+                                        <td>{{ item.ad_no }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#func_reason">借用原因</button>
-                                            <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#func_remark">查看备注</button>
+                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#func_reason{{ item.id }}">借用原因</button>
+                                            <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#func_remark{{ item.id }}">查看备注</button>
                                         </td>
 
                                     </tr>
-                                    <tr>
-                                        <td>2014101027</td>
-                                        <td>066308</td>
-                                        <td>绿橙</td>
-                                        <td>2014年XX月XX日</td>
-                                        <td>李新</td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#func_detail">查看描述</button>
-                                            <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#func_detail">查看备注</button>
-                                        </td>
-
-                                    </tr>
+                                    {% endif %}
+                                {% endfor %}
                                 </tbody>
                             </table>
-                        </div>
 
-                        <div class="pull-right">
-                            <ul class="pagination">
-                                <li>
-                                    <a href="#" aria-label="Previous">
-                                        <span aria-hidden="true">&laquo;</span>
-                                    </a>
-                                </li>
-                                <li class="active"><a href="#">1</a></li>
-                                <li><a href="#">2</a></li>
-                                <li><a href="#">3</a></li>
-                                <li><a href="#">4</a></li>
-                                <li><a href="#">5</a></li>
-                                <li>
-                                    <a href="#" aria-label="Next">
-                                        <span aria-hidden="true">&raquo;</span>
-                                    </a>
-                                </li>
-                            </ul>
+
+                            <div class="pull-right">
+                                <ul class="pagination">
+                                    <li>
+                                        <a href="#" aria-label="Previous">
+                                            <span aria-hidden="true">&laquo;</span>
+                                        </a>
+                                    </li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li>
+                                        <a href="#" aria-label="Next">
+                                            <span aria-hidden="true">&raquo;</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <!-- ./pagination -->
                     </div>
@@ -181,8 +174,8 @@
                             <table class="table table-striped">
                                 <thead>
                                     <tr>
+                                        <th>编号</th>
                                         <th>申请人学号</th>
-                                        <th>申请人一卡通号</th>
                                         <th>申请人姓名</th>
                                         <th>借用时间</th>
                                         <th>经办人</th>
@@ -190,18 +183,22 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {% for item in resource_list %}
+                                    {% if item.item == "空调遥控器" %}
                                     <tr>
-                                        <td>2014101027</td>
-                                        <td>066308</td>
-                                        <td>绿橙</td>
-                                        <td>2014年XX月XX日</td>
-                                        <td>李新</td>
+                                        <td>{{ item.id }}</td>
+                                        <td>{{ item.sno }}</td>
+                                        <td>{{ item.name }}</td>
+                                        <td>{{ item.now }}</td>
+                                        <td>{{ item.ad_no }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#func_reason">借用原因</button>
-                                            <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#func_remark">查看备注</button>
+                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#func_reason{{ item.id }}">借用原因</button>
+                                            <button type="button" class="btn btn-warning btn-xs" data-toggle="modal" data-target="#func_remark{{ item.id }}">查看备注</button>
                                         </td>
 
                                     </tr>
+                                    {% endif %}
+                                {% endfor %}
                                 </tbody>
                             </table>
                         </div>
@@ -233,8 +230,8 @@
     </div>
 
 
-
-    <div class="modal fade" id="func_reason" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    {% for item in resource_list %}
+    <div class="modal fade" id="func_reason{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document" style="width:auto; max-width:1000px">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -243,28 +240,29 @@
                     </div>
                     <div class="modal-body">
                         <form>
-    
+
                             <div class="row">
-    
+
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        丢了钥匙
+                                        <p>{{ item.reason }}</p>
                                     </div>
                                 </div>
                             </div>
-    
+
                         </form>
                     </div>
-    
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                     </div>
                 </div>
             </div>
         </div>
+    {% endfor %}
         <!-- modal - 借用原因 -->
-
-    <div class="modal fade" id="func_remark" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+    {% for item in resource_list %}
+    <div class="modal fade" id="func_remark{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
             <div class="modal-dialog" role="document" style="width:auto; max-width:1000px">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -273,27 +271,27 @@
                     </div>
                     <div class="modal-body">
                         <form>
-    
+
                             <div class="row">
-    
+
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        没有备注
+                                        <p>{{ item.remark }}</p>
                                     </div>
                                 </div>
                             </div>
-    
+
                         </form>
                     </div>
-    
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
                     </div>
                 </div>
             </div>
         </div>
+    {% endfor %}
         <!-- modal - 查看备注 -->
-
 
 
     <!-- Bootstrap core JavaScript

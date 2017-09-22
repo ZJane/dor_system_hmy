@@ -226,39 +226,40 @@
                     <h4 class="modal-title">申请活动</h4>
                 </div>
                 <div class="modal-body">
+                    <form>
                         <div class="row">
-
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">学号:</label>
-                                    <input id="sno" class="control-label" readonly="readonly" value={{ sno }}/>
+                                    <input id="sno" class="form-control" readonly="readonly" value={{ sno }}>
+                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">姓名:</label>
-                                    <input id="sname" class="control-label" readonly="readonly" value={{ sname }}/>
+                                    <input id="sname" class="form-control" readonly="readonly" value={{ sname }}>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">学院:</label>
-                                    <input id="college" class="control-label" readonly="readonly" value={{ colllege }}/>
+                                    <input id="college" class="form-control" readonly="readonly" value={{ college }}>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">专业:</label>
-                                    <input id="major" class="control-label" readonly="readonly" value={{ major }}/>
+                                    <input id="major" class="form-control" readonly="readonly" value={{ major }}>
                                 </div>
                             </div>
 
-                            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">现住宿舍:</label>
-                                    <input id="dor_no" class="control-label" readonly="readonly" value={{ dor_no }}/>
+                                    <input id="dor_no" class="form-control" readonly="readonly" value={{ room_no }}>
                                 </div>
                             </div>
 
@@ -283,20 +284,21 @@
                                 </div>
                             </div>
                         </div>
+                    </form>
                     <hr/>
                     <form>
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">活动名称:</label>
-                                    <input id="activity_name" class="control-label" readonly="readonly" value={{ activity_name }}/>
+                                    <input id="activity_name" class="form-control" readonly="readonly" value={{ activity_name }}>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">活动举办方:</label>
-                                    <input id="host_no" class="control-label" readonly="readonly" value={{ host_no }}/>
+                                    <input id="host_no" class="form-control" readonly="readonly" value={{ host_no }}>
                                 </div>
                             </div>
 
@@ -304,28 +306,28 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">活动举办时间:</label>
-                                   <input id="activity_time" class="control-label" readonly="readonly" value={{ activity_time }}/>
+                                   <input id="activity_time" class="form-control" readonly="readonly" value={{ activity_time }}>
                                 </div>
                             </div>
 
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">人数限制:</label>
-                                    <input id="activity_max_participate" class="control-label" readonly="readonly" value={{ activity_max_participate }}/>
+                                    <input id="activity_max_participate" class="form-control" readonly="readonly" value={{ activity_max_participate }}>
                                 </div>
                             </div>
 
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">截止申请时间:</label>
-                                    <input id="last_apply_time" class="control-label" readonly="readonly" value={{ last_apply_time}}/>
+                                    <input id="last_apply_time" class="form-control" readonly="readonly" >
                                 </div>
                             </div>
 
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                 <div class="form-group">
                                     <label class="control-label">活动描述:</label>
-                                    <input id="activity_description" class="control-label" readonly="readonly" value={{activity_description}}/>
+                                    <input id="activity_description" class="form-control" readonly="readonly" >
                                 </div>
                             </div>
                         </div>
@@ -394,35 +396,33 @@
     function checkactivityinfo(obj) {
         var act = $(obj).parent().parent().find('td');
         var act_no = act.eq(0).text();
-
         $.ajax({
             url:"/dor/student_handle/activity_applyment/show_activity_info/",
-            type:"POST",
+            type:"GET",
             data:{act_no:act_no},
             success:function(res){
-                $('#sno').val(res[1].sno),
-                $('#sname').val(res[1].sname),
-                $('#college').val(res[1].college),
-                $('#major').val(res[1].major),
-                $('#dor_no').val(res[1].room_no),
-                $('#email').val(res[1].email),
+                console.log(res),
+{#                $('#sno').val(res[1].sno),#}
+{#                $('#sname').val(res[1].sname),#}
+{#                $('#college').val(res[1].college),#}
+{#                $('#major').val(res[1].major),#}
+{#                $('#dor_no').val(res[1].room_no),#}
+{#                $('#email').val(res[1].email),#}
 
-                $('#activity_name').val(res[0].activity_name),
-                $('#host_no').val(res[0].host_no),
-                $('#activity_time').val(res[0].activity_time),
-                $('#activity_description').val(res[0].activity_description),
-                $('#activity_max_participate').val(res[0].activity_max_participate),
-                $('#last_apply_time').val(res[0].last_apply_time)
+                $('#activity_name').val(res.activity_name),
+                $('#host_no').val(res.host_no),
+                $('#activity_time').val(res.activity_time),
+                $('#activity_description').val(res.activity_description),
+                $('#activity_max_participate').val(res.activity_max_participate),
+                $('#last_apply_time').val(res.last_apply_time)
 
 
 
             },
 
         });
-        $('#studentInfoModal').modal('show')
+        $('#func_activity').modal('show')
 
-
-"/dor/student_handle/activity_applyment/activity_applyment/"
 
     }
 </script>

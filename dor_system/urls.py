@@ -18,20 +18,20 @@ from django.contrib import admin
 from dor.admin_handle.show_index import show_activity_index,show_book_index,show_checkin_index,show_meeting_room_index,show_repair_index,show_resource_index,show_search_index,show_set_time_index
 from dor.views import show_admin_index,show_student_index,show_index
 from dor.admin_handle.dormintory_handle import ad_handle_cancel_dor_transcation,ad_handle_change_dor_transcation,ad_handle_live_on_vacation_transcation,ad_show_cancel_dor_applyments,ad_show_change_dor_applyments,ad_show_live_on_vacation_applyments
-from dor.admin_handle.repair_handle import  ad_show_repair_device_applyments,ad_handle_repair_device_applyment
-from dor.admin_handle.device_handle import ad_show_device_applyments,ad_show_key_applyments,ad_show_minitor_applyments,ad_commit_return_device
+from dor.admin_handle.repair_handle import *
+from dor.admin_handle.device_handle import *
 from dor.admin_handle.meeting_room_handle import ad_show_meeting_room_applyments,ad_show_meeting_room_info,ad_handle_meeting_room_applyments
 from dor.admin_handle.activity_handle import ad_show_activity_applyments,ad_show_activity_info,ad_handle_activity_applyments,ad_new_activity
 from dor.admin_handle.search_handle import ad_search_stu,ad_show_room_info,ad_sort_stu_info
 from dor.admin_handle.live_in_dor_handle import ad_add_stu_dor_info,ad_distribute_dor
 from dor.admin_handle.set_timequantum import ad_set_timeable
 from dor.student_handle.dor_applyment import stu_change_dor_applyment, stu_cancel_dor_applyment, stu_live_on_vacation_applyment, stu_show_live_on_vacation_applyments, stu_show_cancel_dor_applyments, stu_show_change_dor_applyments
-from dor.student_handle.resource_applyment import  stu_show_minitor_applyments, stu_show_key_applyments
+from dor.student_handle.resource_applyment import *
 from dor.student_handle.pay_bill import  stu_show_bill, stu_pay_bill
 from dor.student_handle.activity_applyment import  stu_activity_applyment, stu_show_activity_info
 #from dor.student_handle.book_applyment import  stu_book_applyment, stu_my_borrowed_books, stu_my_shared_books, stu_show_book_info, stu_search_book
 from dor.student_handle.meeting_room_applyment import  stu_meeting_room_applyment, stu_show_meeting_info
-from dor.student_handle.device_repair_applyment import  stu_device_repair_applyment, stu_cancel_device_repair_applyment, stu_show_device_repair_applyments
+from dor.student_handle.device_repair_applyment import *
 from dor.student_handle.show_stu_all_index import show_stu_activity,show_stu_book,show_stu_meeting_room,show_stu_pay,show_stu_repair,show_stu_resource
 from dor.admin_handle.login import admin_sign_in
 from dor.student_handle.login import stu_sign_in
@@ -64,11 +64,6 @@ urlpatterns = [
     url(r'^dor/student_handle/dor_applyment/cancel_dor_applyment',stu_cancel_dor_applyment),
     url(r'^dor/student_handle/dor_applyment/show_live_on_vacation_applyments',stu_show_live_on_vacation_applyments),
     url(r'^dor/student_handle/dor_applyment/live_on_vacation_applyment',stu_live_on_vacation_applyment),
-    url(r'^dor/student_handle/device_repair_applyment/device_repair_applyment', stu_device_repair_applyment),
-    url(r'^dor/student_handle/device_repair_applyment/show_device_repair_applyments',stu_show_device_repair_applyments),
-    url(r'^dor/student_handle/device_repair_applyment/cancel_device_repair_applyment',stu_cancel_device_repair_applyment),
-    url(r'^dor/student_handle/resource_applyment/show_minitor_applyments',stu_show_minitor_applyments),
-    url(r'^dor/student_handle/resource_applyment/show_key_applyments',stu_show_key_applyments),
     url(r'^dor/student_handle/pay_bill/show_bill',stu_show_bill),
     url(r'^dor/student_handle/pay_bill/pay_bill',stu_pay_bill),
     url(r'^dor/student_handle/activity_applyment/activity_applyment',stu_activity_applyment),
@@ -88,12 +83,6 @@ urlpatterns = [
     url(r'^dor/admin_handle/dormintory_handle/handle_cancel_dor_transcation',ad_handle_cancel_dor_transcation),
     url(r'^dor/admin_handle/dormintory_handle/show_live_on_vacation_applyments',ad_show_live_on_vacation_applyments),
     url(r'^dor/admin_handle/dormintory_handle/handle_live_on_vacation_transcation',ad_handle_live_on_vacation_transcation),
-    url(r'^dor/admin_handle/repair_handle/show_repair_device_applyments',ad_show_repair_device_applyments),
-    url(r'^dor/admin_handle/repair_handle/handle_repair_device_applyment',ad_handle_repair_device_applyment),
-    url(r'^dor/admin_handle/device_handle/show_device_applyments',ad_show_device_applyments),
-    url(r'^dor/admin_handle/device_handle/commit_return_device',ad_commit_return_device),
-    url(r'^dor/admin_handle/device_handle/show_key_applyments',ad_show_key_applyments),
-    url(r'^dor/admin_handle/device_handle/show_minitor_applyments',ad_show_minitor_applyments),
     url(r'^dor/admin_handle/meeting_room_handle/show_meeting_room_applyments',ad_show_meeting_room_applyments),
     url(r'^dor/admin_handle/meeting_room_handle/handle_meeting_room_applyments',ad_handle_meeting_room_applyments),
     url(r'^dor/admin_handle/meeting_room_handle/show_meeting_room_info',ad_show_meeting_room_info),
@@ -111,6 +100,25 @@ urlpatterns = [
     url(r'^dor/student_handle/login/', stu_sign_in),
     url(r'^dor/admin_handle/login/', admin_sign_in),
 
+
+    #楚华
+    url(r'^dor/student_handle/device_repair_applyment/show_device_repair_applyments/(\d{1,5})',show_device_repair_applyments),
+    url(r'^dor/student_handle/device_repair_applyment/cancel_device_repair_applyment/(\d{1,5})',cancel_device_repair_applyment),
+    url(r'^dor/student_handle/resource_applyment/show_minitor_applyments',show_minitor_applyments),
+    url(r'^dor/student_handle/resource_applyment/show_key_applyments',show_key_applyments),
+
+
+    url(r'^dor/admin_handle/device_handle/commit_return_device/(\d{1,5})',commit_return_device),
+    url(r'^dor/admin_handle/device_handle/show_key_applyments',show_key_applyments),
+    url(r'^dor/admin_handle/device_handle/show_minitor_applyments',show_minitor_applyments),
+
+    url(r'^show_stu_repair_index',repair, name='repair'),
+    url(r'^show_admin_repair_index',admin_repair, name='admin_repair'),
+    url(r'^show_stu_resource_index',resource, name='resource'),
+    url(r'^show_admin_resource_index',admin_resource, name='admin_resource'),
+    url(r'^delete_repair_applyment.html/(\d{1,5})',delete_repair_applyment),
+    url(r'^dor/admin_handle/device_handle/borrow_key_applyments',borrow_key_applyments),
+    url(r'^dor/admin_handle/device_handle/borrow_minitor_applyments',borrow_minitor_applyments),
 
 
 

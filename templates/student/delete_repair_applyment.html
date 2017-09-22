@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+        <div class="modal-content">
+            <div class="modal-body">
+                <form action="dor/student_handle/device_repair_applyment/cancel_device_repair_applyment/{{ get_id }}" method="post">
+                {% csrf_token %}
+                    <h3 align="center">是否取消申请</h3>
+                    <div class="modal-footer">
+                        <div style="width:50%;padding:0;margin:0;float:left;box-sizing:border-box;">
+                            <button style="width:90%;height:100%;" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        </div>
+                        <div style="width:50%;padding:0;margin:0;float:left;box-sizing:border-box;">
+                            <button style="width:90%;height:100%;" type="submit" class="btn btn-primary">确定</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+</body>
+
+
+<script>
+  //  window.location.href="repair";
+</script>
+</html>

@@ -359,6 +359,47 @@ class DorDevice(models.Model):
         db_table = 'dor_device'
 
 
+class DorDeviceApplyment(models.Model):
+    sno = models.CharField(max_length=10)
+    name = models.CharField(max_length=10)
+    item = models.CharField(max_length=10)
+    now = models.CharField(max_length=30, blank=True, null=True)
+    room_no = models.CharField(max_length=10)
+    reason = models.CharField(max_length=100)
+    remark = models.CharField(max_length=100)
+    status = models.IntegerField()
+    ad_no = models.CharField(max_length=10)
+    return_time = models.CharField(max_length=30, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'dor_device_applyment'
+
+
+class DorRepairDevice(models.Model):
+    sno = models.CharField(max_length=10)
+    name = models.CharField(max_length=15)
+    dor_no = models.CharField(max_length=10)
+    major = models.CharField(max_length=10)
+    room_no = models.CharField(max_length=10)
+    mobilephone = models.CharField(max_length=11)
+    mail = models.CharField(max_length=20)
+    now = models.CharField(max_length=30)
+    repair_time_1 = models.CharField(max_length=30)
+    apply_title = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
+    remark = models.CharField(max_length=100)
+    status = models.IntegerField()
+    ad_no = models.CharField(max_length=10)
+    admin_remark = models.CharField(max_length=100)
+    repair_time_2 = models.CharField(max_length=30, blank=True, null=True)
+    repair_time_3 = models.CharField(max_length=30, blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'dor_repair_device'
+
+
 class DorRoom(models.Model):
     room_no = models.CharField(primary_key=True, max_length=10)
     dor_no = models.CharField(max_length=10)
@@ -372,7 +413,7 @@ class DorRoom(models.Model):
 
 
 class DorStuAccount(models.Model):
-    sno = models.CharField(primary_key=True, max_length=11)
+    sno = models.CharField(max_length=11, blank=True, null=True)
     username = models.CharField(max_length=20, blank=True, null=True)
     password = models.CharField(max_length=255, blank=True, null=True)
 
@@ -415,7 +456,7 @@ class DormitorySchedule(models.Model):
 
 
 class MeetingRoom(models.Model):
-    meeting_room_no = models.CharField(max_length=10, blank=True, null=True)
+    meeting_room_no = models.CharField(primary_key=True, max_length=10)
     meeting_room_size = models.CharField(max_length=10, blank=True, null=True)
     include_medium_device = models.IntegerField(db_column='Include_medium_device', blank=True, null=True)  # Field name made lowercase.
     meeting_room_description = models.CharField(max_length=255, blank=True, null=True)
@@ -432,11 +473,11 @@ class MeetingRoomApplymentRecord(models.Model):
     apply_time = models.DateTimeField()
     check_apply_success = models.IntegerField(blank=True, null=True)
     ad_no = models.CharField(max_length=10, blank=True, null=True)
-    time_no_1 = models.IntegerField()
-    time_no_2 = models.IntegerField(blank=True, null=True)
-    time_no_3 = models.IntegerField(blank=True, null=True)
-    time_no_4 = models.IntegerField(blank=True, null=True)
-    book_date = models.DateField(blank=True, null=True)
+    time_no_1 = models.CharField(max_length=4)
+    time_no_2 = models.CharField(max_length=4, blank=True, null=True)
+    time_no_3 = models.CharField(max_length=4, blank=True, null=True)
+    time_no_4 = models.CharField(max_length=4, blank=True, null=True)
+    book_date = models.DateField()
 
     class Meta:
         managed = False
@@ -445,9 +486,9 @@ class MeetingRoomApplymentRecord(models.Model):
 
 
 class MeetingRoomOrderTime(models.Model):
-    meeting_room_order_time_no = models.CharField(primary_key=True, max_length=10)
-    start_time = models.DateTimeField(blank=True, null=True)
-    end_time = models.DateTimeField(blank=True, null=True)
+    meeting_room_order_time_no = models.CharField(primary_key=True, max_length=4)
+    start_time = models.TimeField(blank=True, null=True)
+    end_time = models.TimeField(blank=True, null=True)
 
     class Meta:
         managed = False
