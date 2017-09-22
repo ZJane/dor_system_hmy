@@ -41,13 +41,13 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
 
-                    <li><a href="info_admin.html"><span class="glyphicon glyphicon-user"></span> 李新老师</a></li>
+                    <li><a href="info_admin.html"><span class="glyphicon glyphicon-user"></span>{{ username }}</a></li>
                     <li><a data-toggle="modal" data-target="#logout">注销</a></li>
                 </ul>
             </div>
         </div>
     </nav>
-
+<!--列表部分不需要替换-->
     <div class="container-fluid">
         <div class="row">
             <!--sidebar-->
@@ -88,8 +88,8 @@
                 <div class="tab-content" style="margin-top: 10px">
                     <!-- 全部书籍 -->
                     <div role="tabpanel" class="tab-pane active" id="books">
-                        <form class="from" role="form">
-                            <div class="row" style="padding: 15px 0">
+                        <form class="from" role="form" action="/dor/admin_handle/books_Manager" method="POST">
+                            <div class="row" style="padding: 15px 0"   >
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="col-md-4" style="padding-left: 0">
@@ -100,30 +100,27 @@
                                             </div>
                                         </div>
                                         <!-- ./col-md-3 -->
-
                                         <div class="col-md-4">
                                             <div class="input-group">
                                                 <span class="input-group-addon">书编号</span>
-                                                <input type="text" class="form-control" autocomplete="off" placeholder="书编号" name="book_status" value="">
+                                                <input type="text" class="form-control" autocomplete="off" placeholder="书编号" name="book_id" value="">
                                             </div>
                                         </div>
                                         <!-- ./col-md-2 -->
-
                                         <div class="col-md-3">
                                             <div class="input-group">
                                                 <span class="input-group-addon">借书者</span>
-                                                <input type="text" class="form-control" placeholder="借书者" autocomplete="off" name="borrower" value="">
+                                                <input type="text" class="form-control" placeholder="借书者" autocomplete="off" name="book_borrowman" value="">
                                             </div>
                                         </div>
                                         <!-- ./col-md-3 -->
-
                                         <button class="btn btn-primary" type="submit">检索</button>
                                         <br>
                                         <br>
                                         <div class="col-md-4" style="padding-left: 0">
                                             <div class="input-group">
                                                 <span class="input-group-addon">作者</span>
-                                                <input type="text" class="form-control" placeholder="作者" autocomplete="off" name="author" value="">
+                                                <input type="text" class="form-control" placeholder="作者" autocomplete="off" name="book_author" value="">
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -135,10 +132,10 @@
                                         <div class="col-md-3">
                                             <div class="input-group">
                                                 <span class="input-group-addon">状态</span>
-                                                <input type="text" class="form-control" placeholder="状态" autocomplete="off" name="key_word" value="">
+                                                    <input type="text" class="form-control" placeholder="状态" autocomplete="off" name="book_borrow_state" value="">
                                             </div>
                                         </div>
-                                        <button class="btn btn-danger" type="submit">重置</button>
+                                        <button class="btn btn-danger" type="button">重置</button>
                                     </div>
                                 </div>
 
@@ -160,72 +157,41 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>10000</td>
-                                        <td>机器学习</td>
-                                        <td>周志华</td>
-                                        <td>10次</td>
-                                        <td>何铭宜</td>
-                                        <td>
-                                            <span class="label label-primary">未借出</span>
-                                        </td>
-                                        <td>
-                                            <span class="label label-primary"></span>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#bookInfo">查看</button>
-                                            <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#bookDelete">删除</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>10001</td>
-                                        <td>深度学习</td>
-                                        <td>[美] Ian，Goodfellow，[加] Yoshua，Bengio</td>
-                                        <td>10次</td>
-                                        <td>何铭宜</td>
-                                        <td>
-                                            <span class="label label-primary">已借出</span>
-                                        </td>
-                                        <td>
-                                            <span class="label label-primary">尚未归还</span>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#bookInfo">查看</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>10002</td>
-                                        <td>深度学习</td>
-                                        <td>[美] Ian，Goodfellow，[加] Yoshua，Bengio</td>
-                                        <td>10次</td>
-                                        <td>何铭宜</td>
-                                        <td>
-                                            <span class="label label-primary">已借出</span>
-                                        </td>
-                                        <td>
-                                            <span class="label label-primary">超期未还</span>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#bookInfo">查看</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>10003</td>
-                                        <td>机器学习</td>
-                                        <td>周志华</td>
-                                        <td>19次</td>
-                                        <td>何铭宜</td>
-                                        <td>
-                                            <span class="label label-primary">未借出</span>
-                                        </td>
-                                        <td>
-                                            <span class="label label-primary"></span>
-                                        </td>
-                                        <td>
-                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#bookInfo">查看</button>
-                                            <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#bookDelete">删除</button>
-                                        </td>
-                                    </tr>
+
+                                        {% for item in book_list %}
+
+                                        <tr>
+                                            <td>{{ item.book_id }}</td>
+                                            <td>{{ item.book_name }}</td>
+                                            <td>{{ item.book_author}}</td>
+                                            <td>{{ item.book_borrow_time   }}</td>
+                                            <td>{{ item.contributor }}</td>
+
+                                            <td>
+                                                {% if item.book_borrow == "1" %}
+                                                    <span class="label label-danger"> 已借出 </span>
+                                                {% else %}
+                                                    <span class="label label-success"> 未借出 </span>
+                                                {% endif %}
+                                            </td>
+                                        {% if item.book_borrow_state == "1" %}
+                                            <td>
+                                                <span class="label label-danger">尚未归还</span>
+                                            </td>
+                                        {% else %}
+                                            <td>
+                                                <span class="label label-success">已经归还</span>
+                                            </td>
+                                        {% endif %}
+
+                                          <td>
+                                              <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#bookInfo{{ item.book_id }}"  >查看</button>
+                                              <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#bookDelete{{ item.book_id }}">删除</button>
+                                          </td>
+
+                                        </tr>
+                                    {%endfor%}
+
                                 </tbody>
                             </table>
 
@@ -255,10 +221,12 @@
 
                     </div>
                     <!-- /全部书籍 -->
+                        <!--新书入屋-->
 
                     <div role="tabpanel" class="tab-pane" id="bookStore">
+
                         <div class="table-responsive">
-                            <form class="form-horizontal" role="form">
+                            <form class="form-horizontal" role="form" action="/books_Manager/insert_book"  id="insert"  method="POST">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="col-md-4" style="padding-left: 100px">
@@ -268,18 +236,18 @@
                                         <!-- ./col-md-3 -->
                                         <div class="col-md-4" style="padding-left: 50px">
                                             <label class="control-label">作者:</label>
-                                            <input type="text" class="form-control" placeholder="作者" autocomplete="off" name="author" value="">
+                                            <input type="text" class="form-control" placeholder="作者" autocomplete="off" name="book_author" value="">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-4" style="padding-left: 100px">
-                                            <label class="control-label">译者:</label>
-                                            <input type="text" class="form-control" placeholder="译者" name="translator" value="">
+                                            <label class="control-label">借阅次数:</label>
+                                            <input type="text" class="form-control" placeholder="借阅次数" name="book_borrow_time" value="">
                                         </div>
                                         <!-- ./col-md-3 -->
                                         <div class="col-md-4" style="padding-left: 50px">
-                                            <label class="control-label">出版社:</label>
-                                            <input type="text" class="form-control" placeholder="出版社" autocomplete="off" name="publishHouse" value="">
+                                            <label class="control-label">关键词:</label>
+                                            <input type="text" class="form-control" placeholder="关键词" autocomplete="off" name="book_word" value="">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -290,32 +258,30 @@
                                         <!-- ./col-md-3 -->
                                         <div class="col-md-4" style="padding-left: 50px">
                                             <label class="control-label">书编号:</label>
-                                            <input type="text" class="form-control" placeholder="书编号" autocomplete="off" name="key_word" value="">
+                                            <input type="text" class="form-control" placeholder="书编号" autocomplete="off" name="book_id" value="">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-8" style="padding-left: 100px">
                                             <label class="control-label">描述:</label>
-                                            <textarea class="form-control" width="900px" placeholder="这本书......................................................................"></textarea>
+                                            <input textarea name="book_desc" value="" class="form-control" width="900px" placeholder="这本书......................................................................"></input textarea>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-md-2" style="padding-left: 500px">
-                                            <button type="button" class="btn btn-default btn-primary" data-toggle="modal" data-target="#checkInsert">确定录入</button>
+                                            <button type="button" class="btn btn-default btn-primary" >重置</button>
                                         </div>
                                         <div class="col-md-2" style="padding-left: 100px">
-                                            <button type="button" class="btn btn-danger">重置</button>
+                                            <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#checkInsert2">确定录入</button>
                                         </div>
                                     </div>
 
                                 </div>
 
-
-
                             </form>
-
                         </div>
-                        <!-- /.table-responsive -->
+
+
                     </div>
 
                 </div>
@@ -324,15 +290,16 @@
         </div>
     </div>
     <!--modal开始-->
-    <div class="modal fade" tabindex="-1" role="dialog" id="bookInfo" data-backdrop="static">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
-                    <h4 class="modal-title">书籍: 机器学习</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="alert alert-warning fade in" role="alert" id="modal-notify" style="display: none"></div>
+    {% for item in book_list %}
+    <div class="modal fade" tabindex="-1" role="dialog" id="bookInfo{{ item.book_id  }}" data-backdrop="static" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">关闭</span></button>
+                        <h4 class="modal-title">{{ item.book_name }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="alert alert-warning fade in" role="alert" id="modal-notify" style="display: none"></div>
 
                     <div class="row">
                         <form class="form-horizontal" id="form-operate">
@@ -340,7 +307,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">书名</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control-static">深度学习</p>
+                                    <p class="form-control-static"> {{ item.book_name }}</p>
                                 </div>
                             </div>
                             <!-- /.form-group -->
@@ -349,7 +316,12 @@
                                 <label class="col-sm-2 control-label">状态</label>
                                 <div class="col-sm-10">
                                     <p class="form-control-static">
-                                        <span class="label label-primary">已借出</span>
+                                        {% if item.book_borrow == "1" %}
+                                            <span class="label label-danger">已借出</span>
+                                        {% else %}
+                                            <span class="label label-success">未借出</span>
+                                        {% endif %}
+
                                     </p>
                                 </div>
                             </div>
@@ -358,7 +330,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">作者</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control-static">[美] Ian，Goodfellow，[加] Yoshua，Bengio</p>
+                                    <p class="form-control-static">{{ item.book_author }}</p>
                                 </div>
                             </div>
                             <!-- /.form-group -->
@@ -366,7 +338,7 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">分享者</label>
                                 <div class="col-sm-10">
-                                    <p class="form-control-static">何铭宜</p>
+                                    <p class="form-control-static">{{ item.contributor }}</p>
                                 </div>
                             </div>
                             <!-- /.form-group -->
@@ -376,8 +348,7 @@
                                 <label class="col-sm-2 control-label">描述</label>
                                 <div class="col-sm-9">
                                     <p class="form-control-static" style="min-height: 60px">
-                                        机器学习是计算机科学与人工智能的重要分支领域. 本书作为该领域的入门教材，在内容上尽可能涵盖机器学习基础知识的各方面。 为了使尽可能多的读者通过本书对机器学习有所了解, 作者试图尽可能少地使用数学知识. 然而, 少量的概率、统计、代数、优化、逻辑知识似乎不可避免.
-                                        因此, 本书更适合大学三年级以上的理工科本科生和研究生, 以及具有类似背景的对机器学 习感兴趣的人士. 为方便读者, 本书附录给出了一些相关数学基础知识简介.
+                                        {{ item.book_desc }}
                                     </p>
                                 </div>
                             </div>
@@ -386,7 +357,7 @@
                                 <label class="col-sm-2 control-label">借阅次数</label>
                                 <div class="col-sm-10">
                                     <p class="form-control-static">
-                                        <span class="label label-info">10</span>
+                                        <span class="label label-info">{{ item.book_borrow_time }}</span>
                                     </p>
                                 </div>
                             </div>
@@ -401,8 +372,7 @@
         </div>
     </div>
     <!-- ./bookInfo -->
-
-    <div class="modal fade" tabindex="-1" role="dialog" id="bookDelete" data-backdrop="static">
+    <div class="modal fade" tabindex="-1" role="dialog" id="bookDelete{{ item.book_id }}" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -410,17 +380,20 @@
                     <h4 class="modal-title">借阅书籍</h4>
                 </div>
                 <div class="modal-body">
-                    <p>您确定要删除书名为「机器学习」的书籍么？</p>
+                    <p>您确定要删除书名为{{ item.book_name }}的书籍么？</p>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-success">确定</button>
+                    <form action="/books_Manager/Delete_book"  id="Delete{{ item.book_id }}"  method="POST">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-success" name="book_id" value="{{ item.book_id }}">确定</button>
+                    </form>
                 </div>
             </div>
         </div>
+
     </div>
     <!-- ./bookDelete -->
-    <div class="modal fade" tabindex="-1" role="dialog" id="checkInsert" data-backdrop="static">
+    <div class="modal fade" tabindex="-1" role="dialog" id="checkInsert{{ item.book_id }}" data-backdrop="static">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -437,7 +410,7 @@
         </div>
     </div>
     <!--modal结束-->
-
+    {% endfor %}
     <!--注销modal-->
     <div class="modal fade" tabindex="-1" role="dialog" id="logout" data-backdrop="static">
         <div class="modal-dialog">
@@ -459,15 +432,12 @@
             </div>
         </div>
     </div>
-
     <!-- Bootstrap core JavaScript
       ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-
-    <script src="../js/jquery-2.2.1.min.js"></script>
-    <script src="../js/bootstrap.min.js"></script>
-    <!-- Just to make our placeholder images work. Don't actually copy the next line! -->
-    <script src="../js/holder.min.js"></script>
+    <!-- Bootstrap core JavaScript
+      ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
      <script type="text/javascript" src="{% static 'bootstrap/js/jquery-2.2.1.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'bootstrap/js/bootstrap.js' %}"></script>
