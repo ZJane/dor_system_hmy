@@ -22,7 +22,6 @@ from dor.admin_handle.repair_handle import  ad_show_repair_device_applyments,ad_
 from dor.admin_handle.device_handle import ad_show_device_applyments,ad_show_key_applyments,ad_show_minitor_applyments,ad_commit_return_device
 from dor.admin_handle.meeting_room_handle import ad_show_meeting_room_applyments,ad_show_meeting_room_info,ad_handle_meeting_room_applyments
 from dor.admin_handle.activity_handle import ad_show_activity_applyments,ad_show_activity_info,ad_handle_activity_applyments,ad_new_activity
-from dor.admin_handle.book_handle import ad_new_book,ad_show_books_info
 from dor.admin_handle.search_handle import ad_search_stu,ad_show_room_info,ad_sort_stu_info
 from dor.admin_handle.live_in_dor_handle import ad_add_stu_dor_info,ad_distribute_dor
 from dor.admin_handle.set_timequantum import ad_set_timeable
@@ -30,12 +29,14 @@ from dor.student_handle.dor_applyment import stu_change_dor_applyment, stu_cance
 from dor.student_handle.resource_applyment import  stu_show_minitor_applyments, stu_show_key_applyments
 from dor.student_handle.pay_bill import  stu_show_bill, stu_pay_bill
 from dor.student_handle.activity_applyment import  stu_activity_applyment, stu_show_activity_info
-from dor.student_handle.book_applyment import  stu_book_applyment, stu_my_borrowed_books, stu_my_shared_books, stu_show_book_info, stu_search_book
+#from dor.student_handle.book_applyment import  stu_book_applyment, stu_my_borrowed_books, stu_my_shared_books, stu_show_book_info, stu_search_book
 from dor.student_handle.meeting_room_applyment import  stu_meeting_room_applyment, stu_show_meeting_info
 from dor.student_handle.device_repair_applyment import  stu_device_repair_applyment, stu_cancel_device_repair_applyment, stu_show_device_repair_applyments
 from dor.student_handle.show_stu_all_index import show_stu_activity,show_stu_book,show_stu_meeting_room,show_stu_pay,show_stu_repair,show_stu_resource
 from dor.admin_handle.login import admin_sign_in
 from dor.student_handle.login import stu_sign_in
+from dor.student_handle.book_handle import share_books,borrow_books,find_books,return_books,look_books
+from dor.admin_handle.books_Manager import books_Manager_find,insert_book,Delete_book
 urlpatterns = [
     url(r'^index/',show_index),
     url(r'^admin/',admin.site.urls),
@@ -74,11 +75,11 @@ urlpatterns = [
     url(r'^dor/student_handle/activity_applyment/show_activity_info',stu_show_activity_info),
     url(r'^dor/student_handle/meeting_room_applyment/meeting_room_applyment',stu_meeting_room_applyment),
     url(r'^dor/student_handle/meeting_room_applyment/show_meeting_room_info', stu_show_meeting_info),
-    url(r'^dor/student_handle/book_applyment/my_shared_books', stu_my_shared_books),
-    url(r'^dor/student_handle/book_applyment/book_applyment',stu_book_applyment),
-    url(r'^dor/student_handle/book_applyment/my_borrowed_books', stu_my_borrowed_books),
-    url(r'^dor/student_handle/book_applyment/search_book',stu_search_book),
-    url(r'^dor/student_handle/book_applyment/show_book_info',stu_show_book_info),
+    # url(r'^dor/student_handle/book_applyment/my_shared_books', stu_my_shared_books),
+    # url(r'^dor/student_handle/book_applyment/book_applyment',stu_book_applyment),
+    # url(r'^dor/student_handle/book_applyment/my_borrowed_books', stu_my_borrowed_books),
+    # url(r'^dor/student_handle/book_applyment/search_book',stu_search_book),
+    # url(r'^dor/student_handle/book_applyment/show_book_info',stu_show_book_info),
 
 
     url(r'^dor/admin_handle/dormintory_handle/show_change_dor_applyments', ad_show_change_dor_applyments),
@@ -100,8 +101,7 @@ urlpatterns = [
     url(r'^dor/admin_handle/activity_handle/handle_activity_applyments',ad_handle_activity_applyments),
     url(r'^dor/admin_handle/activity_handle/show_activity_info',ad_show_activity_info),
     url(r'^dor/admin_handle/activity_handle/new_activity',ad_new_activity),
-    url(r'^dor/admin_handle/book_handle/new_book',ad_new_book),
-    url(r'^dor/admin_handle/book_handle/show_books_info',ad_show_books_info),
+
     url(r'^dor/admin_handle/search_handle/search_stu',ad_search_stu),
     url(r'^dor/admin_handle/search_handle/sort_stu_info',ad_sort_stu_info),
     url(r'^dor/admin_handle/search_handle/show_room_info',ad_show_room_info),
@@ -110,5 +110,21 @@ urlpatterns = [
     url(r'^dor/admin_handle/set_timequantum/set_timeable',ad_set_timeable),
     url(r'^dor/student_handle/login/', stu_sign_in),
     url(r'^dor/admin_handle/login/', admin_sign_in),
+
+
+
+
+    #LHQ
+    url(r'^dor/student_handle/book_handle/find_books',find_books),
+    url(r'^dor/student_handle/book_handle/borrow_books/(\d{1,5})',borrow_books),
+    url(r'^dor/student_handle/book_handle/share_books',share_books),
+    url(r'^dor/student_handle/book_handle/look',look_books),
+    url(r'^dor/student_handle/book_handle/return_books/(\d{1,5})',return_books),
+
+    #admin
+    #url(r'^bookManager/', show_bookManager),
+    url(r'^dor/admin_handle/books_Manager', books_Manager_find),
+    url(r'^books_Manager/Delete_book', Delete_book),
+    url(r'^books_Manager/insert_book', insert_book),
 
 ]

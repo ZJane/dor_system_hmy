@@ -281,6 +281,26 @@ class DorBook(models.Model):
         db_table = 'dor_book'
 
 
+class DorBookInf(models.Model):
+    book_name = models.CharField(max_length=10)
+    book_author = models.CharField(max_length=10)
+    book_word = models.CharField(max_length=10)
+    contributor = models.CharField(max_length=10)
+    book_id = models.CharField(primary_key=True, max_length=20)
+    book_desc = models.CharField(max_length=10, blank=True, null=True)
+    book_borrow = models.CharField(max_length=10, blank=True, null=True)
+    book_borrow_time = models.CharField(max_length=10, blank=True, null=True)
+    book_borrow_state = models.CharField(max_length=10, blank=True, null=True)
+    book_operation = models.CharField(max_length=10, blank=True, null=True)
+    book_borrowman = models.CharField(max_length=10, blank=True, null=True)
+    book_share_man = models.CharField(max_length=10)
+    book_share_time = models.CharField(max_length=10)
+
+    class Meta:
+        managed = False
+        db_table = 'dor_book_inf'
+
+
 class DorChange(models.Model):
     sno = models.IntegerField(primary_key=True)
     sname = models.CharField(max_length=20, blank=True, null=True)
@@ -406,16 +426,22 @@ class MeetingRoom(models.Model):
 
 
 class MeetingRoomApplymentRecord(models.Model):
-    book_no = models.CharField(max_length=10, blank=True, null=True)
+    meeting_room_no = models.CharField(max_length=10)
     sno = models.IntegerField(primary_key=True)
     check_cancel_apply = models.IntegerField(blank=True, null=True)
-    apply_time = models.DateTimeField(blank=True, null=True)
+    apply_time = models.DateTimeField()
     check_apply_success = models.IntegerField(blank=True, null=True)
     ad_no = models.CharField(max_length=10, blank=True, null=True)
+    time_no_1 = models.IntegerField()
+    time_no_2 = models.IntegerField(blank=True, null=True)
+    time_no_3 = models.IntegerField(blank=True, null=True)
+    time_no_4 = models.IntegerField(blank=True, null=True)
+    book_date = models.DateField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'meeting_room_applyment_record'
+        unique_together = (('sno', 'meeting_room_no', 'apply_time'),)
 
 
 class MeetingRoomOrderTime(models.Model):
@@ -502,7 +528,9 @@ class Student(models.Model):
     dor_no = models.CharField(max_length=10, blank=True, null=True)
     room_no = models.CharField(max_length=10, blank=True, null=True)
     stu_phone = models.CharField(max_length=12, blank=True, null=True)
+    category = models.CharField(max_length=20, blank=True, null=True)
     email = models.CharField(max_length=40, blank=True, null=True)
+    bed_no = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
         managed = False

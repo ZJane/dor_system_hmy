@@ -1,12 +1,14 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 
-from dor.models import ActvityApplyment, Student
+from dor.models import ActvityApplyment, Student,Activity
 
 
 def stu_activity_applyment(request):
-    activity_no=1
-    activity_name="十大歌手"
+    activity_no=request.POST.get('act_no')
+    thisact=Activity.objects.get(activity_no=activity_no)
+    activity_name=thisact.get('activity_name')
+
     sno=request.session['userno']
     apply_time=request.POST.get('apply_time',None)
     ad_no='张敏华'
@@ -16,4 +18,11 @@ def stu_activity_applyment(request):
     return render(request,"student/activity.html")
 
 def stu_show_activity_info(request):
-    pass
+    activity_no = request.POST.get('act_no')
+    thisact = Activity.objects.get(activity_no=activity_no)
+    res=[]
+    res.append(thisact)
+    sno = request.session['userno']
+    stu_data=Student.objects.filter(sno=sno)
+    res.append(stu_data)
+    return render(request,"student/activity.html",{'res':res})

@@ -1,22 +1,24 @@
 from django.shortcuts import render
 
 from dor.DTO.StuDorLog import PayLogModel
-from dor.models import Activity, ActvityApplyment,DorCostRecord, StuPayRecord, Student
+from dor.models import Activity, ActvityApplyment,DorCostRecord, StuPayRecord, Student,DorBookInf
 
 
 def show_stu_activity(request):
-    data=Activity.objects.filter(apply_status="申请中")
+    data=Activity.objects.filter()
     sno = request.session['userno']
     sname=request.session['username']
     test = Student.objects.get(sno=sno)
-    activity_log=ActvityApplyment.objects.filter(sno=sno,apply_status="申请中")
+    activity_log=ActvityApplyment.objects.filter(sno=sno)
     return render(request, "student/activity.html",
                   {'sno':sno,'sname':sname,'activity':data,'sname': test.sname, 'college': test.college, 'major': test.major, 'room_no': test.room_no,
                    'stu_phone': test.stu_phone, 'email': test.email,'activity_log':activity_log})
 
 
 def show_stu_repair(request):
-    return render(request,"student/repair.html")
+    sno=request.session['userno']
+    sname=request.session['username']
+    return render(request,"student/repair.html",{'username':sname,'userno':sno})
 
 def show_stu_pay(request):
     data = DorCostRecord.objects.all()
@@ -35,10 +37,23 @@ def show_stu_pay(request):
     return render(request, "student/payment.html", {'paylog': pay_list})
 
 def show_stu_resource(request):
-    return render(request,"student/resource.html")
+    sno=request.session['userno']
+    sname=request.session['username']
+    return render(request,"student/resource.html",{'username':sname,'userno':sno})
 
 def show_stu_meeting_room(request):
-    return render(request,"student/meeting.html")
+    sno = request.session['userno']
+    sname = request.session['username']
+    return render(request,"student/meeting.html",{'username':sname,'userno':sno})
 
 def show_stu_book(request):
-    return render(request,"student/book.html")
+    sno = request.session['userno']
+    sname = request.session['username']
+    book_list = DorBookInf.objects.all().values()
+    book_borrow_list =DorBookInf.objects.filter(book_borrowman=sname)
+    book_share_list =DorBookInf.objects.filter(book_share_man="1", book_borrowman=sname)
+
+    return render(request,"student/book.html",{'username':sname,'userno':sno,
+                                               'book_list':book_list,
+                                                   'book_borrow_list': book_borrow_list,
+                                                   'book_share_list':book_share_list})
