@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 import  json
 from django.shortcuts import render
-
+from dor.student_handle.show_stu_all_index import show_stu_activity
 from dor.models import ActvityApplyment,Student,Activity
 
 
@@ -16,8 +16,7 @@ def stu_activity_applyment(request):
         apply_status="申请中"
         test1=ActvityApplyment(actvity_no=activity_no,activity_name=activity_name,sno=sno,apply_time=apply_time,ad_no=ad_no,apply_status=apply_status)
         test1.save()
-        Activity_list=Activity.objects.all()
-        return render(request,"student/activity.html",{'activity':Activity_list})
+        return show_stu_activity(request)
 
 def stu_show_activity_info(request):
     activity_no = request.POST.get('act_no')

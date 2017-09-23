@@ -124,8 +124,8 @@
                                 {%  for i in DorChange %}
                                  <tr>
 									<td>{{i.apply_time}}</td>
-                                     <td >{{ i.sno }}</td>
-									<td>{{i.sname}}</td>
+                                     <td >{{ stu.sno }}</td>
+									<td>{{stu.sname}}</td>
 									<td>{{i.old_room_no}}</td>
 									<td>{{ i.ad_name }}</td>
 									<td><span class="label label-primary">{{ i.apply_status }}</span></td>
@@ -158,8 +158,8 @@
                                 {% for m in LiveOnVacation %}
 								<tr>
 									<td>{{m.apply_time}}</td>
-									<td>{{m.sname}}</td>
-									<td>{{m.new_room_no}}</td>
+									<td>{{stu.sname}}</td>
+									<td>{{stu.room_no}}</td>
 									<td>{{m.ad_name }}</td>
 									<td><span class="label label-primary">{{ m.apply_status }}</span></td>
 									<td>
@@ -191,8 +191,8 @@
                                 {%  for i in DorCancel %}
                                  <tr>
 									<td>{{i.apply_time}}</td>
-									<td>{{i.sname}}</td>
-									<td>{{i.new_room_no}}</td>
+									<td>{{stu.sname}}</td>
+									<td>{{stu.room_no}}</td>
 									<td>{{ i.ad_name }}</td>
 									<td><span class="label label-primary">{{ i.apply_status }}</span></td>
 									<td>
@@ -226,35 +226,35 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<input type="text" class="form-control" name="sno" readonly="readonly" value={{ sno }}>
+									<input type="text" class="form-control" name="sno" readonly="readonly" value={{ stu.sno }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-									<input type="text" name="sname" class="form-control" readonly="readonly" value={{ sname }}>
+									<input type="text" name="sname" class="form-control" readonly="readonly" value={{ stu.sname }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-							        <input type="text" name="college" class="form-control" readonly="readonly" value={{ college }}>
+							        <input type="text" name="college" class="form-control" readonly="readonly" value={{ stu.college }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-							        <input type="text" name="major" class="form-control" readonly="readonly" value={{ major }}>
+							        <input type="text" name="major" class="form-control" readonly="readonly" value={{ stu.major }}>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<input type="text" name="old_dor_info"class="form-control" readonly="readonly" value={{ room_no }}>
+									<input type="text" name="old_dor_info"class="form-control" readonly="readonly" value={{ stu.room_no }}>
 								</div>
 							</div>
 
@@ -268,14 +268,14 @@
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<input type="text" name="phone" class="form-control" value={{ stu_phone }}>
+									<input type="text" name="phone" class="form-control" value={{ stu.stu_phone }}>
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<input type="text" class="form-control" value={{ email }}>
+									<input type="text" class="form-control" value={{ stu.email }}>
 								</div>
 							</div>
 
@@ -319,35 +319,35 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<input type="text" name="sno" class="form-control" readonly="readonly" value={{ sno }}>
+									<input type="text" name="sno" class="form-control" readonly="readonly" value={{ stu.sno }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-                                    <input type="text" name="sname" class="form-control" readonly="readonly" value={{ sname }}>
+                                    <input type="text" name="sname" class="form-control" readonly="readonly" value={{ stu.sname }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-									<input type="text" name="college" class="form-control" readonly="readonly" value={{ college }}>
+									<input type="text" name="college" class="form-control" readonly="readonly" value={{ stu.college }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-							        <input type="text" name="major" class="form-control" readonly="readonly" value={{ major }}>
+							        <input type="text" name="major" class="form-control" readonly="readonly" value={{ stu.major }}>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-                                    <input type="text" name="dor_info"class="form-control" readonly="readonly" value={{ room_no }}>
+                                    <input type="text" name="dor_info"class="form-control" readonly="readonly" value={{ stu.room_no }}>
 								</div>
 							</div>
 
@@ -361,14 +361,14 @@
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<input type="text" name="phone" class="form-control" value={{ stu_phone }}>
+									<input type="text" name="phone" class="form-control" value={{ stu.stu_phone }}>
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<input type="text" class="form-control" value={{ email }}>
+									<input type="text" class="form-control" value={{ stu.email }}>
 								</div>
 							</div>
 
@@ -414,35 +414,35 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<input type="text" name="sno" class="form-control" readonly="readonly" value={{ sno }}>
+									<input type="text" name="sno" class="form-control" readonly="readonly" value={{ stu.sno }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-									<input type="text" name="sname" class="form-control" readonly="readonly" value={{ sname }}>
+									<input type="text" name="sname" class="form-control" readonly="readonly" value={{ stu.sname }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-									<input type="text" name="college" class="form-control" readonly="readonly" value={{ college }}>
+									<input type="text" name="college" class="form-control" readonly="readonly" value={{ stu.college }}>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-							        <input type="text" name="major" class="form-control" readonly="readonly" value={{ major }}>
+							        <input type="text" name="major" class="form-control" readonly="readonly" value={{ stu.major }}>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-                                    <input type="text" name="dor_info" class="form-control" readonly="readonly" value={{ room_no }}>
+                                    <input type="text" name="dor_info" class="form-control" readonly="readonly" value={{ stu.room_no }}>
 								</div>
 							</div>
 
@@ -456,14 +456,14 @@
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<input type="text" class="form-control" name="phone" value={{ stu_phone }}>
+									<input type="text" class="form-control" name="phone" value={{ stu.stu_phone }}>
 								</div>
 							</div>
 
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<input type="text" class="form-control" value={{ email }}>
+									<input type="text" class="form-control" value={{ stu.email }}>
 								</div>
 							</div>
 
@@ -528,35 +528,35 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<label class="control-label">{{ i.sno }}</label>
+									<label class="control-label">{{ stu.sno }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-									<label class="control-label">{{ i.sname }}</label>
+									<label class="control-label">{{ stu.sname }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-									<label class="control-label">{{ i.college }}</label>
+									<label class="control-label">{{ stu.college }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-									<label class="control-label">{{ i.major }}</label>
+									<label class="control-label">{{ stu.major }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<label class="control-label">{{ i.old_room_no }}</label>
+									<label class="control-label">{{ stu.room_no }}</label>
 								</div>
 							</div>
 
@@ -570,14 +570,14 @@
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<label class="control-label">{{ i.stu_phone }}</label>
+									<label class="control-label">{{ stu.stu_phone }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<label class="control-label">{{ i.email }}</label>
+									<label class="control-label">{{ stu.email }}</label>
 								</div>
 							</div>
 
@@ -631,35 +631,35 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<label class="control-label">{{ i.sno }}</label>
+									<label class="control-label">{{ stu.sno }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-									<label class="control-label">{{ i.sname }}</label>
+									<label class="control-label">{{ stu.sname }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-									<label class="control-label">{{ i.college }}</label>
+									<label class="control-label">{{ stu.college }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-									<label class="control-label">{{ i.major }}</label>
+									<label class="control-label">{{ stu.major }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<label class="control-label">{{ i.new_room_no }}</label>
+									<label class="control-label">{{ stu.room_no }}</label>
 								</div>
 							</div>
 
@@ -673,14 +673,14 @@
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<label class="control-label">{{ i.stu_phone }}</label>
+									<label class="control-label">{{ stu.stu_phone }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<label class="control-label">{{ i.email }}</label>
+									<label class="control-label">{{ stu.email }}</label>
 								</div>
 							</div>
 
@@ -734,35 +734,35 @@
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学号:</label>
-									<label class="control-label">{{ i.sno }}</label>
+									<label class="control-label">{{ stu.sno }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">姓名:</label>
-									<label class="control-label">{{ i.sname }}</label>
+									<label class="control-label">{{ stu.sname }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">学院:</label>
-									<label class="control-label">{{ i.college }}</label>
+									<label class="control-label">{{ stu.college }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">专业:</label>
-									<label class="control-label">{{ i.major }}</label>
+									<label class="control-label">{{ stu.major }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-5 col-md-5 col-sm-5 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">现住宿舍:</label>
-									<label class="control-label">{{ i.new_room_no }}</label>
+									<label class="control-label">{{ stu.room_no }}</label>
 								</div>
 							</div>
 
@@ -776,14 +776,14 @@
 							<div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">联系电话:</label>
-									<label class="control-label">{{ i.stu_phone }}</label>
+									<label class="control-label">{{ stu.stu_phone }}</label>
 								</div>
 							</div>
 
 							<div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
 								<div class="form-group">
 									<label class="control-label">邮箱:</label>
-									<label class="control-label">{{ i.email }}</label>
+									<label class="control-label">{{ stu.email }}</label>
 								</div>
 							</div>
 

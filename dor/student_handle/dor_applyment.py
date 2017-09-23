@@ -33,7 +33,8 @@ def stu_cancel_dor_applyment(request):
         reason=request.POST.get('reason',None)
         test=DorCheckOut(sno=sno,sname=sname,dor_no=dor_info,room_no=dor_info,apply_time=apply_time,stu_phone=phone,reason=reason,apply_status="申请中")
         test.save()
-    return render(request, "student/index.html")
+        return show_student_index(request)
+
 
 def stu_show_live_on_vacation_applyments(request):
     pass
@@ -49,4 +50,4 @@ def stu_live_on_vacation_applyment(request):
         reason=request.POST.get('staying_reason',None)
         test=StayingOnVacationApplyment(sno=sno,sname=sname,dor_no=dor_no,start_time=start_time,end_time=end_time,apply_time=apply_time,reason=reason,apply_status="申请中")
         test.save()
-    return render(request, "student/index.html")
+        return show_student_index(request)
