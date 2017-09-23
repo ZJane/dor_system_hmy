@@ -2,22 +2,22 @@ from django.http import HttpResponse
 import  json
 from django.shortcuts import render
 
-from dor.models import ActvityApplyment, Student,Activity
+from dor.models import ActvityApplyment,Student,Activity
 
 
 def stu_activity_applyment(request):
     if request.method=="POST":
-        activity_no = request.POST.get('aact_no')
-        thisact=Activity.objects.get(activity_no=activity_no)
-        activity_name=thisact.get('activity_name')
+        activity_no = request.POST.get('aact_no',None)
         apply_time=request.POST.get('apply_time',None)
         sno = request.session['userno']
-        print("aaa=",apply_time)
+        thisact=Activity.objects.get(activity_no=activity_no)
+        activity_name=thisact.activity_name
         ad_no=' '
         apply_status="申请中"
         test1=ActvityApplyment(actvity_no=activity_no,activity_name=activity_name,sno=sno,apply_time=apply_time,ad_no=ad_no,apply_status=apply_status)
         test1.save()
-        return render(request,"student/activity.html")
+        Activity_list=Activity.objects.all()
+        return render(request,"student/activity.html",{'activity':Activity_list})
 
 def stu_show_activity_info(request):
     activity_no = request.POST.get('act_no')

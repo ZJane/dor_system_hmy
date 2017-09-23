@@ -2,7 +2,7 @@ import pymysql
 from django.http import HttpResponse
 from django.shortcuts import render
 from dor.models import DorChange,DorCheckOut,StudentStayingRecord,StayingOnVacationApplyment
-
+from dor.views import show_student_index
 def stu_show_change_dor_applyments(request):
     pass
 
@@ -18,7 +18,7 @@ def stu_change_dor_applyment(request):
         new_dor_info=new_dor_info.split('-')
         test=DorChange(sno=sno,sname=sname,old_dor_no=old_dor_info,old_room_no=old_dor_info,new_dor_no=new_dor_info[0],new_room_no=new_dor_info[0]+"-"+new_dor_info[1]+"-"+new_dor_info[2],apply_time=apply_time,stu_phone=phone,reason=reason,app_status="申请中")
         test.save()
-    return render(request,"student/index.html")
+        return show_student_index(request)
 
 def stu_show_cancel_dor_applyments(request):
     pass

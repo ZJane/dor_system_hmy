@@ -184,7 +184,7 @@
                                     <td><span class="label label-primary">{{ i.apply_status }}</span></td>
                                     <td>
                                         <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#detail_1">查看</button>
-                                        <button type="button" class="btn btn-danger btn-xs">取消</button>
+{#                                        <button type="button" class="btn btn-danger btn-xs">取消</button>#}
                                     </td>
                                 </tr>
                                 {% endfor %}
@@ -286,7 +286,8 @@
                         </div>
                     </form>
                     <hr/>
-                    <form>
+                    <form action="/dor/student_handle/activity_applyment/activity_applyment/" id="aaa" method="post">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
@@ -339,10 +340,9 @@
                         </div>
                     </form>
                 </div>
-
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" onclick="apply_activity(this)">确认申请</button>
+                    <button type="button" class="btn btn-primary" onclick="apply_activity()">确认申请</button>
                 </div>
             </div>
         </div>
@@ -399,6 +399,9 @@
 <script type="text/javascript" src="{% static 'bootstrap/js/holder.min.js' %}"></script>
 </body>
 <script>
+    function apply_activity(){
+        document.getElementById("aaa").submit();
+    }
     function checkactivityinfo(obj) {
         var act = $(obj).parent().parent().find('td');
         var act_no = act.eq(0).text();
@@ -421,9 +424,7 @@
 
     }
 
-    function apply_activity(){
-        document.getELementById("act_").submit();
-    }
+
 </script>
 
 </html>
