@@ -21,6 +21,7 @@ def show_stu_repair(request):
     return render(request,"student/repair.html",{'username':sname,'userno':sno})
 
 def show_stu_pay(request):
+    sname = request.session['username']
     data = DorCostRecord.objects.all()
     pay_list = []
     for i in range(0, len(data)):
@@ -34,7 +35,7 @@ def show_stu_pay(request):
         p.status = test.check_paied
         pay_list.append(p)
 
-    return render(request, "student/payment.html", {'paylog': pay_list})
+    return render(request, "student/payment.html", {'paylog': pay_list,'username':sname})
 
 def show_stu_resource(request):
     sno=request.session['userno']

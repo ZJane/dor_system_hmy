@@ -15,9 +15,9 @@ class Activity(models.Model):
     activity_name = models.CharField(max_length=20, blank=True, null=True)
     host_no = models.CharField(max_length=10, blank=True, null=True)
     activity_description = models.CharField(max_length=100, blank=True, null=True)
-    activity_time = models.DateTimeField(blank=True, null=True)
+    activity_time = models.CharField(max_length=30, blank=True, null=True)
     activity_max_participate = models.IntegerField(blank=True, null=True)
-    last_apply_time = models.DateTimeField(blank=True, null=True)
+    last_apply_time = models.CharField(max_length=30, blank=True, null=True)
 
     class Meta:
         managed = False

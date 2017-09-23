@@ -96,11 +96,10 @@
                                     <td>{{ item.id }}</td>
                                     <td>{{ item.now }}</td>
                                     <td>{{ item.apply_title }}</td>
-                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.sname }}</td>
                                     <td>{{ item.room_no }}</td>
                                     <td>
-                                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#adminDealtRepair"
-                                            href="dor/admin_handle/repair_handle/handle_show_repair_device_applyments/{{ item.id }}">
+                                        <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#adminDealtRepair{{ item.id }}">
                                             查看及处理
                                         </button>
                                     </td>
@@ -153,7 +152,7 @@
                                         <td>{{ item.id }}</td>
                                         <td>{{ item.now }}</td>
                                         <td>{{ item.apply_title }}</td>
-                                        <td>{{ item.name }}</td>
+                                        <td>{{ item.sname }}</td>
                                         <td>{{ item.room_no }}</td>
                                         {% if item.status == 0 %}
                                         <td><span class="label label-warning">申请中</span></td>
@@ -163,8 +162,7 @@
                                         <td><span class="label label-danger">申请失败</span></td>
                                         {% endif %}
                                         <td>
-                                            <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#adminRepairLog"
-                                                href="dor/admin_handle/repair_handle/record_show_repair_device_applyments/{{ item.id }}">
+                                            <button class="btn btn-primary btn-xs" data-toggle="modal" data-target="#adminRepairLog{{ item.id }}">
                                                 查看
                                             </button>
                                         </td>
@@ -203,15 +201,8 @@
 </div>
 
 <!--待办事项modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="adminDealtRepair">
-    <div class="modal-dialog" style="width:auto; max-width:1000px">
-        <div class="modal-content">
-        </div>
-    </div>
-</div>
-
-<!--记录modal-->
-<div class="modal fade" tabindex="-1" role="dialog" id="adminRepairLog" >
+{% for TobeShow in apply_list %}
+<div class="modal fade" tabindex="-1" role="dialog" id="adminDealtRepair{{ TobeShow.id }}">
     <div class="modal-dialog" style="width:auto; max-width:1000px">
         <div class="modal-content">
             <div class="modal-header">
@@ -220,114 +211,238 @@
                 <h4 class="modal-title">报修记录查看</h4>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="dor/admin_handle/repair_handle/handle_repair_device_applyments/{{ TobeShow.id }}&{{ username }}" method="POST" >
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">学号:</label>
+                                <label class="control-label">{{ TobeShow.sno }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">姓名:</label>
+                                <label class="control-label">{{ TobeShow.sname }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">学院:</label>
+                                <label class="control-label">{{ TobeShow.college }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">专业:</label>
+                                <label class="control-label">{{ TobeShow.major }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">申请时间:</label>
+                                <label class="control-label">{{ TobeShow.now }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">现住宿舍:</label>
+                                <label class="control-label">{{ TobeShow.room_no }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">联系电话:</label>
+                                <label class="control-label">{{ TobeShow.phone }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">邮箱:</label>
+                                <label class="control-label">{{ TobeShow.mail }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">报修标题:</label>
+                                <label class="control-label">{{ TobeShow.apply_title }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">报修描述:</label>
+                                <label class="control-label">{{ TobeShow.description }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">备注:</label>
+                                <label class="control-label">{{ TobeShow.remark }}</label>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">预约时间段:</label>
+                                <label class="control-label">{{ TobeShow.repair_time_1 }} {{ TobeShow.repair_time_2 }}-{{ TobeShow.repair_time_3 }}</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr/>
                     <div class="row">
                         <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
                             <div class="form-group">
-                                <label class="control-label">学号:</label>
-                                <label class="control-label">{{ item.sno }}</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">姓名:</label>
-                                <label class="control-label">{{ item.name }}</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">申请时间:</label>
-                                <label class="control-label">{{ item.now }}</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">学院:</label>
-                                <label class="control-label">{{ item.dor_no }}</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">专业:</label>
-                                <label class="control-label">{{ item.major }}</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">宿舍:</label>
-                                <label class="control-label">{{ item.room_no }}</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">联系电话:</label>
-                                <label class="control-label">{{ item.mobilephone }}</label>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">邮箱:</label>
-                                <label class="control-label">{{ item.mail }}</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3 col-sm-4 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">报修标题:</label>
-                                <label class="control-label">{{ item.repir_time_1 }}</label>
+                                <label class="control-label">操作:</label>
+                                <select class="combobox" name="handle">
+                                    <option></option>
+                                    <option value="0">将通知维修人员</option>
+                                    <option value="1">不同意维修</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                             <div class="form-group">
                                 <label class="control-label">备注:</label>
-                                <label class="control-label">{{ item.remark }}</label>
+                                <textarea class="form-control" name="admin_remark"></textarea>
                             </div>
                         </div>
-                        <hr/>
-                        <!--日期选择器未完善-->
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">预约时间段1:</label>
-                                <label class="control-label">2017-08-10 14:00-16:10</label>
-                            </div>
-                        </div>
-
-                        <!--日期选择器未完善-->
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">预约时间段2:</label>
-                                <label class="control-label">2017-08-10 16:00-18:10</label>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <div class="form-group">
-                                <label class="control-label">状态:</label>
-                                {% if item.status == 1 %}:
-                                <label class="label label-success">已维修</label>
-                                {% elif item.status == 0 %}
-                                <label class="label label-success">未安排维修</label>
-                                {% else %}
-                                <label class="label label-success">不维修</label>
-                                {% endif %}
-                            </div>
-                        </div>
-
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                        <button type="submit" class="btn btn-primary">确定</button>
                     </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <button type="button" class="btn btn-primary">确定</button>
             </div>
         </div>
     </div>
 </div>
+{% endfor %}
+
+<!--记录modal-->
+{% for TobeShow in apply_list %}
+<div class="modal fade" tabindex="-1" role="dialog" id="adminRepairLog{{ TobeShow.id }}" >
+    <div class="modal-dialog" style="width:auto; max-width:1000px">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                        class="sr-only">关闭</span></button>
+                <h4 class="modal-title">报修记录查看</h4>
+            </div>
+            <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">学号:</label>
+                                <label class="control-label">{{ TobeShow.sno }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">姓名:</label>
+                                <label class="control-label">{{ TobeShow.sname }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">学院:</label>
+                                <label class="control-label">{{ TobeShow.college }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">专业:</label>
+                                <label class="control-label">{{ TobeShow.major }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">申请时间:</label>
+                                <label class="control-label">{{ TobeShow.now }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">现住宿舍:</label>
+                                <label class="control-label">{{ TobeShow.room_no }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">联系电话:</label>
+                                <label class="control-label">{{ TobeShow.phone }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-8 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">邮箱:</label>
+                                <label class="control-label">{{ TobeShow.mail }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">报修标题:</label>
+                                <label class="control-label">{{ TobeShow.apply_title }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">报修描述:</label>
+                                <label class="control-label">{{ TobeShow.description }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">备注:</label>
+                                <label class="control-label">{{ TobeShow.remark }}</label>
+                            </div>
+                        </div>
+                        <hr/>
+                        <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">预约时间段:</label>
+                                <label class="control-label">{{ TobeShow.repair_time_1 }} {{ TobeShow.repair_time_2 }}-{{ TobeShow.repair_time_3 }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">状态:</label>
+                                {% if TobeShow.status == 1 %}:
+                                <label class="label label-success">已维修</label>
+                                {% elif TobeShow.status == 0 %}
+                                <label class="label label-primary">未安排维修</label>
+                                {% else %}
+                                <label class="label label-danger">不维修</label>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
 
 <!--注销modal-->
 <div class="modal fade" tabindex="-1" role="dialog" id="logout" >

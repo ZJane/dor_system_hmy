@@ -290,6 +290,12 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
+                                    <label class="control-label">活动编号:</label>
+                                    <input id="activity_no" name="aact_no" class="form-control" readonly="readonly" value={{ activity_no }}>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                                <div class="form-group">
                                     <label class="control-label">活动名称:</label>
                                     <input id="activity_name" class="form-control" readonly="readonly" value={{ activity_name }}>
                                 </div>
@@ -336,7 +342,7 @@
 
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary" onclick="apply_activity()">确认申请</button>
+                    <button type="button" class="btn btn-primary" onclick="apply_activity(this)">确认申请</button>
                 </div>
             </div>
         </div>
@@ -398,32 +404,25 @@
         var act_no = act.eq(0).text();
         $.ajax({
             url:"/dor/student_handle/activity_applyment/show_activity_info/",
-            type:"GET",
+            type:"POST",
             data:{act_no:act_no},
             success:function(res){
-                console.log(res),
-{#                $('#sno').val(res[1].sno),#}
-{#                $('#sname').val(res[1].sname),#}
-{#                $('#college').val(res[1].college),#}
-{#                $('#major').val(res[1].major),#}
-{#                $('#dor_no').val(res[1].room_no),#}
-{#                $('#email').val(res[1].email),#}
-
+                $('#activity_no').val(res.activity_no),
                 $('#activity_name').val(res.activity_name),
                 $('#host_no').val(res.host_no),
                 $('#activity_time').val(res.activity_time),
                 $('#activity_description').val(res.activity_description),
                 $('#activity_max_participate').val(res.activity_max_participate),
                 $('#last_apply_time').val(res.last_apply_time)
-
-
-
             },
 
         });
         $('#func_activity').modal('show')
 
+    }
 
+    function apply_activity(){
+        document.getELementById("act_").submit();
     }
 </script>
 

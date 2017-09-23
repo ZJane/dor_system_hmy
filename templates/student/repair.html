@@ -166,7 +166,7 @@
                     <thead>
                     <tr>
                         <th>编号</th>
-                        <th>报修时间</th>
+                        <th>可维修时间</th>
                         <th>报修标题</th>
                         <th>申请人</th>
                         <th>现住宿舍</th>
@@ -181,8 +181,8 @@
                         <td>{{ item.id }}</td>
                         <td>{{ item.repair_time_1 }} {{ item.repair_time_2 }}-{{ item.repair_time_3 }}</td>
                         <td>{{ item.apply_title }}</td>
-                        <td>{{ item.name }}</td>
-                        <td>{{ item.room_no }}</td>
+                        <td>{{ stu.sname }}</td>
+                        <td>{{ stu.room_no }}</td>
                         <td>{{ item.ad_no }}</td>
                         {% if item.status == 0 %}
                         <td><span class="label label-warning">申请中</span></td>
@@ -192,11 +192,9 @@
                         <td><span class="label label-danger">申请失败</span></td>
                         {% endif %}
                         <td>
-                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_detail"
-                                    href="dor/student_handle/device_repair_applyment/show_device_repair_applyments/{{ item.id }}">查看</button>
+                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#check_detail{{ item.id }}">查看</button>
 
-                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#cancel_reply"
-                                    href="delete_repair_applyment.html/{{item.id }}">取消</button>
+                            <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#cancel_reply{{ item.id }}">取消</button>
                         </td>
                     </tr>
                     {% endfor %}
@@ -245,28 +243,28 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学号:</label>
-                                <input type="text" class="form-control" name="sno" required="required" value={{ stu.sname }} >
+                                <input type="text" class="form-control" name="sno" required="required" value={{ stu.sno }} >
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">姓名:</label>
-                                <input type="text" class="form-control" name="name" required="required">{{ stu.sname }}
+                                <input type="text" class="form-control" name="name" required="required" value={{ stu.sname }}>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">学院:</label>
-                                <input type="text" class="form-control" name="dor_no" required="required">{{ stu.college }}
+                                <input type="text" class="form-control" name="dor_no" required="required" value={{ stu.college }}>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">专业:</label>
-                                <input type="text" class="form-control" name="major" required="required">{{ stu.major }}
+                                <input type="text" class="form-control" name="major" required="required" value={{ stu.major }}>
                             </div>
                         </div>
 
@@ -275,21 +273,21 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">现住宿舍:</label>
-                                <input type="text" class="form-control" name="room_no" required="required">{{ sto.dor_no }}
+                                <input type="text" class="form-control" name="room_no" required="required" value={{ stu.room_no }}>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">联系电话:</label>
-                                <input type="text" class="form-control" name="mobilephone" required="required">{{ stu.stu_phone }}
+                                <input type="text" class="form-control" name="mobilephone" required="required" value={{ stu.stu_phone }}>
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6">
                             <div class="form-group">
                                 <label class="control-label">邮箱:</label>
-                                <input type="text" class="form-control" name="mail" required="required">{{ stu}}
+                                <input type="text" class="form-control" name="mail" required="required" value="{{ stu.email }}">
                             </div>
                         </div>
 
@@ -373,21 +371,131 @@
 </div>
 <!-- modal - 申请报修 -->
 
-
-<div class="modal fade" id="check_detail" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+{% for item in apply_list %}
+<div class="modal fade" id="check_detail{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document" style="width:auto; max-width:1000px">
         <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">查看</h4>
+            </div>
+            <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">学号:</label>
+                                <label class="control-label">{{ stu.sno }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">姓名:</label>
+                                <label class="control-label">{{ stu.sname }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">学院:</label>
+                                <label class="control-label">{{ stu.college }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">专业:</label>
+                                <label class="control-label">{{ stu.major }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">申请时间:</label>
+                                <label class="control-label">{{ item.now }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">现住宿舍:</label>
+                                <label class="control-label">{{ stu.room_no }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">可维修时间:</label>
+                                <label class="control-label">{{ item.repair_time_1 }} {{ item.repair_time_2 }}-{{ item.repair_time_3 }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">联系电话:</label>
+                                <label class="control-label">{{ stu.stu_phone }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">邮箱:</label>
+                                <label class="control-label">{{ stu.email }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
+                            <div class="form-group">
+                                <label class="control-label">报修标题:</label>
+                                <label class="control-label">{{ item.apply_title }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">报修描述:</label>
+                                <label class="control-label">{{ item.description }}</label>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                            <div class="form-group">
+                                <label class="control-label">备注:</label>
+                                <label class="control-label">{{ item.remark }}</label>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+
+
         </div>
     </div>
 </div>
+{% endfor %}
 <!-- modal - 查看 -->
-
-<div class="modal fade" id="cancel_reply" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+{% for item in apply_list %}
+<div class="modal fade" id="cancel_reply{{ item.id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
     <div class="modal-dialog" role="document" style="width:500px">
         <div class="modal-content">
+            <div class="modal-body">
+                <form action="dor/student_handle/device_repair_applyment/cancel_device_repair_applyment/{{ item.id }}" method="post">
+                {% csrf_token %}
+                    <h3 align="center">是否取消申请</h3>
+                    <div class="modal-footer">
+                        <div style="width:50%;padding:0;margin:0;float:left;box-sizing:border-box;">
+                            <button style="width:90%;height:100%;" type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        </div>
+                        <div style="width:50%;padding:0;margin:0;float:left;box-sizing:border-box;">
+                            <button style="width:90%;height:100%;" type="submit" class="btn btn-primary">确定</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
+{% endfor %}
 <!-- modal - 取消 -->
 
 

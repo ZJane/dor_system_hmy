@@ -71,7 +71,7 @@
     </column>
     <column id="54" parent="6" name="activity_time">
       <Position>5</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>varchar(30)|0</DataType>
     </column>
     <column id="55" parent="6" name="activity_max_participate">
       <Position>6</Position>
@@ -79,7 +79,7 @@
     </column>
     <column id="56" parent="6" name="last_apply_time">
       <Position>7</Position>
-      <DataType>datetime|0</DataType>
+      <DataType>varchar(30)|0</DataType>
     </column>
     <column id="57" parent="6" name="id">
       <Position>8</Position>
