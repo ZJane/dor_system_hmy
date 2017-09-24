@@ -27,5 +27,4 @@ def admin_sign_in(request):
            # return render(request, "admin/index.html", {'username': admin.dorm_admin_name})
         except Exception as err:
             print(err)
-
-        return render(request, "index.html", {'error': "数据库中没有该管理员"})
+            return render(request, "index.html", {'error': "数据库中没有该管理员"})

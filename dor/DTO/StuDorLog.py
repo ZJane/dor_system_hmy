@@ -10,6 +10,25 @@ class StuDorLogModel():
           self.ad_name=''
           self.apply_time=self.start_time=self.end_time='1990-01-01 00:00'
 
+def obj_2_json(obj):
+    return{
+        "sno":obj.sno,
+        "sname":obj.sname,
+        "college":obj.college,
+        "major":obj.major,
+        "old_dor_no":obj.old_dor_no,
+        "old_room_no":obj.old_room_no,
+        "new_dor_no":obj.new_dor_no,
+        "new_room_no":obj.new_room_no,
+        "stu_phone":obj.stu_phone,
+        "reason":obj.reason,
+        "email":obj.email,
+        "apply_status":obj.apply_status,
+        "ad_name":obj.ad_name,
+        "apply_time":obj.apply_time,
+        "start_time":obj.start_time,
+        "end_time":obj.end_time
+    }
 
 class PayLogModel():
     def __init__(self):

@@ -20,26 +20,12 @@ def show_main(request):
     return render(request,"tsst.html",{'data':str})
 
 def show_admin_index(request):
+    try:
+        userno = request.session['userno']
+    except Exception as err:
+        return render(request,"index.html")
     username=request.session['username']
-    userno=request.session['userno']
-    unhandle_dor_change_data = []
     unhandle_dor_change = DorChange.objects.filter(app_status="申请中")
-    for i in range(0, len(unhandle_dor_change)):
-        stu_data = Student.objects.get(sno=unhandle_dor_change[i].sno)
-        test = StuDorLogModel()
-        test.sno = unhandle_dor_change[i].sno
-        test.sname = unhandle_dor_change[i].sname
-        test.old_room_no = unhandle_dor_change[i].old_room_no
-        test.new_room_no = unhandle_dor_change[i].new_room_no
-        test.apply_time = unhandle_dor_change[i].apply_time
-        test.apply_status = unhandle_dor_change[i].app_status
-        test.email = stu_data.email
-        test.stu_phone = stu_data.stu_phone
-        test.college = stu_data.college
-        test.major = stu_data.major
-        unhandle_dor_change_data.append(test)
-
-
     unhandle_dor_checkout_data=DorCheckOut.objects.filter(apply_status="申请中")
     unhandle_dor_stayonvacation_data=StayingOnVacationApplyment.objects.filter(apply_status="申请中")
 
@@ -47,10 +33,13 @@ def show_admin_index(request):
     checkout_log=DorCheckOut.objects.exclude(apply_status="申请中")
     stayonvacation_log=StayingOnVacationApplyment.objects.exclude(apply_status="申请中")
 
-    return render(request,"admin/index.html",{'userno':userno,'username':username,'dor_change':unhandle_dor_change_data,'dor_checkout':unhandle_dor_checkout_data,'stayonvacation':unhandle_dor_stayonvacation_data,'change_log':change_log,'checkout_log':checkout_log,'stayonvacation_log':stayonvacation_log})
+    return render(request,"admin/index.html",{'userno':userno,'username':username,'dor_change':unhandle_dor_change,'dor_checkout':unhandle_dor_checkout_data,'stayonvacation':unhandle_dor_stayonvacation_data,'change_log':change_log,'checkout_log':checkout_log,'stayonvacation_log':stayonvacation_log})
 
 def show_student_index(request):
-    sno = request.session['userno']
+    try:
+        sno = request.session['userno']
+    except Exception as err:
+        return render(request,"index.html")
     sname=request.session['username']
     stu_data = Student.objects.get(sno=sno)
 #调宿记录

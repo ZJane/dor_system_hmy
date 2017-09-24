@@ -308,7 +308,7 @@ class DorChange(models.Model):
     old_room_no = models.CharField(max_length=10)
     new_dor_no = models.CharField(max_length=10, blank=True, null=True)
     new_room_no = models.CharField(max_length=10, blank=True, null=True)
-    apply_time = models.DateTimeField(blank=True, null=True)
+    apply_time = models.CharField(max_length=30, blank=True, null=True)
     app_status = models.CharField(max_length=10, blank=True, null=True)
     stu_phone = models.CharField(max_length=11, blank=True, null=True)
     reason = models.CharField(max_length=255, blank=True, null=True)
@@ -324,7 +324,7 @@ class DorCheckOut(models.Model):
     sname = models.CharField(max_length=20, blank=True, null=True)
     room_no = models.CharField(max_length=10)
     dor_no = models.CharField(max_length=10, blank=True, null=True)
-    apply_time = models.DateTimeField(blank=True, null=True)
+    apply_time = models.CharField(max_length=30, blank=True, null=True)
     apply_status = models.CharField(max_length=10, blank=True, null=True)
     stu_phone = models.CharField(max_length=11, blank=True, null=True)
     reason = models.CharField(max_length=255, blank=True, null=True)
@@ -360,11 +360,9 @@ class DorDevice(models.Model):
 
 
 class DorDeviceApplyment(models.Model):
-    sno = models.CharField(max_length=10)
-    name = models.CharField(max_length=10)
+    sno = models.IntegerField()
     item = models.CharField(max_length=10)
     now = models.CharField(max_length=30, blank=True, null=True)
-    room_no = models.CharField(max_length=10)
     reason = models.CharField(max_length=100)
     remark = models.CharField(max_length=100)
     status = models.IntegerField()
@@ -377,13 +375,7 @@ class DorDeviceApplyment(models.Model):
 
 
 class DorRepairDevice(models.Model):
-    sno = models.CharField(max_length=10)
-    name = models.CharField(max_length=15)
-    dor_no = models.CharField(max_length=10)
-    major = models.CharField(max_length=10)
-    room_no = models.CharField(max_length=10)
-    mobilephone = models.CharField(max_length=11)
-    mail = models.CharField(max_length=20)
+    sno = models.IntegerField(blank=True, null=True)
     now = models.CharField(max_length=30)
     repair_time_1 = models.CharField(max_length=30)
     apply_title = models.CharField(max_length=100)
@@ -468,7 +460,7 @@ class MeetingRoom(models.Model):
 
 class MeetingRoomApplymentRecord(models.Model):
     meeting_room_no = models.CharField(max_length=10)
-    sno = models.IntegerField(primary_key=True)
+    sno = models.IntegerField()
     check_cancel_apply = models.IntegerField(blank=True, null=True)
     apply_time = models.DateTimeField()
     check_apply_success = models.IntegerField(blank=True, null=True)
@@ -478,11 +470,12 @@ class MeetingRoomApplymentRecord(models.Model):
     time_no_3 = models.CharField(max_length=4, blank=True, null=True)
     time_no_4 = models.CharField(max_length=4, blank=True, null=True)
     book_date = models.DateField()
+    stu_remark = models.CharField(max_length=255, blank=True, null=True)
+    ad_remark = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'meeting_room_applyment_record'
-        unique_together = (('sno', 'meeting_room_no', 'apply_time'),)
 
 
 class MeetingRoomOrderTime(models.Model):
@@ -535,11 +528,11 @@ class StayingOnVacationApplyment(models.Model):
     sno = models.IntegerField(blank=True, null=True)
     sname = models.CharField(max_length=20, blank=True, null=True)
     dor_no = models.CharField(max_length=10, blank=True, null=True)
-    start_time = models.DateField(blank=True, null=True)
-    end_time = models.DateField(blank=True, null=True)
+    start_time = models.CharField(max_length=30, blank=True, null=True)
+    end_time = models.CharField(max_length=30, blank=True, null=True)
     ad_no = models.CharField(max_length=10, blank=True, null=True)
     reason = models.CharField(max_length=100, blank=True, null=True)
-    apply_time = models.DateTimeField(blank=True, null=True)
+    apply_time = models.CharField(max_length=30, blank=True, null=True)
     apply_status = models.CharField(max_length=25, blank=True, null=True)
 
     class Meta:
