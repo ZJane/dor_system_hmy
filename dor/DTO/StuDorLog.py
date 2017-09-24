@@ -39,3 +39,16 @@ class PayLogModel():
         self.fee=0
         self.time=''
         self.status=''
+
+
+class ActLogModel():
+    def __init__(self):
+        self.id = 0
+        self.sno = 0
+        self.sname = self.college = self.major = ''
+        self.room_no = ''
+        self.stu_phone = self.reason = ''
+        self.email = ''
+        self.apply_time = '1990-01-01 00:00'
+        self.activity_no=0
+        self.activity_name=self.apply_status=''

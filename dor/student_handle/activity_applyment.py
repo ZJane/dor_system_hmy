@@ -10,11 +10,12 @@ def stu_activity_applyment(request):
         activity_no = request.POST.get('aact_no',None)
         apply_time=request.POST.get('apply_time',None)
         sno = request.session['userno']
+        sname=request.session['username']
         thisact=Activity.objects.get(activity_no=activity_no)
         activity_name=thisact.activity_name
         ad_no=' '
         apply_status="申请中"
-        test1=ActvityApplyment(actvity_no=activity_no,activity_name=activity_name,sno=sno,apply_time=apply_time,ad_no=ad_no,apply_status=apply_status)
+        test1=ActvityApplyment(actvity_no=activity_no,activity_name=activity_name,sno=sno,apply_time=apply_time,ad_no=ad_no,apply_status=apply_status,sname=sname)
         test1.save()
         return show_stu_activity(request)
 

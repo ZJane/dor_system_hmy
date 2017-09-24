@@ -17,11 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from dor.admin_handle.show_index import show_activity_index,show_book_index,show_checkin_index,show_meeting_room_index,show_repair_index,show_resource_index,show_search_index,show_set_time_index
 from dor.views import show_admin_index,show_student_index,show_index
-from dor.admin_handle.dormintory_handle import ad_handle_cancel_dor_transcation,ad_handle_change_dor_transcation,ad_handle_live_on_vacation_transcation,ad_show_cancel_dor_applyments,ad_show_change_dor_applyments,ad_show_live_on_vacation_applyments
+from dor.admin_handle.dormintory_handle import ad_handle_cancel_dor_transcation,ad_handle_change_dor_transcation,ad_handle_live_on_vacation_transcation,ad_show_cancel_dor_applyments,ad_show_change_dor_applyments,ad_show_live_on_vacation_applyments,ad_show_change_log,ad_show_check_log,ad_show_staying_log
 from dor.admin_handle.repair_handle import *
 from dor.admin_handle.device_handle import *
 from dor.admin_handle.meeting_room_handle import ad_show_meeting_room_applyments,ad_show_meeting_room_info,ad_handle_meeting_room_applyments
-from dor.admin_handle.activity_handle import ad_show_activity_applyments,ad_show_activity_info,ad_handle_activity_applyments,ad_new_activity
+from dor.admin_handle.activity_handle import ad_show_activity_applyments,ad_show_activity_info,ad_handle_activity_applyments,ad_new_activity,ad_show_activity_applyments_log
 from dor.admin_handle.search_handle import ad_search_stu,ad_show_room_info,ad_sort_stu_info
 from dor.admin_handle.live_in_dor_handle import ad_add_stu_dor_info,ad_distribute_dor
 from dor.admin_handle.set_timequantum import ad_set_timeable
@@ -76,7 +76,9 @@ urlpatterns = [
     # url(r'^dor/student_handle/book_applyment/search_book',stu_search_book),
     # url(r'^dor/student_handle/book_applyment/show_book_info',stu_show_book_info),
 
-
+    url(r'^dor/admin_handle/dormintory_handle/show_change_dor_log',ad_show_change_log),
+    url(r'^dor/admin_handle/dormintory_handle/show_checkout_log',ad_show_check_log),
+    url(r'^dor/admin_handle/dormintory_handle/show_staying_log', ad_show_staying_log),
     url(r'^dor/admin_handle/dormintory_handle/show_change_dor_applyments', ad_show_change_dor_applyments),
     url(r'^dor/admin_handle/dormintory_handle/handle_change_dor_transcation',ad_handle_change_dor_transcation),
     url(r'^dor/admin_handle/dormintory_handle/show_cancel_dor_applyments', ad_show_cancel_dor_applyments),
@@ -90,6 +92,7 @@ urlpatterns = [
     url(r'^dor/admin_handle/activity_handle/handle_activity_applyments',ad_handle_activity_applyments),
     url(r'^dor/admin_handle/activity_handle/show_activity_info',ad_show_activity_info),
     url(r'^dor/admin_handle/activity_handle/new_activity',ad_new_activity),
+    url(r'^dor/admin_handle/activity_handle/show_activity_applyments_log',ad_show_activity_applyments_log),
 
     url(r'^dor/admin_handle/search_handle/search_stu',ad_search_stu),
     url(r'^dor/admin_handle/search_handle/sort_stu_info',ad_sort_stu_info),

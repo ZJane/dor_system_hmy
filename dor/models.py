@@ -37,10 +37,11 @@ class ActivityHost(models.Model):
 class ActvityApplyment(models.Model):
     actvity_no = models.CharField(max_length=10, blank=True, null=True)
     sno = models.IntegerField(blank=True, null=True)
-    apply_time = models.DateTimeField(blank=True, null=True)
+    apply_time = models.CharField(max_length=30, blank=True, null=True)
     ad_no = models.CharField(max_length=10, blank=True, null=True)
     apply_status = models.CharField(max_length=15, blank=True, null=True)
     activity_name = models.CharField(max_length=50, blank=True, null=True)
+    sname = models.CharField(max_length=20, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -462,7 +463,7 @@ class MeetingRoomApplymentRecord(models.Model):
     meeting_room_no = models.CharField(max_length=10)
     sno = models.IntegerField()
     check_cancel_apply = models.IntegerField(blank=True, null=True)
-    apply_time = models.DateTimeField()
+    apply_time = models.DateTimeField(primary_key=True)
     check_apply_success = models.IntegerField(blank=True, null=True)
     ad_no = models.CharField(max_length=10, blank=True, null=True)
     time_no_1 = models.CharField(max_length=4)
@@ -472,10 +473,12 @@ class MeetingRoomApplymentRecord(models.Model):
     book_date = models.DateField()
     stu_remark = models.CharField(max_length=255, blank=True, null=True)
     ad_remark = models.CharField(max_length=255, blank=True, null=True)
+    int = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False
         db_table = 'meeting_room_applyment_record'
+        unique_together = (('apply_time', 'sno', 'meeting_room_no'),)
 
 
 class MeetingRoomOrderTime(models.Model):

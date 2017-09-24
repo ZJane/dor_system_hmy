@@ -24,9 +24,38 @@ def ad_show_change_dor_applyments(request):
       test.apply_time=dor_stu.apply_time
       test.new_dor_no=dor_stu.new_room_no
       test.reason=dor_stu.reason
+      test.apply_status=dor_stu.app_status
       test=test.__dict__
       test=json.dumps(test)
       return HttpResponse(test, content_type="application/json", charset="utf-8")
+
+def ad_show_change_log(request):
+    if request.method == 'POST':
+        one_sno = request.POST.get('stu_no')
+        stu_data = Student.objects.get(sno=one_sno)
+        dor_stu = DorChange.objects.get(sno=one_sno,new_room_no=stu_data.room_no)
+        test = StuDorLogModel()
+        test.sno = stu_data.sno
+        test.sname = stu_data.sname
+        test.college = stu_data.college
+        test.major = stu_data.major
+        test.old_dor_no = stu_data.room_no
+        test.stu_phone = stu_data.stu_phone
+        test.email = stu_data.email
+        test.apply_time = dor_stu.apply_time
+        test.new_dor_no = dor_stu.new_room_no
+        test.reason = dor_stu.reason
+        test.apply_status = dor_stu.app_status
+        test = test.__dict__
+        test = json.dumps(test)
+        return HttpResponse(test, content_type="application/json", charset="utf-8")
+
+def ad_show_check_log(request):
+    pass
+
+def ad_show_staying_log(request):
+    pass
+
 
 
 def ad_handle_change_dor_transcation(request):
@@ -40,7 +69,7 @@ def ad_handle_change_dor_transcation(request):
             bed_number=request.POST.get('bed_number',None)
             DormitorySchedule.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor+dorm_number,bed_no=bed_number)
             DorChange.objects.filter(sno=sno).update(app_status="申请成功")
-            Student.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor+dorm_number)
+            Student.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor_number+dorm_floor+dorm_number)
         else:
             DorChange.objects.filter(sno=sno).update(app_status="申请失败")
         return show_admin_index(request)
@@ -60,6 +89,7 @@ def ad_show_cancel_dor_applyments(request):
         test.email = stu_data.email
         test.apply_time = dor_stu.apply_time
         test.reason = dor_stu.reason
+        test.apply_status=dor_stu.apply_status
         test = test.__dict__
         print(test)
         test = json.dumps(test)
@@ -82,7 +112,7 @@ def ad_show_live_on_vacation_applyments(request):
     if request.method == 'POST':
         one_sno = request.POST.get('stu_no')
         stu_data = Student.objects.get(sno=one_sno)
-        dor_stu = StayingOnVacationApplyment.objects.get(sno=one_sno, dor_no=stu_data.room_no)
+        dor_stu = StayingOnVacationApplyment.objects.get(sno=one_sno,dor_no=stu_data.room_no)
         test = StuDorLogModel()
         test.sno = stu_data.sno
         test.sname = stu_data.sname
@@ -95,6 +125,7 @@ def ad_show_live_on_vacation_applyments(request):
         test.reason = dor_stu.reason
         test.start_time=dor_stu.start_time
         test.end_time=dor_stu.end_time
+        test.apply_status=dor_stu.apply_status
         test = test.__dict__
         print(test)
         test = json.dumps(test)
