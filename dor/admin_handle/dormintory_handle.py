@@ -33,6 +33,7 @@ def ad_show_change_log(request):
     if request.method == 'POST':
         one_sno = request.POST.get('stu_no')
         stu_data = Student.objects.get(sno=one_sno)
+        print(stu_data.room_no)
         dor_stu = DorChange.objects.get(sno=one_sno,new_room_no=stu_data.room_no)
         test = StuDorLogModel()
         test.sno = stu_data.sno
@@ -67,6 +68,7 @@ def ad_handle_change_dor_transcation(request):
             dorm_floor=request.POST.get('dorm_floor',None)
             dorm_number = request.POST.get('dorm_number',None)
             bed_number=request.POST.get('bed_number',None)
+            print(dorm_floor_number+dorm_floor+dorm_number)
             DormitorySchedule.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor+dorm_number,bed_no=bed_number)
             DorChange.objects.filter(sno=sno).update(app_status="申请成功")
             Student.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor_number+dorm_floor+dorm_number)

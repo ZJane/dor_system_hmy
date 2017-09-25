@@ -29,7 +29,6 @@ from dor.student_handle.dor_applyment import stu_change_dor_applyment, stu_cance
 from dor.student_handle.resource_applyment import *
 from dor.student_handle.pay_bill import  stu_show_bill, stu_pay_bill
 from dor.student_handle.activity_applyment import  stu_activity_applyment, stu_show_activity_info
-#from dor.student_handle.book_applyment import  stu_book_applyment, stu_my_borrowed_books, stu_my_shared_books, stu_show_book_info, stu_search_book
 from dor.student_handle.meeting_room_applyment import  stu_meeting_room_applyment, stu_show_meeting_info
 from dor.student_handle.device_repair_applyment import *
 from dor.student_handle.show_stu_all_index import show_stu_activity,show_stu_book,show_stu_meeting_room,show_stu_pay,show_stu_repair,show_stu_resource
@@ -41,6 +40,7 @@ urlpatterns = [
     url(r'^index/',show_index),
     url(r'^admin/',admin.site.urls),
     url(r'^show_admin_index',show_admin_index),
+    url(r'^show_student_index',show_student_index),
     url(r'^show_admin_set_time_index',show_set_time_index),
     url(r'^show_admin_activity_index',show_activity_index),
     url(r'^show_admin_resource_index',show_resource_index),
@@ -57,7 +57,7 @@ urlpatterns = [
     url(r'^show_stu_meeting_index', show_stu_meeting_room),
     url(r'^show_stu_book_index', show_stu_book),
 
-    url(r'^show_student_index',show_student_index),
+
     url(r'^dor/student_handle/dor_applyment/show_change_dor_applyments',stu_show_change_dor_applyments),
     url(r'^dor/student_handle/dor_applyment/change_dor_applyment',stu_change_dor_applyment),
     url(r'^dor/student_handle/dor_applyment/show_cancel_dor_applyments',stu_show_cancel_dor_applyments),

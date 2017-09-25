@@ -10,6 +10,27 @@
     <meta name="author" content="">
     <link rel="icon" href="../image/favicon.ico">
 
+     <script language="javascript" type="text/javascript">
+        function time() {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+
+    document.getElementById("now1").value=date.getFullYear()+seperator1+month+seperator1+strDate+" "
+                                                +date.getHours() + seperator2 + date.getMinutes();
+
+}
+    </script>
+
+
     <title>社区活动申请 - 宿舍管理系统</title>
 
 
@@ -30,7 +51,7 @@
 
 </head>
 
-<body>
+<body onload="time()">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -226,7 +247,8 @@
                     <h4 class="modal-title">申请活动</h4>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="/dor/student_handle/activity_applyment/activity_applyment/" id="aaa" method="post">
+                        {% csrf_token %}
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
@@ -266,7 +288,7 @@
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
                                     <label class="control-label">申请时间:</label>
-                                    <input type="text" name="apply_time" class="form-control" readonly="readonly" placeholder="2017-2-12 12:00">
+                                    <input type="text" id="now1" name="apply_time" class="form-control">
                                 </div>
                             </div>
 
@@ -284,10 +306,8 @@
                                 </div>
                             </div>
                         </div>
-                    </form>
                     <hr/>
-                    <form action="/dor/student_handle/activity_applyment/activity_applyment/" id="aaa" method="post">
-                        {% csrf_token %}
+
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-6">
                                 <div class="form-group">
