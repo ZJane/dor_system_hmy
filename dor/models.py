@@ -134,18 +134,6 @@ class AuthUserUserPermissions(models.Model):
         unique_together = (('user', 'permission'),)
 
 
-class Book(models.Model):
-    book_no = models.CharField(max_length=10, blank=True, null=True)
-    contributor = models.CharField(max_length=20, blank=True, null=True)
-    book_description = models.CharField(max_length=255, blank=True, null=True)
-    class_field = models.CharField(db_column='class', max_length=20, blank=True, null=True)  # Field renamed because it was a Python reserved word.
-    check_borrow = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'book'
-
-
 class BookBorrowRecord(models.Model):
     book_no = models.CharField(max_length=10, blank=True, null=True)
     sno = models.IntegerField(primary_key=True)
@@ -169,21 +157,6 @@ class Device(models.Model):
     class Meta:
         managed = False
         db_table = 'device'
-
-
-class DeviceApplyment(models.Model):
-    sno = models.IntegerField(blank=True, null=True)
-    device_no = models.CharField(max_length=10, blank=True, null=True)
-    apply_time = models.DateTimeField(blank=True, null=True)
-    dor_no = models.CharField(max_length=10, blank=True, null=True)
-    check_cancel_apply = models.IntegerField(blank=True, null=True)
-    check_apply_success = models.IntegerField(blank=True, null=True)
-    return_device_time = models.DateTimeField(blank=True, null=True)
-    ad_no = models.CharField(max_length=10, blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'device_applyment'
 
 
 class DjangoAdminLog(models.Model):
@@ -228,20 +201,6 @@ class DjangoSession(models.Model):
     class Meta:
         managed = False
         db_table = 'django_session'
-
-
-class DorActivity(models.Model):
-    activity_no = models.CharField(primary_key=True, max_length=10)
-    activity_name = models.CharField(max_length=20)
-    organization_no = models.CharField(max_length=10)
-    activity_description = models.CharField(max_length=100)
-    activity_time = models.DateTimeField()
-    activity_num_of_participate = models.IntegerField()
-    last_apply_time = models.DateTimeField()
-
-    class Meta:
-        managed = False
-        db_table = 'dor_activity'
 
 
 class DorAdminAccount(models.Model):
@@ -395,10 +354,10 @@ class DorRepairDevice(models.Model):
 
 class DorRoom(models.Model):
     room_no = models.CharField(primary_key=True, max_length=10)
-    dor_no = models.CharField(max_length=10)
-    bed_counts = models.IntegerField()
-    room_description = models.CharField(max_length=100)
-    empty_beds = models.IntegerField()
+    dor_no = models.CharField(max_length=10, blank=True, null=True)
+    bed_counts = models.IntegerField(blank=True, null=True)
+    room_phone = models.CharField(max_length=100, blank=True, null=True)
+    empty_beds = models.IntegerField(blank=True, null=True)
 
     class Meta:
         managed = False

@@ -2,11 +2,15 @@ from django.shortcuts import render
 
 from dor.DTO.StuDorLog import PayLogModel
 from dor.models import Activity, ActvityApplyment,MeetingRoomOrderTime,MeetingRoom,MeetingRoomApplymentRecord,DorCostRecord, StuPayRecord, Student,DorBookInf
+from dor.DTO.MeetingLog import MeetingLogModel
 
 
 def show_stu_activity(request):
     data=Activity.objects.filter()
-    sno = request.session['userno']
+    try:
+        sno = request.session['userno']
+    except Exception as err:
+        return render(request,"index.html")
     sname=request.session['username']
     test = Student.objects.get(sno=sno)
     activity_log=ActvityApplyment.objects.filter(sno=sno)
@@ -16,7 +20,10 @@ def show_stu_activity(request):
 
 
 def show_stu_repair(request):
-    sno=request.session['userno']
+    try:
+        sno = request.session['userno']
+    except Exception as err:
+        return render(request,"index.html")
     sname=request.session['username']
     return render(request,"student/repair.html",{'username':sname,'userno':sno})
 
@@ -38,12 +45,18 @@ def show_stu_pay(request):
     return render(request, "student/payment.html", {'paylog': pay_list,'username':sname})
 
 def show_stu_resource(request):
-    sno=request.session['userno']
+    try:
+        sno = request.session['userno']
+    except Exception as err:
+        return render(request,"index.html")
     sname=request.session['username']
     return render(request,"student/resource.html",{'username':sname,'userno':sno})
 
 def show_stu_meeting_room(request):
-    sno = request.session['userno']
+    try:
+        sno = request.session['userno']
+    except Exception as err:
+        return render(request,"index.html")
     sname = request.session['username']
 
     # 转化成列表
@@ -95,7 +108,10 @@ def show_stu_meeting_room(request):
 
 
 def show_stu_book(request):
-    sno = request.session['userno']
+    try:
+        sno = request.session['userno']
+    except Exception as err:
+        return render(request,"index.html")
     sname = request.session['username']
     book_list = DorBookInf.objects.all().values()
     book_borrow_list =DorBookInf.objects.filter(book_borrowman=sname)

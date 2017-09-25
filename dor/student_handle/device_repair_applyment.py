@@ -5,7 +5,10 @@ from django.core.urlresolvers import reverse
 
 
 def repair(request):
-    userno = request.session('userno')
+    try:
+        userno = request.session['userno']
+    except Exception as err:
+        return render(request,"index.html")
     username = request.session('username')
     stu_info = Student.objects.get(sno=userno)
     if request.method == 'POST':

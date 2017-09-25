@@ -9,7 +9,10 @@ def stu_activity_applyment(request):
     if request.method=="POST":
         activity_no = request.POST.get('aact_no',None)
         apply_time=request.POST.get('apply_time',None)
-        sno = request.session['userno']
+        try:
+            sno = request.session['userno']
+        except Exception as err:
+            return render(request, "index.html")
         sname=request.session['username']
         thisact=Activity.objects.get(activity_no=activity_no)
         activity_name=thisact.activity_name

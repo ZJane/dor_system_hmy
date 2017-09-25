@@ -1,17 +1,27 @@
 from django.shortcuts import render
-from dor.models import DorBookInf,Activity,ActvityApplyment,MeetingRoomApplymentRecord,Student,MeetingRoomOrderTime
-
+from dor.models import DorBookInf, Activity, ActvityApplyment, MeetingRoomApplymentRecord, Student, \
+    MeetingRoomOrderTime, MeetingRoom
+from dor.DTO.MeetingLog import MeetingLogModel
 
 def show_repair_index(request):
-    username = request.session['username']
+    try:
+        username = request.session['username']
+    except Exception as err:
+        return render(request,"index.html")
     return render(request,"admin/repair.html",{'username':username})
 
 def show_resource_index(request):
-    username = request.session['username']
+    try:
+        username = request.session['username']
+    except Exception as err:
+        return render(request,"index.html")
     return render(request,"admin/resource.html",{'username':username})
 
 def show_meeting_room_index(request):
-    adno = request.session['userno']
+    try:
+        adno = request.session['userno']
+    except Exception as err:
+        return render(request,"index.html")
     adname = request.session['username']
     apply_list = []
     base_apply_list = MeetingRoomApplymentRecord.objects.all()
@@ -65,25 +75,40 @@ def show_meeting_room_index(request):
                    'roomList': room_list})
 
 def show_activity_index(request):
-    username=request.session['username']
+    try:
+        username = request.session['username']
+    except Exception as err:
+        return render(request,"index.html")
     activity_list=Activity.objects.all()
     activity_apply_list=ActvityApplyment.objects.exclude(apply_status="申请中")
     part_apply_list=ActvityApplyment.objects.filter(apply_status="申请中")
     return render(request,"admin/activity.html",{'username':username,'activity_list':activity_list,'activity_apply_list':activity_apply_list,'part_apply_list':part_apply_list})
 
 def show_book_index(request):
-    username = request.session['username']
+    try:
+        username = request.session['username']
+    except Exception as err:
+        return render(request,"index.html")
     book_list = DorBookInf.objects.all().values()
     return render(request, "admin/bookManager.html", {'username':username,'book_list': book_list})
 
 def show_search_index(request):
-    username = request.session['username']
+    try:
+        username = request.session['username']
+    except Exception as err:
+        return render(request,"index.html")
     return render(request,"admin/searchInfo.html",{'username':username})
 
 def show_checkin_index(request):
-    username = request.session['username']
+    try:
+        username = request.session['username']
+    except Exception as err:
+        return render(request,"index.html")
     return render(request, "admin/checkIn.html", {'username': username})
 
 def show_set_time_index(request):
-    username = request.session['username']
+    try:
+        username = request.session['username']
+    except Exception as err:
+        return render(request,"index.html")
     return render(request,"admin/extraStayTime.html",{'username':username})

@@ -44,8 +44,7 @@ def stu_live_on_vacation_applyment(request):
         sno=request.POST.get('sno',None)
         room_no=Student.objects.get(sno=sno).room_no
         if DorChange.objects.filter(sno=sno,old_room_no=room_no).exists():
-            print("aaaaaaaaaaaaa")
-            return render(request,"student/index.html",{'error' : '申请调宿不允许申请留宿'})
+            return HttpResponse("<p>正在申请调宿的同学不允许申请留宿</p>")
         else:
             sname=request.POST.get('sname',None)
             start_time=request.POST.get('start_time',None)
