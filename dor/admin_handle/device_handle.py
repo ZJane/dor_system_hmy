@@ -6,8 +6,8 @@ from django.core.urlresolvers import reverse
 
 #显示借用首页
 def admin_resource(request):
-    userno = request.session('userno')
-    username = request.session('username')
+    userno = request.session['userno']
+    username = request.session['username']
     resource_list = DorDeviceApplyment.objects.all()
     return render(request, "admin/resource.html",{'resource_list':resource_list, 'userno':userno, 'username':username})
 

@@ -5,11 +5,8 @@ from django.core.urlresolvers import reverse
 
 
 def repair(request):
-    try:
-        userno = request.session['userno']
-    except Exception as err:
-        return render(request,"index.html")
-    username = request.session('username')
+    userno = request.session.get('userno','')
+    username = request.session.get('username','')
     stu_info = Student.objects.get(sno=userno)
     if request.method == 'POST':
         sno = request.POST.get('sno', None)
@@ -23,7 +20,7 @@ def repair(request):
         repair_apply = DorRepairDevice(sno=sno,description=description,repair_time_1=repair_time_1,repair_time_2=repair_time_2,
                                      repair_time_3=repair_time_3,now=now,apply_title=apply_title,remark=remark,status=0)
         repair_apply.save()
-    apply_list = DorRepairDevice.objects.all()
+    apply_list = DorRepairDevice.objects.filter(sno=userno)
 
     return render(request, "student/repair.html", {'apply_list': apply_list ,'stu':stu_info, 'userno':userno, 'username':username})
 
@@ -36,13 +33,6 @@ def show_device_repair_applyments(request,get_id):
     TobeShow = DorRepairDevice.objects.get(id = get_id)
     return render(request,"student/show_device_repair_applyments.html",{'TobeShow':TobeShow})
 
-
-def delete_repair_applyment(request,get_id):
-    try:
-        get_id = int(get_id)
-    except ValueError:
-        raise Http404()
-    return render(request, "student/delete_repair_applyment.html", {"get_id":get_id})
 
 
 def cancel_device_repair_applyment(request,get_id):

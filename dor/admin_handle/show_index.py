@@ -2,20 +2,21 @@ from django.shortcuts import render
 from dor.models import DorBookInf, Activity, ActvityApplyment, MeetingRoomApplymentRecord, Student, \
     MeetingRoomOrderTime, MeetingRoom
 from dor.DTO.MeetingLog import MeetingLogModel
-
+from dor.admin_handle.repair_handle import admin_repair
+from dor.admin_handle.device_handle import admin_resource
 def show_repair_index(request):
     try:
         username = request.session['username']
     except Exception as err:
         return render(request,"index.html")
-    return render(request,"admin/repair.html",{'username':username})
+    return admin_repair(request)
 
 def show_resource_index(request):
     try:
         username = request.session['username']
     except Exception as err:
         return render(request,"index.html")
-    return render(request,"admin/resource.html",{'username':username})
+    return admin_resource(request)
 
 def show_meeting_room_index(request):
     try:

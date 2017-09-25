@@ -36,6 +36,7 @@ from dor.admin_handle.login import admin_sign_in
 from dor.student_handle.login import stu_sign_in
 from dor.student_handle.book_handle import share_books,borrow_books,find_books,return_books,look_books
 from dor.admin_handle.books_Manager import books_Manager_find,insert_book,Delete_book
+from dor.admin_handle.live_in_dor_handle import ad_add_stu_dor_info,ad_distribute_dor,ad_confirm_live_in
 urlpatterns = [
     url(r'^index/',show_index),
     url(r'^admin/',admin.site.urls),
@@ -75,7 +76,7 @@ urlpatterns = [
     # url(r'^dor/student_handle/book_applyment/my_borrowed_books', stu_my_borrowed_books),
     # url(r'^dor/student_handle/book_applyment/search_book',stu_search_book),
     # url(r'^dor/student_handle/book_applyment/show_book_info',stu_show_book_info),
-
+    url(r'^dor/admin_handle/live_in_dor_handle/confirm_live_in',ad_confirm_live_in),
     url(r'^dor/admin_handle/dormintory_handle/show_change_dor_log',ad_show_change_log),
     url(r'^dor/admin_handle/dormintory_handle/show_checkout_log',ad_show_check_log),
     url(r'^dor/admin_handle/dormintory_handle/show_staying_log', ad_show_staying_log),
@@ -105,24 +106,22 @@ urlpatterns = [
 
 
     #楚华
-    url(r'^dor/student_handle/device_repair_applyment/show_device_repair_applyments/(\d{1,5})',show_device_repair_applyments),
-    url(r'^dor/student_handle/device_repair_applyment/cancel_device_repair_applyment/(\d{1,5})',cancel_device_repair_applyment),
-    url(r'^dor/student_handle/resource_applyment/show_minitor_applyments',show_minitor_applyments),
-    url(r'^dor/student_handle/resource_applyment/show_key_applyments',show_key_applyments),
+    url(r'^show_stu_repair_index', repair, name='repair'),
+    url(r'^show_stu_resource_index', resource, name='resource'),
 
+    url(r'^show_admin_repair_index', admin_repair, name='admin_repair'),
+    url(r'^show_admin_resource_index', admin_resource, name='admin_resource'),
 
-    url(r'^dor/admin_handle/device_handle/commit_return_device/(\d{1,5})',commit_return_device),
-    url(r'^dor/admin_handle/device_handle/show_key_applyments',show_key_applyments),
-    url(r'^dor/admin_handle/device_handle/show_minitor_applyments',show_minitor_applyments),
+    url(r'^dor/student_handle/device_repair_applyment/show_device_repair_applyments/(\d{1,5})',
+        show_device_repair_applyments),
+    url(r'^dor/student_handle/device_repair_applyment/cancel_device_repair_applyment/(\d{1,5})',
+        cancel_device_repair_applyment),
 
-    url(r'^show_stu_repair_index',repair, name='repair'),
-    url(r'^show_admin_repair_index',admin_repair, name='admin_repair'),
-    url(r'^show_stu_resource_index',resource, name='resource'),
-    url(r'^show_admin_resource_index',admin_resource, name='admin_resource'),
-    url(r'^delete_repair_applyment.html/(\d{1,5})',delete_repair_applyment),
-    url(r'^dor/admin_handle/device_handle/borrow_key_applyments',borrow_key_applyments),
-    url(r'^dor/admin_handle/device_handle/borrow_minitor_applyments',borrow_minitor_applyments),
-
+    url(r'^dor/admin_handle/repair_handle/handle_repair_device_applyments/(\d{1,5})&(\S{1,9})',
+        handle_DorRepairDevice_applyments),
+    url(r'^dor/admin_handle/device_handle/commit_return_device/(\d{1,5})&(\S{1,9})', commit_return_device),
+    url(r'^dor/admin_handle/device_handle/borrow_key_applyments', borrow_key_applyments),
+    url(r'^dor/admin_handle/device_handle/borrow_minitor_applyments', borrow_minitor_applyments),
 
 
     #LHQ

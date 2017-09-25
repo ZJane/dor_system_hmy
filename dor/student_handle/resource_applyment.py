@@ -5,13 +5,7 @@ from django.core.urlresolvers import reverse
 
 
 def resource(request):
-    userno = request.session('userno')
-    username = request.session('username')
+    userno = request.session.get('userno','')
+    username = request.session.get('username','')
     resource_list = DorDeviceApplyment.objects.filter(sno=userno)
     return render(request,"student/resource.html", {'resource_list':resource_list, 'userno':userno, 'username':username})
-
-def show_key_applyments(request):
-    pass
-
-def show_minitor_applyments(request):
-    pass

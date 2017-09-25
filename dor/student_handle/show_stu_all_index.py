@@ -3,7 +3,8 @@ from django.shortcuts import render
 from dor.DTO.StuDorLog import PayLogModel
 from dor.models import Activity, ActvityApplyment,MeetingRoomOrderTime,MeetingRoom,MeetingRoomApplymentRecord,DorCostRecord, StuPayRecord, Student,DorBookInf
 from dor.DTO.MeetingLog import MeetingLogModel
-
+from dor.student_handle.device_repair_applyment import repair
+from dor.student_handle.resource_applyment import resource
 
 def show_stu_activity(request):
     data=Activity.objects.filter()
@@ -25,7 +26,7 @@ def show_stu_repair(request):
     except Exception as err:
         return render(request,"index.html")
     sname=request.session['username']
-    return render(request,"student/repair.html",{'username':sname,'userno':sno})
+    return repair(request)
 
 def show_stu_pay(request):
     sname = request.session['username']
@@ -50,7 +51,7 @@ def show_stu_resource(request):
     except Exception as err:
         return render(request,"index.html")
     sname=request.session['username']
-    return render(request,"student/resource.html",{'username':sname,'userno':sno})
+    return resource(request)
 
 def show_stu_meeting_room(request):
     try:
