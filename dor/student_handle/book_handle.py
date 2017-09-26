@@ -18,9 +18,9 @@ def show_books_info(request):
 
 def share_books(request):
 
-    userno = request.session.get('userno',None)
+    userno = request.session['userno']
 
-    username = request.session('username',None)
+    username = request.session['username']
 
     if request.method=="POST":
 
@@ -45,9 +45,9 @@ def share_books(request):
 
 
 def borrow_books(request,get_id):#放在借阅表里面#
-    userno = request.session.get('userno', None)
+    userno = request.session.get['userno']
 
-    username = request.session.get('username', None)
+    username = request.session.get['username']
     if request.method=="POST":
 
         change = DorBookInf.objects.filter(book_id=get_id).update(book_borrow="1",
@@ -74,9 +74,9 @@ def find_books(request):
     book_author=request.POST.get("book_author",None)
     book_word=request.POST.get("book_word",None)
     contributor=request.POST.get("contributor",None)
-    userno = request.session.get('userno', None)
+    userno = request.session['userno']
 
-    username = request.session('username', None)
+    username = request.session['username']
     book_list=DorBookInf.objects.filter(book_name=book_name)
     #get到那个检索值
     if book_list:
@@ -114,8 +114,8 @@ def look_books(request):
 
 def return_books(request,get_id):
     if request.method=="POST":
-        userno = request.session.get('userno', None)
-        username = request.session('username', None)
+        userno = request.session['userno']
+        username = request.session['username']
         book_name = request.POST.get("return", None)
         change=DorBookInf.objects.filter(book_name=book_name,book_id=get_id).update(book_borrow="0",
                                                                                          book_borrow_state="0",
