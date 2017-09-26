@@ -59,7 +59,6 @@ def show_stu_meeting_room(request):
     except Exception as err:
         return render(request,"index.html")
     sname = request.session['username']
-
     # 转化成列表
     room_list = list(MeetingRoom.objects.all().values())
     for i in room_list:
@@ -95,7 +94,7 @@ def show_stu_meeting_room(request):
         newModel.start_time = order_time_start[0]['start_time'].strftime('%H:%M:%S')
         newModel.end_time = order_time_end[0]['end_time'].strftime('%H:%M:%S')
         if base_stu_meeting_log[i].check_apply_success == 1:
-            newModel.check_apply_success = '已通过'
+            newModel.check_apply_success = '申请已通过'
         elif base_stu_meeting_log[i].check_apply_success == 0:
             newModel.check_apply_success = '待审核'
         elif base_stu_meeting_log[i].check_apply_success == 2:
@@ -114,11 +113,13 @@ def show_stu_book(request):
     except Exception as err:
         return render(request,"index.html")
     sname = request.session['username']
+    book_sum = DorBookInf.objects.all().count()
     book_list = DorBookInf.objects.all().values()
-    book_borrow_list =DorBookInf.objects.filter(book_borrowman=sname)
-    book_share_list =DorBookInf.objects.filter(book_share_man="1", book_borrowman=sname)
+    book_borrow_list = DorBookInf.objects.filter(book_borrowman=sname)
+    book_share_list = DorBookInf.objects.filter(book_share_man="1", book_borrowman=sname)
 
-    return render(request,"student/book.html",{'username':sname,'userno':sno,
-                                               'book_list':book_list,
-                                                   'book_borrow_list': book_borrow_list,
-                                                   'book_share_list':book_share_list})
+    return render(request, "student/book.html", {'username': sname, 'userno': sno,
+                                                 'book_list': book_list,
+                                                 'book_borrow_list': book_borrow_list,
+                                                 'book_share_list': book_share_list,
+                                                 'book_sum': book_sum})

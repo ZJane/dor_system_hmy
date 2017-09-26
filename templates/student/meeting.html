@@ -242,42 +242,60 @@
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label" id="apply_times">预约时段</label>
-                        <div class="checkbox col-sm-5">
-                            <label><input type="checkbox" name="meeting_book_time" value="1">8:00-9:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="2">9:00-10:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="3">10:00-11:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="4">11:00-12:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="5">12:00-13:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="6">13:00-14:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="7">14:00-15:00</label><br>
+                        <div class="col-sm-10 col-md-6">
+                            <select class="combobox col-sm-4" id="start_time">
+                            <option value="0"></option>
+                            <option value="1">8:00</option>
+                            <option value="2">9:00</option>
+                            <option value="3">10:00</option>
+                            <option value="4">11:00</option>
+                            <option value="5">12:00</option>
+                            <option value="6">13:00</option>
+                            <option value="7">14:00</option>
+                            <option value="8">15:00</option>
+                            <option value="9">16:00</option>
+                            <option value="10">17:00</option>
+                            <option value="11">18:00</option>
+                            <option value="12">19:00</option>
+                            <option value="13">20:00</option>
+                            <option value="14">21:00</option>
+                        </select>
+                        <label class="col-sm-1 col-md-1 control-label">-</label>
+                        <select class="combobox col-sm-4" id="end_time">
+                            <option value="0"></option>
+                            <option value="1">9:00</option>
+                            <option value="2">10:00</option>
+                            <option value="3">11:00</option>
+                            <option value="4">12:00</option>
+                            <option value="5">13:00</option>
+                            <option value="6">14:00</option>
+                            <option value="7">15:00</option>
+                            <option value="8">16:00</option>
+                            <option value="9">17:00</option>
+                            <option value="10">18:00</option>
+                            <option value="11">19:00</option>
+                            <option value="12">20:00</option>
+                            <option value="13">21:00</option>
+                            <option value="14">22:00</option>
+                        </select>
                         </div>
-                        <div class="checkbox col-sm-5">
-                            <label><input type="checkbox" name="meeting_book_time" value="8">15:00-16:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="9">16:00-17:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="10">17:00-18:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="11">18:00-19:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="12">19:00-20:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="13">20:00-21:00</label><br>
-                            <label><input type="checkbox" name="meeting_book_time" value="14">21:00-22:00</label><br>
-                        </div>
+
                     </div>
 
                     <div class="form-group">
                         <label class="col-sm-2 control-label">备注</label>
                         <div class="col-sm-10">
-                            <textarea rows="3" style="resize: vertical" class="form-control"
-                                      id="apply_stu_remark"></textarea>
+                            <textarea rows="3" style="resize: vertical" class="form-control" id="apply_stu_remark"></textarea>
                         </div>
                     </div>
                     <!-- /.form-group -->
-
 
                 </form>
             </div>
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                <button type="button" class="btn btn-primary" onclick="btn_apply(this)">确认申请</button>
+                <button type="button" class="btn btn-primary" onclick="btn_apply()">确认申请</button>
             </div>
         </div>
     </div>
@@ -420,7 +438,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <a href="../index.html">
+                <a href="/index/">
                     <button type="button" class="btn btn-primary">确定</button>
                 </a>
             </div>
@@ -469,40 +487,49 @@
     }
 
     function btn_apply_check(obj) {
-        $('input[name="meeting_book_time"]').removeAttr("checked")
+        // 清空
+        $('#apply_book_date').val('')
+        $("#start_time option:first").prop("selected", 'selected')
+        $("#end_time option:first").prop("selected", 'selected')
+        $('#apply_stu_remark').val('')
+
+        // 渲染
         var meeting_room_no = $(obj).parent().parent().find('td').eq(0).text()
         var meeting_room_size = $(obj).parent().parent().find('td').eq(1).text()
         $('#apply_meeting_room_no').text(meeting_room_no)
         $('#apply_meeting_room_size').text(meeting_room_size)
     }
 
-    function btn_apply(obj) {
-        var sno =
-        {{ userno }}
+    function btn_apply() {
+        var sno={{ userno }}
         var meeting_room_no = $('#apply_meeting_room_no').text()
-        var meeting_room_size = $('#apply_meeting_room_size').text()
         var book_date = $('#apply_book_date').val()
         var stu_remark = $('#apply_stu_remark').val()
         var apply_time = getNowTime()
-        console.log(book_date)
         var time_list = []
-        $('input[name="meeting_book_time"]:checked').each(function () {
-            time_list.push($(this).val())
-        })
-        console.log(time_list)
         var sendData = {}
-        if (time_list.length === 0) {
-            alert("未选时间段")
-        } else if (time_list.length > 4) {
+
+{#        $('input[name="meeting_book_time"]:checked').each(function () {#}
+{#            time_list.push($(this).val())#}
+{#        })#}
+        var select_start_time = $('#start_time').val()
+        var select_end_time = $('#end_time').val()
+        if ( select_start_time ===0 || select_end_time ===0){
+            alert("未选择时段")
+        } else if (parseInt(select_end_time)-parseInt(select_start_time) > 4) {
             alert("每人每次不能预约超过4小时")
-            $('input[name="meeting_book_time"]').removeAttr("checked")
-        } else if (!book_date) {
+        } else if (parseInt(select_end_time)-parseInt(select_start_time) < 0) {
+            alert("结束时间应大于起始时间")
+        }else if (!book_date) {
             alert("请填预约日期")
         } else {
+            for (var i = 0; i<parseInt(select_end_time)-parseInt(select_start_time)+1; i++){
+                 time_list.push((i+parseInt(select_start_time)).toString())
+            }
             var time_no_1 = time_list[0]
-            var time_no_2 = time_list[1] === 0 ?0 :time_list[1]
-            var time_no_3 = time_list[2] === 0 ?0 :time_list[2]
-            var time_no_4 = time_list[3] === 0 ?0 :time_list[3]
+            var time_no_2 = time_list[1] === 0 ? 0 : time_list[1]
+            var time_no_3 = time_list[2] === 0 ? 0 : time_list[2]
+            var time_no_4 = time_list[3] === 0 ? 0 : time_list[3]
             sendData = {
                 sno: sno,
                 meeting_room_no: meeting_room_no,
@@ -520,8 +547,9 @@
                 type: 'GET',
                 data: sendData,
                 success: function (data) {
-                    console.log(data)
-                    $('#adminDealtMeeting').hide()
+                    alert(data)
+                    $('#apply-room').modal('hide')
+                    window.location.reload();
                 },
                 error: function (e) {
                     console.log(e)

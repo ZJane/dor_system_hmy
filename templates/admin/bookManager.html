@@ -70,7 +70,7 @@
 
                 <h1 class="page-header">
                     共享书屋
-                    <small>总共 42 本书</small>
+                    <small>总共 {{ book_sum }} 本书</small>
                     <div class="pull-right">
                     </div>
                 </h1>
@@ -135,7 +135,7 @@
                                                     <input type="text" class="form-control" placeholder="状态" autocomplete="off" name="book_borrow_state" value="">
                                             </div>
                                         </div>
-                                        <button class="btn btn-danger" type="button">重置</button>
+                                        <a href="/show_admin_book_index/" type="button"  class="btn btn-danger" > 重置 </a>
                                     </div>
                                 </div>
 
@@ -268,9 +268,9 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <div class="col-md-2" style="padding-left: 500px">
-                                            <button type="button" class="btn btn-default btn-primary" >重置</button>
-                                        </div>
+
+                                        <a href="/show_admin_book_index/" type="button"  class="btn btn-success" > 重置 </a>
+
                                         <div class="col-md-2" style="padding-left: 100px">
                                             <button type="submit" class="btn btn-danger" data-toggle="modal" data-target="#checkInsert2">确定录入</button>
                                         </div>
@@ -425,7 +425,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <a href="../index.html">
+                    <a href="/index/">
                         <button type="button" class="btn btn-primary">确定</button>
                     </a>
                 </div>

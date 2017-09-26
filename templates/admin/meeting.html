@@ -225,7 +225,13 @@
                 </div>
                 <!--研讨室查看 panel-->
                 <div class="tab-pane" id="meetingCheck">
+
                     <div class="table-responsive">
+                        <div class="pull-right">
+                            <button class="btn btn-primary" data-toggle="modal"
+                                    data-target="#meetingRoomAdd" onclick="btn_add">新增
+                            </button>
+                        </div>
                         <table class="table table-striped">
                             <thead>
                             <tr>
@@ -246,6 +252,12 @@
                                     <td>
                                         <button type="button" class="btn btn-primary btn-xs" data-toggle="modal"
                                                 data-target="#meetingDetail" onclick="btn_info(this)">查看
+                                        </button>
+                                        <button type="button" class="btn btn-success btn-xs" data-toggle="modal"
+                                                data-target="#meetingRoomModify" onclick="btn_modify(this)">修改
+                                        </button>
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
+                                                data-target="#meetingRoomDele" onclick="btn_dele(this)">删除
                                         </button>
                                     </td>
                                 </tr>
@@ -505,7 +517,7 @@
     </div>
 </div>
 
-<!--注销modal-->
+
 <div class="modal fade" tabindex="-1" role="dialog" id="logout" data-backdrop="static">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -519,7 +531,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                <a href="../index.html">
+                <a href="/index/">
                     <button type="button" class="btn btn-primary">确定</button>
                 </a>
             </div>
@@ -527,6 +539,179 @@
     </div>
 </div>
 
+<!--修改 modal-->
+<div class="modal fade" id="meetingRoomModify" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">修改</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">位置/编号</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static" id="modifyMeetingRoomNo"></p>
+                        </div>
+                    </div>
+                    <!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">大小（容量/人）</label>
+                        <div class="col-sm-9">
+                            <select class="combobox col-sm-4" id="modifyMeetingRoomSize">
+                                <option value="0"></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="12+">12+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">多媒体设备</label>
+                        <div class="col-sm-9">
+                            <select class="combobox col-sm-4" id="modifyMeetingMedium">
+                                <option></option>
+                                <option value="0">无</option>
+                                <option value="1">有</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">描述</label>
+                        <div class="col-sm-9">
+                            <textarea rows="3" style="resize: vertical" class="form-control" id="modifyRoomDesc"></textarea>
+                        </div>
+                    </div>
+                    <!-- /.form-group -->
+
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="btn_modify_submit()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--新增 modal-->
+<div class="modal fade" id="meetingRoomAdd" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">新增</h4>
+            </div>
+            <div class="modal-body">
+                <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">位置/编号</label>
+                        <div class="col-lg-4 col-md-7 col-sm-7 col-xs-9">
+                            {#                            <p class="form-control-static" >102</p>#}
+                            <input class="form-control" id="addMeetingRoomNO" placeholder="填写3位数字编号">
+                        </div>
+                    </div>
+                    <!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">大小（容量/人）</label>
+                        <div class="col-sm-9">
+                            <select class="combobox col-sm-4" id="addMeetingRoomSize">
+                                <option value="0"></option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                                <option value="12+">12+</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /.form-group -->
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">多媒体设备</label>
+                        <div class="col-sm-9">
+                            <select class="combobox col-sm-4" id="addMeetingMedium">
+                                <option value="-1"></option>
+                                <option value="0">无</option>
+                                <option value="1">有</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">描述</label>
+                        <div class="col-sm-9">
+                            <textarea rows="3" style="resize: vertical" class="form-control"
+                                      id="addRoomDesc"></textarea>
+                        </div>
+                    </div>
+                    <!-- /.form-group -->
+
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn btn-primary" onclick="btn_add_submit()">确认</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!--删除研讨室modal-->
+<div class="modal fade" tabindex="-1" role="dialog" id="meetingRoomDele" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                        class="sr-only">关闭</span></button>
+                <h4 class="modal-title">提示</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    一旦删除研讨室<span style="font-size: larger; color: red;" id="deleMeetingRoomNo"></span>，系统将会把与此研讨室有关的所有数据、申请信息删除，<strong style="color: red;">无法恢复</strong>。
+                </p>
+                <p>是否删除此研讨室？</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="btn_dele_submit()">是</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- modal - 查看 -->
 <div class="modal fade" tabindex="-1" role="dialog" id="meetingDetail">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -647,7 +832,7 @@
         </div>
     </div>
 </div>
-<!-- modal - 查看 -->
+
 
 <script type="text/javascript" src="{% static 'bootstrap/js/jquery-2.2.1.min.js' %}"></script>
 <script type="text/javascript" src="{% static 'bootstrap/js/holder.min.js' %}"></script>
@@ -658,6 +843,7 @@
 </html>
 
 <script>
+    // 研讨室信息查看btn
     function btn_info(obj) {
         var room_no = $(obj).parent().parent().find('td').eq(0).text()
         var sendData = {
@@ -692,6 +878,7 @@
         })
     }
 
+    // 记录查看btn
     function btn_record(obj) {
         var sno = $(obj).parent().parent().find('td').eq(1).text()
         var meeting_room_no = $(obj).parent().parent().find('td').eq(2).text()
@@ -727,6 +914,7 @@
         })
     }
 
+    // 申请处理查看btn
     function btn_handle_check(obj) {
         var sno = $(obj).parent().parent().find('td').eq(1).text()
         var meeting_room_no = $(obj).parent().parent().find('td').eq(2).text()
@@ -761,13 +949,14 @@
         })
     }
 
+    // 申请处理 “确认” 操作btn
     function btn_handle(obj) {
         var sno = $('#dealt_sno').text()
         var meeting_room_no = $('#dealt_meeting_room_no').text()
         var apply_time = $('#dealt_apply_time').text()
         var ad_remark = $('#dealt_ad_remark').val()
 
-        {#        注意： status：   0-未处理，待审核     1-已通过     2-失败#}
+        //       注意： status：   0-未处理，待审核     1-已通过     2-失败
         var status = parseInt($('#dealt_select option:selected').val())
 
         var sendData = {
@@ -784,20 +973,128 @@
                 data: sendData,
                 success: function (data) {
                     alert(data)
-                    $('#adminDealtMeeting').hide()
+                    $('#adminDealtMeeting').modal('hide')
+                    location.reload();
                 },
                 error: function (e) {
                     console.log(e)
                 }
             })
-        }else {
+        } else {
             alert("未进行操作，点击确认无效")
         }
-
-
     }
 
-    {#    获取系统当前日期#}
+    // 点击修改的btn
+    function btn_modify(obj) {
+        // 重置
+        $("#modifyMeetingRoomSize option:first").prop("selected", 'selected')
+        $("#modifyMeetingMedium option:first").prop("selected", 'selected')
+        $("#modifyRoomDesc").val('')
+        // 赋值
+        $("#modifyMeetingRoomNo").text($(obj).parent().parent().find('td').eq(0).text())
+    }
+
+    // 点击 修改 的模态框中的“确认”btn
+    function btn_modify_submit() {
+        var meeting_room_no = $("#modifyMeetingRoomNo").text()
+        var meeting_room_size = $("#modifyMeetingRoomSize option:selected").val()
+        var meeting_medium = $("#modifyMeetingMedium option:selected").val()
+        var meeting_desc = $("#modifyRoomDesc").val()
+
+        if (meeting_room_size === '0' || meeting_medium==='-1'){
+            alert('提交的信息未填写完整：大小和多媒体设备')
+        } else {
+            $.ajax({
+                url: "/dor/admin_handle/meeting_room_handle/modify_meeting_room",
+                type: 'GET',
+                data: {
+                    meeting_room_no: meeting_room_no,
+                    meeting_room_size: meeting_room_size,
+                    meeting_medium: meeting_medium,
+                    meeting_desc: meeting_desc
+                },
+                success: function (data) {
+                    alert(data)
+                    $('#meetingRoomModify').modal('hide')
+                    location.reload();
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            })
+        }
+    }
+
+        // 点击删除的btn
+    function btn_dele(obj) {
+        $('#deleMeetingRoomNo').text($(obj).parent().parent().find('td').eq(0).text())
+    }
+
+    // 点击 删除 的模态框中的“确认”btn
+    function btn_dele_submit() {
+        var meeting_room_no = $("#deleMeetingRoomNo").text()
+        $.ajax({
+            url:"/dor/admin_handle/meeting_room_handle/dele_meeting_room",
+            type: 'GET',
+            data: {
+                meeting_room_no: meeting_room_no
+            },
+            success: function (data) {
+                alert(data)
+                $('#meetingRoomDele').modal('hide')
+                location.reload();
+            },
+            error: function (e) {
+                console.log(e)
+            }
+        })
+    }
+
+    // 点击 新增
+    function btn_add() {
+        // 重置
+        $("#addMeetingRoomNO").val('')
+        $("#addMeetingRoomSize option:first").prop("selected", 'selected')
+        $("#addMeetingMedium option:first").prop("selected", 'selected')
+        $("#addRoomDesc").val('')
+    }
+
+    // 点击 新增 的模态框
+    function btn_add_submit() {
+        var meeting_room_no = $("#addMeetingRoomNO").val()
+        var meeting_room_size = $("#addMeetingRoomSize option:selected").val()
+        var meeting_medium = $("#addMeetingMedium option:selected").val()
+        var meeting_desc = $("#addRoomDesc").val()
+
+        if (meeting_room_no === ''|| meeting_room_size === '0' || meeting_medium==='-1'){
+            alert('提交的信息未填写完整：编号，大小和多媒体设备')
+        } else if (parseInt(meeting_room_no)<100|| parseInt(meeting_room_no) > 999){
+            alert('请正确填写编号')
+        }else {
+            $.ajax({
+                url: "/dor/admin_handle/meeting_room_handle/add_meeting_room",
+                type: 'GET',
+                data: {
+                    meeting_room_no: meeting_room_no,
+                    meeting_room_size: meeting_room_size,
+                    meeting_medium: meeting_medium,
+                    meeting_desc: meeting_desc
+                },
+                success: function (data) {
+                    alert(data)
+                    $('#meetingRoomAdd').modal('hide')
+                    window.location.reload();
+                },
+                error: function (e) {
+                    console.log(e)
+                }
+            })
+        }
+    }
+
+
+    //    获取系统当前日期
     function getNowDate() {
         var date = new Date();
         var seperator1 = "-";
@@ -813,7 +1110,7 @@
         return currentdate;
     }
 
-    {#    获取今天& 明天#}
+    //    获取今天& 明天
     function getDateStr(addDay) {
         var dd = new Date();
         dd.setDate(dd.getDate() + addDay);

@@ -20,7 +20,7 @@ from dor.views import show_admin_index,show_student_index,show_index
 from dor.admin_handle.dormintory_handle import ad_handle_cancel_dor_transcation,ad_handle_change_dor_transcation,ad_handle_live_on_vacation_transcation,ad_show_cancel_dor_applyments,ad_show_change_dor_applyments,ad_show_live_on_vacation_applyments,ad_show_change_log,ad_show_check_log,ad_show_staying_log
 from dor.admin_handle.repair_handle import *
 from dor.admin_handle.device_handle import *
-from dor.admin_handle.meeting_room_handle import ad_show_meeting_room_applyments,ad_show_meeting_room_info,ad_handle_meeting_room_applyments
+from dor.admin_handle.meeting_room_handle import ad_show_meeting_room_applyments,ad_add_meeting_room_applyment,ad_dele_meeting_room_applyment,ad_modify_meeting_room_applyment,ad_show_meeting_room_info,ad_handle_meeting_room_applyments
 from dor.admin_handle.activity_handle import ad_show_activity_applyments,ad_show_activity_info,ad_handle_activity_applyments,ad_new_activity,ad_show_activity_applyments_log
 from dor.admin_handle.search_handle import ad_search_stu,ad_show_room_info,ad_sort_stu_info
 from dor.admin_handle.live_in_dor_handle import ad_add_stu_dor_info,ad_distribute_dor
@@ -38,6 +38,7 @@ from dor.student_handle.book_handle import share_books,borrow_books,find_books,r
 from dor.admin_handle.books_Manager import books_Manager_find,insert_book,Delete_book
 from dor.admin_handle.live_in_dor_handle import ad_add_stu_dor_info,ad_distribute_dor,ad_confirm_live_in
 urlpatterns = [
+    url(r'^/',show_index),
     url(r'^index/',show_index),
     url(r'^admin/',admin.site.urls),
     url(r'^show_admin_index',show_admin_index),
@@ -88,6 +89,9 @@ urlpatterns = [
     url(r'^dor/admin_handle/dormintory_handle/handle_live_on_vacation_transcation',ad_handle_live_on_vacation_transcation),
     url(r'^dor/admin_handle/meeting_room_handle/show_meeting_room_applyments',ad_show_meeting_room_applyments),
     url(r'^dor/admin_handle/meeting_room_handle/handle_meeting_room_applyments',ad_handle_meeting_room_applyments),
+    url(r'^dor/admin_handle/meeting_room_handle/add_meeting_room', ad_add_meeting_room_applyment),
+    url(r'^dor/admin_handle/meeting_room_handle/dele_meeting_room', ad_dele_meeting_room_applyment),
+    url(r'^dor/admin_handle/meeting_room_handle/modify_meeting_room', ad_modify_meeting_room_applyment),
     url(r'^dor/admin_handle/meeting_room_handle/show_meeting_room_info',ad_show_meeting_room_info),
     url(r'^dor/admin_handle/activity_handle/show_activity_applyments',ad_show_activity_applyments),
     url(r'^dor/admin_handle/activity_handle/handle_activity_applyments',ad_handle_activity_applyments),

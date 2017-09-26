@@ -5,6 +5,8 @@ from django.http import HttpResponse
 from dor.models import MeetingRoom, MeetingRoomApplymentRecord, MeetingRoomOrderTime, Student
 from dor.DTO.MeetingLog import MeetingLogModel
 
+
+# 查看申请记录
 def ad_show_meeting_room_applyments(request):
     if 'sno' in request.GET:
         sno = request.GET.get('sno')
@@ -44,6 +46,7 @@ def ad_show_meeting_room_applyments(request):
         return HttpResponse(record_list, content_type='application/json', charset='utf8')
 
 
+# 查看研讨室 情况
 def ad_show_meeting_room_info(request):
     if 'meeting_room_no' in request.GET:
         # 拿到参数
@@ -95,6 +98,7 @@ def ad_show_meeting_room_info(request):
         return HttpResponse(time_list_all, content_type="application/json", charset="utf8")
 
 
+# 查看及处理学生的研讨室申请
 def ad_handle_meeting_room_applyments(request):
     sno = request.GET.get('sno')
     meeting_room_no = request.GET.get('meeting_room_no')
@@ -107,3 +111,54 @@ def ad_handle_meeting_room_applyments(request):
     MeetingRoomApplymentRecord.objects.filter(sno=sno, meeting_room_no=meeting_room_no, apply_time=apply_time).update(
         ad_remark=ad_remark)
     return HttpResponse("研讨室申请处理完成")
+
+
+# 研讨室的增
+def ad_add_meeting_room_applyment(request):
+    if 'meeting_room_no' in request.GET:
+        # 拿到数据
+        meeting_room_no = request.GET.get('meeting_room_no')
+        meeting_room_size = request.GET.get('meeting_room_size')
+        include_medium_device = request.GET.get('meeting_medium')
+        meeting_room_description = request.GET.get('meeting_desc')
+
+        if not list(MeetingRoom.objects.filter(meeting_room_no=meeting_room_no).values()):
+            newOne = MeetingRoom(meeting_room_no=meeting_room_no, meeting_room_size=meeting_room_size,
+                                 include_medium_device=include_medium_device,
+                                 meeting_room_description=meeting_room_description)
+            newOne.save()
+            return HttpResponse('新增成功')
+        else:
+            return HttpResponse('此研讨室已存在，无法新增')
+
+
+# 研讨室的删
+def ad_dele_meeting_room_applyment(request):
+    if 'meeting_room_no' in request.GET:
+        # 拿到数据
+        meeting_room_no = request.GET.get('meeting_room_no')
+
+        if list(MeetingRoom.objects.filter(meeting_room_no=meeting_room_no).values()):
+            MeetingRoom.objects.filter(meeting_room_no=meeting_room_no).delete()
+            MeetingRoomApplymentRecord.objects.filter(meeting_room_no=meeting_room_no).delete()
+            return HttpResponse('删除成功')
+        else:
+            return HttpResponse('此研讨室不存在，无法删除')
+
+
+# 研讨室的改
+def ad_modify_meeting_room_applyment(request):
+    if 'meeting_room_no' in request.GET:
+        meeting_room_no = request.GET.get('meeting_room_no')
+        meeting_room_size = request.GET.get('meeting_room_size')
+        include_medium_device = request.GET.get('meeting_medium')
+        meeting_room_description = request.GET.get('meeting_desc')
+
+        if not list(MeetingRoom.objects.filter(meeting_room_no=meeting_room_no).values()):
+            return HttpResponse('此研讨室不存在，无法修改')
+        else:
+            newTwo = MeetingRoom(meeting_room_no=meeting_room_no, meeting_room_size=meeting_room_size,
+                                 include_medium_device=include_medium_device,
+                                 meeting_room_description=meeting_room_description)
+            newTwo.save()
+            return HttpResponse('修改成功')

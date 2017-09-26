@@ -15,7 +15,7 @@
 
  <link rel="icon" href={% static 'bootstrap/image/favicon.ico' %}>
     <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
-    <link href="{% static 'bootstrap/css/student.css.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'bootstrap/css/student.css' %}" rel="stylesheet" type="text/css">
 
 
     <style>
@@ -43,7 +43,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="info_student.html"><span class="glyphicon glyphicon-user"></span> {{ username }}同学</a></li>
-                    <li><a href="#">注销</a></li>
+                    <li><a href="/index/">注销</a></li>
                 </ul>
             </div>
         </div>
@@ -68,7 +68,7 @@
                     <li>
                         <a href="/show_stu_meeting_index">研讨室申请</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="/show_stu_activity_index">社区活动申请</a>
                     </li>
                     <li class="active">
@@ -80,7 +80,7 @@
 
                 <h1 class="page-header">
                     共享书屋
-                    <small>总共 42 本书</small>
+                    <small>总共 {{ book_sum }} 本书</small>
                     <div class="pull-right">
                         <button type="button" class="btn btn-info" data-toggle="modal" data-target="#bookShare">分享书籍</button>
                     </div>
@@ -144,7 +144,7 @@
 
                                 <button class="btn btn-info" type="submit">检索</button>
 
-                                <button class="btn btn-danger" href="/book" type="button">重置</button>
+                                 <a href="/show_stu_book_index/" type="button"  class="btn btn-danger" > 重置 </a>
                                 <span >{{ error }}</span>
                             </div>
 `
@@ -185,7 +185,10 @@
 
                                           <td>
                                               <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#bookInfo{{ item.book_id }}">查看</button>
+                                              {% if item.book_borrow != '1'  %}
                                               <button type="button" class="btn btn-success btn-xs" data-toggle="modal" data-target="#bookBorrow{{item.book_id }}">借阅</button>
+                                              {% endif %}
+
                                           </td>
 
                                         </tr>

@@ -52,7 +52,7 @@ def show_meeting_room_index(request):
                 meeting_room_order_time_no=base_apply_list[i].time_no_1).values())
         newModel.time_end = order_time_end[0]['end_time'].strftime('%H:%M:%S')
         if base_apply_list[i].check_apply_success == 1:
-            newModel.check_apply_success = '已通过'
+            newModel.check_apply_success = '申请已通过'
         elif base_apply_list[i].check_apply_success == 0:
             newModel.check_apply_success = '待审核'
         elif base_apply_list[i].check_apply_success == 2:
@@ -90,9 +90,10 @@ def show_book_index(request):
         username = request.session['username']
     except Exception as err:
         return render(request,"index.html")
+    book_sum = DorBookInf.objects.all().count()
     book_list = DorBookInf.objects.all().values()
-    return render(request, "admin/bookManager.html", {'username':username,'book_list': book_list})
-
+    return render(request, "admin/bookManager.html", {'username':username,'book_list': book_list,
+                                                            'book_sum':book_sum})
 def show_search_index(request):
     try:
         username = request.session['username']
