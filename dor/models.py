@@ -358,6 +358,7 @@ class DorRoom(models.Model):
     bed_counts = models.IntegerField(blank=True, null=True)
     room_phone = models.CharField(max_length=100, blank=True, null=True)
     empty_beds = models.IntegerField(blank=True, null=True)
+    live_in_stu = models.CharField(max_length=150, blank=True, null=True)
 
     class Meta:
         managed = False
@@ -464,22 +465,12 @@ class RepairDeviceApplyment(models.Model):
         db_table = 'repair_device_applyment'
 
 
-class Room(models.Model):
-    room_no = models.CharField(max_length=10, blank=True, null=True)
-    dor_no = models.CharField(max_length=10, blank=True, null=True)
-    bed_counts = models.IntegerField(blank=True, null=True)
-    room_descriptions = models.CharField(max_length=255, blank=True, null=True)
-    empty_beds = models.IntegerField(blank=True, null=True)
-
-    class Meta:
-        managed = False
-        db_table = 'room'
-
-
 class StayingApplyTime(models.Model):
-    staying_apply_time_no = models.CharField(primary_key=True, max_length=10)
+    staying_apply_time_no = models.CharField(primary_key=True, max_length=50)
+    year = models.CharField(max_length=255, blank=True, null=True)
     start_time = models.DateTimeField(blank=True, null=True)
     end_time = models.DateTimeField(blank=True, null=True)
+    vocation = models.CharField(max_length=255, blank=True, null=True)
 
     class Meta:
         managed = False

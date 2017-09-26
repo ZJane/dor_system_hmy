@@ -22,7 +22,7 @@ from dor.admin_handle.repair_handle import *
 from dor.admin_handle.device_handle import *
 from dor.admin_handle.meeting_room_handle import ad_show_meeting_room_applyments,ad_add_meeting_room_applyment,ad_dele_meeting_room_applyment,ad_modify_meeting_room_applyment,ad_show_meeting_room_info,ad_handle_meeting_room_applyments
 from dor.admin_handle.activity_handle import ad_show_activity_applyments,ad_show_activity_info,ad_handle_activity_applyments,ad_new_activity,ad_show_activity_applyments_log
-from dor.admin_handle.search_handle import ad_search_stu,ad_show_room_info,ad_sort_stu_info
+#from dor.admin_handle.search_handle import ad_search_stu,ad_show_room_info,ad_sort_stu_info
 from dor.admin_handle.live_in_dor_handle import ad_add_stu_dor_info,ad_distribute_dor
 from dor.admin_handle.set_timequantum import ad_set_timeable
 from dor.student_handle.dor_applyment import stu_change_dor_applyment, stu_cancel_dor_applyment, stu_live_on_vacation_applyment, stu_show_live_on_vacation_applyments, stu_show_cancel_dor_applyments, stu_show_change_dor_applyments
@@ -37,6 +37,10 @@ from dor.student_handle.login import stu_sign_in
 from dor.student_handle.book_handle import share_books,borrow_books,find_books,return_books,look_books
 from dor.admin_handle.books_Manager import books_Manager_find,insert_book,Delete_book
 from dor.admin_handle.live_in_dor_handle import ad_add_stu_dor_info,ad_distribute_dor,ad_confirm_live_in
+from dor.admin_handle.search_handle import search_stu,show_room_info,sort_stu_info,show_student_info
+from dor.admin_handle.set_application_staying_time import show_staying_time,set_staying_time
+
+
 urlpatterns = [
     url(r'^/',show_index),
     url(r'^index/',show_index),
@@ -99,9 +103,21 @@ urlpatterns = [
     url(r'^dor/admin_handle/activity_handle/new_activity',ad_new_activity),
     url(r'^dor/admin_handle/activity_handle/show_activity_applyments_log',ad_show_activity_applyments_log),
 
-    url(r'^dor/admin_handle/search_handle/search_stu',ad_search_stu),
-    url(r'^dor/admin_handle/search_handle/sort_stu_info',ad_sort_stu_info),
-    url(r'^dor/admin_handle/search_handle/show_room_info',ad_show_room_info),
+    # 宿生信息检索
+    url(r'^show_search_stu', show_search_index),
+    url(r'^dor/admin_handle/search_handle/search_stu', search_stu),
+    url(r'^dor/admin_handle/search_handle/sort_stu_info', sort_stu_info),
+    url(r'^dor/admin_handle/search_handle/show_room_info', show_room_info),
+    url(r'^dor/admin_handle/search_handle/show_student_info', show_student_info),
+
+    # 留校时间设置和修改
+
+    #url(r'^dor/admin_handle/set_staying_time_show_staying_time', show_staying_time),
+    url(r'^dor/admin_handle/set_staying_time_set_application_staying_time', set_staying_time),
+
+
+
+#入宿登记
     url(r'^dor/admin_handle/live_in_dor_handle/add_stu_dor_info',ad_add_stu_dor_info),
     url(r'^dor/admin_handle/live_in_dor_handle/distribute_dor',ad_distribute_dor),
     url(r'^dor/admin_handle/set_timequantum/set_timeable',ad_set_timeable),
