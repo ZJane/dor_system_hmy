@@ -68,7 +68,7 @@ def ad_handle_change_dor_transcation(request):
             dorm_floor=request.POST.get('dorm_floor',None)
             dorm_number = request.POST.get('dorm_number',None)
             bed_number=request.POST.get('bed_number',None)
-            print(dorm_floor_number+dorm_floor+dorm_number)
+            #print(dorm_floor_number+dorm_floor+dorm_number)
             DormitorySchedule.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor+dorm_number,bed_no=bed_number)
             DorChange.objects.filter(sno=sno).update(app_status="申请成功")
             Student.objects.filter(sno=sno).update(dor_no=dorm_floor_number,room_no=dorm_floor_number+dorm_floor+dorm_number)
