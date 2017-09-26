@@ -101,7 +101,7 @@ def show_stu_meeting_room(request):
             newModel.check_apply_success = '失败'
 
         stu_meeting_log.append(newModel)
-        print(stu_meeting_log)
+        #print(stu_meeting_log)
 
     return render(request, "student/meeting.html", {'username': sname, 'userno': sno, 'roomList': room_list,
                                                     'stuMeetingLog': stu_meeting_log})
