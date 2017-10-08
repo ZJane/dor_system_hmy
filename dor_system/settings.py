@@ -87,9 +87,9 @@ DATABASES={
     'default':{
         'ENGINE':'django.db.backends.mysql',
         'NAME':'dormitory_manage_system_database',
-        'USER':'root',
+        'USER':'zmh',
         'PASSWORD':'1234',
-        'HOST':'39.108.185.66',
+        'HOST':'xx.xxx.xxx.xx',
         'PORT':'3306',
     }
 }
